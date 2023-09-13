@@ -18,7 +18,7 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
 categories = ["books", "electronics", "musical instruments", "furniture", "clothes", "household appliances", "sports gear", "decorations"]
 
 100.times do
-  item = Item.new({ name: "#{Faker::Adjective.negative} #{Faker::Appliance.equipment}", description: Faker::Movies::HarryPotter.quote, category: categories.sample, swapzi_points: (100..500).to_a.sample })
+  item = Item.new({ name: "#{Faker::Adjective.negative.capitalize} #{Faker::Appliance.equipment}", description: Faker::Movies::HarryPotter.quote, category: categories.sample, swapzi_points: (100..500).to_a.sample })
   item.user = [user1, user2, user3, user4, user5].sample
   item.save!
 end
