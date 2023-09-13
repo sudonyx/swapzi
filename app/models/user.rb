@@ -14,4 +14,8 @@ class User < ApplicationRecord
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :username, presence: true, uniqueness: true
+  validates :location, presence: true
+  validates :swapzi_score, presence: true, numericality: { only_integer: true }
 end
