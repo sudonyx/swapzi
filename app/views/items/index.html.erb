@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div>
+    <h1 class="my-4">All items</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <% @items.each do |item| %>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.name %></h5>
+              <p class="card-text"><%= item.description %></p>
+              <p class="card-text"><%= item.category %></p>
+              <p class="card-text"><strong><%= item.swapzi_points %></strong> Swapzi points</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+    
+      
+      
+        
+      
+    </div>
+  </div>
+</div>
