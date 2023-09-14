@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
     @items = policy_scope(Item)
   end
-
+  
   def new
     @item = Item.new
     authorize @item
@@ -23,7 +23,13 @@ class ItemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  
+  def show
+    @item = Item.find(params[:id])
+    authorize @item
+    @random_items = Item.order("RANDOM()").limit(3)
+  end 
+  
   private
 
   def item_params
