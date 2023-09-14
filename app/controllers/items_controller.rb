@@ -6,4 +6,10 @@ class ItemsController < ApplicationController
 
     @items = policy_scope(Item)
   end
+
+  def show
+    @item = Item.find(params[:id])
+    authorize @item
+    @random_items = Item.order("RANDOM()").limit(3)
+  end 
 end
