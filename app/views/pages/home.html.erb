@@ -4,7 +4,8 @@
       <h1>Swapzi</h1>
       <%= image_tag "logo-draft.png", class: "banner-logo" %>
       <p>Swap Smarter with Swapzi!</p>
-      <a class="btn btn-ghost" href="#">Apply Now</a>
+      <%= button_to "Apply Now", new_user_registration_path, class: "btn btn-ghost", method: :get %>
+      <%# <a class="btn btn-ghost" href="#">Apply Now</a> %>
     </div>
   </div>
 </div>
