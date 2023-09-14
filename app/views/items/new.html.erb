@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Post an item</h1>
+  <%= simple_form_for @item do |form| %>
+    <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :category, collection: ["books", "electronics", "musical instruments", "furniture", "clothes", "household appliances", "sports gear", "decorations"] %>
+    <%= form.submit %>
+  <% end %>
+</div>
