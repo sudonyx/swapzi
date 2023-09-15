@@ -1,15 +1,19 @@
+.swap-show-container {
+  margin-top: 50px;
+}
+
 .swap-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20vh;
+  margin-top: 20px;
 
   .container {
     z-index: -1;
   }
 
   .swap-show-logo {
-    height: 120px;
+    height: 140px;
     width: auto;
     margin-left: -70px;
     margin-right: -70px;

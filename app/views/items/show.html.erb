@@ -2,7 +2,7 @@
 
   <div class="container item-show-container d-flex justify-content-between">
       <div class = "item-show-card">
-      <%= image_tag("ruler.jpg", class: 'card-img-top') %>
+      <%= image_tag(@item.photo, class: "card-img-top") %>
       <h1><%= @item.name %></h1>
           <div>
           <h5>Description:</h5>

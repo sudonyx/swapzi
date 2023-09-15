@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container swap-show-container">
 
-  <% if @swap.user_1_id == current_user.id %>
-    <% @user_item = Item.find(@swap.item_1_id) %>
-    <% @other_item = Item.find(@swap.item_2_id) %>
+  <% if @swap.user_1 == current_user %>
+    <% @user_item = @swap.item_1 %>
+    <% @other_item = @swap.item_2 %>
   <% else %>
-    <% @user_item = Item.find(@swap.item_2_id) %>
-    <% @other_item = Item.find(@swap.item_1_id) %>
+    <% @user_item = @swap.item_2 %>
+    <% @other_item = @swap.item_1 %>
   <% end %>
 
   <div class="container swap-container">
 
     <div class="container">
       <div class="card">
-        <%= image_tag("ruler.jpg", class: 'card-img-top') %>
+        <%= image_tag(@user_item.photo, class: "card-img-top") %>
         <div class="card-body">
           <h2 class="card-title">Your item</h2>
           <p class="card-text"><%= @user_item.name %></p>
@@ -27,7 +27,7 @@
 
     <div class="container">
       <div class="card">
-        <%= image_tag("ruler.jpg", class: 'card-img-top') %>
+        <%= image_tag(@other_item.photo, class: "card-img-top") %>
         <div class="card-body">
           <h2 class="card-title"><%= @other_item.user.username %>'s item</h2>
           <p class="card-text"><%= @other_item.name %></p>
