@@ -1,0 +1,19 @@
+<div class="container">
+
+  <% if @swap.user_1_id == current_user.id %>
+    <% @user_item = Item.find(@swap.item_1_id) %>
+    <% @other_item = Item.find(@swap.item_2_id) %>
+  <% else %>
+    <% @user_item = Item.find(@swap.item_2_id) %>
+    <% @other_item = Item.find(@swap.item_1_id) %>
+  <% end %>
+
+  <h2>Your item</h2>
+  <p><%= @user_item.name %></p>
+  <p><%= @user_item.description %></p>
+
+  <h2><%= @other_item.user.username %>'s item</h2>
+  <p><%= @other_item.name %></p>
+  <p><%= @other_item.description %></p>
+
+</div>
