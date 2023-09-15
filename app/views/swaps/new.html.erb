@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h1>Choose an item to offer swap</h1>
+
+  <h2><%= @show_item.user.username %>'s <%= @show_item.name %></h2>
+  <%= @show_item.description %>
+
+  <% @items = @user_items %>
+
+  <h2>Your items</h2>
+
+  <%= render 'shared/item_card_grid' %>
+  
+</div>

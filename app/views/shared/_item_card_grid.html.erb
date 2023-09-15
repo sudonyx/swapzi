@@ -1,0 +1,24 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+  <% @items.each do |item| %>
+    <% @item = item %>
+
+    <% if params[:page] == 'new_swap' %>
+      <%= simple_form_for @swap do |f| %>
+        <%= f.input :item_1_id, :as => :hidden, :input_html => { :value => @show_item.id } %>
+        <%= f.input :user_1_id, :as => :hidden, :input_html => { :value => @show_item.user_id } %>
+        <%= f.input :item_2_id, :as => :hidden, :input_html => { :value => item.id } %>
+        <%= f.input :user_2_id, :as => :hidden, :input_html => { :value => item.user_id } %>
+        <%= f.button :button do %>
+          <%= render 'shared/item_card' %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to item_path(item), style: 'text-decoration: none;' do %>
+        <%= render 'shared/item_card' %>
+      <% end %>
+    <% end %>
+      
+  <% end %>
+
+</div>
