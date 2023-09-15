@@ -1,0 +1,18 @@
+.swap-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20vh;
+
+  .container {
+    z-index: -1;
+  }
+
+  .swap-show-logo {
+    height: 120px;
+    width: auto;
+    margin-left: -70px;
+    margin-right: -70px;
+    z-index: 1;
+  }
+}

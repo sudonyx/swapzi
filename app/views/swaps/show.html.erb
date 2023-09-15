@@ -8,12 +8,34 @@
     <% @other_item = Item.find(@swap.item_1_id) %>
   <% end %>
 
-  <h2>Your item</h2>
-  <p><%= @user_item.name %></p>
-  <p><%= @user_item.description %></p>
+  <div class="container swap-container">
 
-  <h2><%= @other_item.user.username %>'s item</h2>
-  <p><%= @other_item.name %></p>
-  <p><%= @other_item.description %></p>
+    <div class="container">
+      <div class="card">
+        <%= image_tag("ruler.jpg", class: 'card-img-top') %>
+        <div class="card-body">
+          <h2 class="card-title">Your item</h2>
+          <p class="card-text"><%= @user_item.name %></p>
+          <p class="card-text"><%= @user_item.description %></p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <%= image_tag("logo-draft.png", class: "swap-show-logo") %>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <%= image_tag("ruler.jpg", class: 'card-img-top') %>
+        <div class="card-body">
+          <h2 class="card-title"><%= @other_item.user.username %>'s item</h2>
+          <p class="card-text"><%= @other_item.name %></p>
+          <p class="card-text"><%= @other_item.description %></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 </div>
