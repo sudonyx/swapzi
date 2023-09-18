@@ -18,27 +18,27 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
 100.times do
   name = "#{Faker::Adjective.negative.capitalize} #{Faker::Appliance.equipment}"
   description = Faker::Movies::HarryPotter.quote
-  category = ["books", "electronics", "musical instruments", "furniture", "clothes", "household appliances", "sports gear", "decorations"].sample
+  category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations"].sample
   swapzi_points = (100..500).to_a.sample
 
   item = Item.new({ name: name, description: description, category: category, swapzi_points: swapzi_points })
   item.user = [user1, user2, user3, user4, user5].sample
   case category
-  when "books"
+  when "Books"
     item.photo.attach(io: File.open("app/assets/images/seed_images/book.jpg"), filename: "book.jpg", content_type: "image/jpg")
-  when "electronics"
+  when "Electronics"
     item.photo.attach(io: File.open("app/assets/images/seed_images/gameboy.jpg"), filename: "gameboy.jpg", content_type: "image/jpg")
-  when "musical instruments"
+  when "Musical Instruments"
     item.photo.attach(io: File.open("app/assets/images/seed_images/guitar.jpg"), filename: "guitar.jpg", content_type: "image/jpg")
-  when "furniture"
+  when "Furniture"
     item.photo.attach(io: File.open("app/assets/images/seed_images/desk.jpg"), filename: "desk.jpg", content_type: "image/jpg")
-  when "clothes"
+  when "Clothes"
     item.photo.attach(io: File.open("app/assets/images/seed_images/jacket.jpg"), filename: "jacket.jpg", content_type: "image/jpg")
-  when "household appliances"
+  when "Household Appliances"
     item.photo.attach(io: File.open("app/assets/images/seed_images/toaster.jpg"), filename: "toaster.jpg", content_type: "image/jpg")
-  when "sports gear"
+  when "Sports Gear"
     item.photo.attach(io: File.open("app/assets/images/seed_images/bicycle.jpg"), filename: "bicycle.jpg", content_type: "image/jpg")
-  when "decorations"
+  when "Decorations"
     item.photo.attach(io: File.open("app/assets/images/seed_images/plant.jpg"), filename: "plant.jpg", content_type: "image/jpg")
   end
   item.save!
