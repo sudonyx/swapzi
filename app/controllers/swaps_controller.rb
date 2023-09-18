@@ -5,6 +5,14 @@ class SwapsController < ApplicationController
     authorize @swap
   end
 
+  def pending
+    @user = current_user
+    @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user))
+
+    authorize @user
+    authorize @swaps
+  end
+
   def new
     @swap = Swap.new
     @show_item = Item.find(params[:item_id])
