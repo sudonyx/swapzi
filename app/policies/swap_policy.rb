@@ -5,7 +5,7 @@ class SwapPolicy < ApplicationPolicy
       @user  = user
       @scope = scope
     end
-    
+
     def resolve
       scope.where(user: @user)
     end
@@ -20,6 +20,10 @@ class SwapPolicy < ApplicationPolicy
   end
 
   def show?
+    true
+  end
+
+  def pending?
     true
   end
 end

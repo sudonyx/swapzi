@@ -1,8 +1,33 @@
 .item-card {
   height: 100%;
   border-radius: 8px;
+  text-align: left;
 
   .no-border-top {
     border-top: 0 none;
+  }
+}
+
+.swap-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  flex-wrap: wrap;
+
+  .swap-logo {
+    height: 100px;
+    width: auto;
+    // margin: auto;
+  }
+
+  .swap-card {
+    height: 243;
+    width: 540;
+
+    .card-img-top {
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

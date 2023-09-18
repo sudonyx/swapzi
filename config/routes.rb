@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end
   resources :swaps, only: %i[show create]
 
-  resources :users, only: %i[dashboard]
+  get "/swaps", to: "swaps#pending"
 end
