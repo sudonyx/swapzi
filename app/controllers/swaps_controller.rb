@@ -42,7 +42,7 @@ class SwapsController < ApplicationController
     @swap = Swap.find(params[:id])
 
     if params.has_key?(:accepted)
-      if params[:is_user_1] == true
+      if params[:is_user_1] == "true"
         redirect if @swap.update(accepted_user_1: params[:accepted]) if params.has_key?(:accepted)
       else
         redirect if @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
@@ -50,10 +50,10 @@ class SwapsController < ApplicationController
     end
     
     if params.has_key?(:completed) && both_users_accepted?
-      if params[:is_user_1] == true
-        @swap.update(completed_user_1: params[:completed])
+      if params[:is_user_1] == "true"
+        redirect if @swap.update(completed_user_1: params[:completed])
       else
-        @swap.update(completed_user_2: params[:completed])
+        redirect if @swap.update(completed_user_2: params[:completed])
       end
     end
 
@@ -80,11 +80,11 @@ class SwapsController < ApplicationController
   end
 
   def both_users_accepted?
-    @swap.accepted_user_1 == true && @swap.accepted_user_2 == true
+    @swap.accepted_user_1 && @swap.accepted_user_2
   end
 
   def both_users_completed?
-    @swap.completed_user_1 == true && @swap.completed_user_2 == true
+    @swap.completed_user_1 && @swap.completed_user_2
   end
 
   def redirect

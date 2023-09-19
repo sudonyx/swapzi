@@ -1,13 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="completed-button"
+
+// THIS CODE IS FAULTY - works but requires refresh to work :/
 export default class extends Controller {
   static targets = ["button"]
   static values = {
-    updated: Boolean
+    updated: { type: Boolean, default: false }
   }
 
   connect() {
+    console.log("connected")
     console.log(this.updatedValue)
     
     if (this.updatedValue === true) {
@@ -18,12 +21,11 @@ export default class extends Controller {
 
   submit() {
     console.log("form submitted")
-    
+    console.log(this.updatedValue)
+
     if (this.updatedValue === true) {
-      console.log(this.buttonTarget)
       this.buttonTarget.innerText = "Marked as completed"
       this.buttonTarget.setAttribute("disabled", "true")
     }
   }
-  
 }
