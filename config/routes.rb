@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       resources :swaps, only: %i[new]
   end
   resources :swaps, only: %i[show create update destroy]
-
+  resources :favourites, only: %i[index create destroy]
   get "/swaps", to: "swaps#pending"
 end

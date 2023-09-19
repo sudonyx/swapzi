@@ -25,4 +25,9 @@ class FavouritesController < ApplicationController
         authorize @item
         authorize @favourite
     end
+
+    def index
+        @favourites = current_user.favourites
+        @Favourites = policy_scope(Favourite)
+    end
 end
