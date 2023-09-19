@@ -11,6 +11,14 @@
     <% @item = @user_item %>
     <div class="container h-100">
       <%= render "shared/swap_show_page_card" %>
+
+      <div class="d-flex justify-content-around my-4" %>
+        <% if @swap.item_1.user == @user && @swap.completed_user_1 || @swap.item_2.user == @user && @swap.completed_user_2 %>
+          <%= button_to "You marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
+        <% else %>
+          <%= button_to "Mark swap as completed", swap_path(@swap, is_user_1: @swap.item_1.user == @user, completed: true, origin: @origin), class: "btn btn-success rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Mark swap as completed?" } %>
+        <% end %>
+      </div>
     </div>
 
     <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
@@ -18,14 +26,32 @@
     <% @item = @other_item %>
     <div class="container h-100">
       <%= render "shared/swap_show_page_card" %>
+
+      <div class="d-flex justify-content-around my-4" %>
+        <% if @swap.item_1.user == @user && @swap.completed_user_2 || @swap.item_2.user == @user && @swap.completed_user_1 %>
+          <%= button_to "#{@other_item.user.username} marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
+        <% else %>
+          <%= button_to "Waiting for #{@other_item.user.username} to mark as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
+        <% end %>
+      </div>
     </div>
 
   </div>
 
   <% @origin = "swap_show" %>
 
-  <div data-controller="completed-button" data-completed-button-updated-value=<%= @swap.item_1.user == @user ? @swap.completed_user_1 == true : @swap.completed_user_2 == true %>>
-    <%= button_to "Mark swap as completed", swap_path(@swap, is_user_1: @swap.item_1.user == @user, completed: true, origin: @origin), class: "btn btn-success rounded-pill", method: :patch, data: { completed_button_target: "button", action: "completed-button#submit", turbo_method: :patch, turbo_confirm: "Mark swap as completed?" } %>
-  </div>
+  <% if @swap.completed %>
+    <div class="d-flex justify-content-center">
+      <h2>Swap Complete!</h2>
+    </div>
+  <% end %>
+
+  <%# code below won't run. easiest way i could find to "comment out" lol %>
+  <% if false %>
+    <div class="d-flex justify-content-around my-4" data-controller="completed-button" data-completed-button-updated-value=<%= @swap.item_1.user == @user ? @swap.completed_user_1 == true : @swap.completed_user_2 == true %>>
+      <%= button_to "Mark swap as completed", swap_path(@swap, is_user_1: @swap.item_1.user == @user, completed: true, origin: @origin), class: "btn btn-success rounded-pill", method: :patch, data: { completed_button_target: "button", action: "completed-button#submit", turbo_method: :patch, turbo_confirm: "Mark swap as completed?" } %>
+    </div>
+  <% end %>
+  <%# end comment %>
 
 </div>
