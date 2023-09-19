@@ -1,0 +1,37 @@
+<div class="container">
+
+  <h1 class="my-4">Open swapz</h1>
+
+  <% @swaps.each do |swap| %>
+    <% @swap = swap %>
+    
+    <div class="container p-0">
+
+      <%# set @item for current user %>
+      <% @user_item = @swap.item_1.user == @user ? @swap.item_1 : @swap.item_2 %>
+
+      <%# set @item for other user %>
+      <% @other_item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
+
+      <br>
+      <h4><small>Your</small> <strong><%= @user_item.name %></strong> <small>for <%= @other_item.user.username %>'s</small> <strong><%= @other_item.name %></strong></h4>
+      <%= link_to "See more", swap_path(@swap), class: "btn btn-outline-secondary rounded-pill my-2" %>
+
+      <div class="swap-card-container">
+
+        <% @item = @user_item %>
+        <% @header = "Your item" %>
+        <%# render the card for current_user %>
+        <%= render "shared/swap_pending_card" %>
+
+        <% @item = @other_item %>
+        <% @header = "#{@item.user.username}'s item" %>
+        <%# render the card for other user%>    
+        <%= render "shared/swap_pending_card" %>
+      </div>
+
+    </div>
+    <hr>
+  <% end %>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container swap-show-container">
+
+  <%# set @item for current user %>
+  <% @user_item = @swap.item_1.user == @user ? @swap.item_1 : @swap.item_2 %>
+
+  <%# set @item for other user %>
+  <% @other_item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
+
+  <div class="container swap-container">
+
+    <% @item = @user_item %>
+    <div class="container h-100">
+      <%= render "shared/swap_show_page_card" %>
+    </div>
+
+    <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
+
+    <% @item = @other_item %>
+    <div class="container h-100">
+      <%= render "shared/swap_show_page_card" %>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+.swap-show-container {
+  margin-top: 50px;
+}
+
+.swap-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .swap-logo {
+    height: 140px;
+    width: auto;
+  }
+
+  .swap-show-card {
+    height: 100%;
+    width: 500px;
+
+    .card-img-top {
+      object-fit: cover;
+    }
+  }
+}
