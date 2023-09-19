@@ -4,7 +4,7 @@ class SwapsController < ApplicationController
     @user = current_user
 
     authorize @swap
-    authorize @swap
+    authorize @user
   end
 
   def pending
@@ -41,11 +41,25 @@ class SwapsController < ApplicationController
   def update
     @swap = Swap.find(params[:id])
 
-    @swap.update(accepted_user_1: params[:accepted_user_1]) if params.has_key?(:accepted_user_1)
-    @swap.update(accepted_user_2: params[:accepted_user_2]) if params.has_key?(:accepted_user_2)
+    if params.has_key?(:accepted)
+      if params[:is_user_1] == true
+        redirect if @swap.update(accepted_user_1: params[:accepted]) if params.has_key?(:accepted)
+      else
+        redirect if @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
+      end
+    end
+    
+    if params.has_key?(:completed) && both_users_accepted?
+      if params[:is_user_1] == true
+        @swap.update(completed_user_1: params[:completed])
+      else
+        @swap.update(completed_user_2: params[:completed])
+      end
+    end
 
-    redirect_to swaps_path if params[:origin] == "swap_pending"
-    redirect_to swap_path(@swap) if params[:origin] == "swap_show"
+    if both_users_completed?
+      @swap.update(completed: true)
+    end
 
     authorize @swap
   end
@@ -63,5 +77,18 @@ class SwapsController < ApplicationController
 
   def swap_params
     params.require(:swap).permit(:item_1_id, :user_1_id, :accepted_user_1, :item_2_id, :user_2_id)
+  end
+
+  def both_users_accepted?
+    @swap.accepted_user_1 == true && @swap.accepted_user_2 == true
+  end
+
+  def both_users_completed?
+    @swap.completed_user_1 == true && @swap.completed_user_2 == true
+  end
+
+  def redirect
+    redirect_to swaps_path if params[:origin] == "swap_pending"
+    redirect_to swap_path(@swap) if params[:origin] == "swap_show"
   end
 end
