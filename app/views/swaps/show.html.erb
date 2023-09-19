@@ -1,39 +1,23 @@
 <div class="container swap-show-container">
 
-  <% if @swap.user_1 == current_user %>
-    <% @user_item = @swap.item_1 %>
-    <% @other_item = @swap.item_2 %>
-  <% else %>
-    <% @user_item = @swap.item_2 %>
-    <% @other_item = @swap.item_1 %>
-  <% end %>
+  <%# set @item for current user %>
+  <% @user_item = @swap.item_1.user == @user ? @swap.item_1 : @swap.item_2 %>
+
+  <%# set @item for other user %>
+  <% @other_item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
 
   <div class="container swap-container">
 
-    <div class="container">
-      <div class="card">
-        <% if @user_item.photo.attached? %>
-          <%= image_tag(@user_item.photo, class: "card-img-top") %>
-        <% end %>
-        <div class="card-body">
-          <h2 class="card-title">Your <%= @user_item.name %></h2>
-          <p class="card-text"><%= @user_item.description %></p>
-        </div>
-      </div>
+    <% @item = @user_item %>
+    <div class="container h-100">
+      <%= render "shared/swap_show_page_card" %>
     </div>
 
     <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
 
-    <div class="container">
-      <div class="card">
-        <% if @other_item.photo.attached? %>
-          <%= image_tag(@other_item.photo, class: "card-img-top") %>
-        <% end %>
-        <div class="card-body">
-          <h2 class="card-title"><%= @other_item.user.username %>'s <%= @other_item.name %></h2>
-          <p class="card-text"><%= @other_item.description %></p>
-        </div>
-      </div>
+    <% @item = @other_item %>
+    <div class="container h-100">
+      <%= render "shared/swap_show_page_card" %>
     </div>
 
   </div>

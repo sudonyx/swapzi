@@ -1,4 +1,4 @@
-<div class="card swap-card mb-3" style="max-width: 540px;">
+<div class="card swap-pending-card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <% if @item.photo.attached? %>
@@ -17,7 +17,8 @@
       <div class="card-footer d-flex justify-content-between">
         
         <%# render relevant buttons for each card %>
-        <%= render "shared/pending_swap_buttons" %>
+        <% @origin = "swap_pending" %>
+        <%= render "shared/swap_pending_buttons" %>
 
         <p class="my-auto"><strong><%= @item.swapzi_points %></strong> Swapzi Points</p>
       </div>

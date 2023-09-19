@@ -1,7 +1,9 @@
 class SwapsController < ApplicationController
   def show
     @swap = Swap.find(params[:id])
+    @user = current_user
 
+    authorize @swap
     authorize @swap
   end
 
@@ -42,7 +44,8 @@ class SwapsController < ApplicationController
     @swap.update(accepted_user_1: params[:accepted_user_1]) if params.has_key?(:accepted_user_1)
     @swap.update(accepted_user_2: params[:accepted_user_2]) if params.has_key?(:accepted_user_2)
 
-    redirect_to swaps_path
+    redirect_to swaps_path if params[:origin] == "swap_pending"
+    redirect_to swap_path(@swap) if params[:origin] == "swap_show"
 
     authorize @swap
   end
