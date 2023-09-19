@@ -3,7 +3,8 @@
   background-position: center;
   padding: 150px 0;
   height: 700px;
-  font-family: $banner-font;
+  font-family: $headers-font;
+  background-color: $eggplant;
 
   .container {
     display: flex;
@@ -20,19 +21,23 @@
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: $white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  font-size: 80px;
+  font-size: 150px;
   color: $yellow;
   font-weight: bold;
+  font-family: $headers-font;
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 30px;
   color: $white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: $body-font;
+  font-weight: bold;
 }
 
 .banner-logo {
