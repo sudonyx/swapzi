@@ -22,4 +22,10 @@
 
   </div>
 
+  <% @origin = "swap_show" %>
+
+  <div data-controller="completed-button" data-completed-button-updated-value=<%= @swap.item_1.user == @user ? @swap.completed_user_1 == true : @swap.completed_user_2 == true %>>
+    <%= button_to "Mark swap as completed", swap_path(@swap, is_user_1: @swap.item_1.user == @user, completed: true, origin: @origin), class: "btn btn-success rounded-pill", method: :patch, data: { completed_button_target: "button", action: "completed-button#submit", turbo_method: :patch, turbo_confirm: "Mark swap as completed?" } %>
+  </div>
+
 </div>
