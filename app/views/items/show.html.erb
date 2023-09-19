@@ -1,34 +1,37 @@
 <div class="container">
 
   <div class="container item-show-container d-flex justify-content-between">
-      <div class = "item-show-card">
-      <%= image_tag(@item.photo, class: "card-img-top") %>
+    <div class = "item-show-card">
+      <% if @item.photo.attached? %>
+        <%= image_tag(@item.photo, class: "card-img-top") %>
+      <% end %>
       <h1><%= @item.name %></h1>
-          <div>
-          <h5>Description:</h5>
-              <%= @item.description%>
-          </div>
-          <div>
-          <p> This Item is worth: <%= @item.swapzi_points %> Swapzi Points!</p>
-          </div>
+      <div>
+        <h5>Description:</h5>
+        <%= @item.description%>
       </div>
-      <div class="suggestions-box">
+      <div>
+        <p> This Item is worth: <%= @item.swapzi_points %> Swapzi Points!</p>
+      </div>
+    </div>
+    <div class="suggestions-box">
       <h5>Suggested for you:</h5>
       <% @random_items.each do|random_item| %>
-          <div class = "suggestions-card">
+        <div class = "suggestions-card">
           <h5><%= random_item.name %></h5>
           <p> Swapzi Points: <%= random_item.swapzi_points%></p>
-          </div>
+        </div>
       <% end %>
-      </div>
+    </div>
   </div>
   <div class="container item-show-container">
     <div class="comments-section">
       <h2>Item Comments</h2>
     </div>
 
-
+  <% unless @item.user == @user %>
     <%= link_to "swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn btn-primary" %>
+  <% end %>
   </div>
 
 </div>

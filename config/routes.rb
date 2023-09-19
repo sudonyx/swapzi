@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show new create destroy] do
     resources :swaps, only: %i[new]
   end
-  resources :swaps, only: %i[show create]
+  resources :swaps, only: %i[show create update destroy]
 
   get "/swaps", to: "swaps#pending"
 end

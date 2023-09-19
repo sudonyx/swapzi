@@ -26,4 +26,12 @@ class SwapPolicy < ApplicationPolicy
   def pending?
     true
   end
+
+  def update?
+    true
+  end
+
+  def destroy?
+    true
+  end
 end

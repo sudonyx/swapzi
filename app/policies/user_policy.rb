@@ -9,4 +9,8 @@ class UserPolicy < ApplicationPolicy
   def pending?
     true
   end
+
+  def show?
+    true
+  end
 end

@@ -12,10 +12,11 @@
 
     <div class="container">
       <div class="card">
-        <%= image_tag(@user_item.photo, class: "card-img-top") %>
+        <% if @user_item.photo.attached? %>
+          <%= image_tag(@user_item.photo, class: "card-img-top") %>
+        <% end %>
         <div class="card-body">
-          <h2 class="card-title">Your item</h2>
-          <p class="card-text"><%= @user_item.name %></p>
+          <h2 class="card-title">Your <%= @user_item.name %></h2>
           <p class="card-text"><%= @user_item.description %></p>
         </div>
       </div>
@@ -25,10 +26,11 @@
 
     <div class="container">
       <div class="card">
-        <%= image_tag(@other_item.photo, class: "card-img-top") %>
+        <% if @other_item.photo.attached? %>
+          <%= image_tag(@other_item.photo, class: "card-img-top") %>
+        <% end %>
         <div class="card-body">
-          <h2 class="card-title"><%= @other_item.user.username %>'s item</h2>
-          <p class="card-text"><%= @other_item.name %></p>
+          <h2 class="card-title"><%= @other_item.user.username %>'s <%= @other_item.name %></h2>
           <p class="card-text"><%= @other_item.description %></p>
         </div>
       </div>

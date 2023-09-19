@@ -1,6 +1,8 @@
 <div class="col h-100">
   <div class="card item-card">
-    <%= image_tag(@item.photo, class: "card-img-top") %>
+    <% if @item.photo.attached? %>
+      <%= image_tag(@item.photo, class: "card-img-top") %>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= @item.name %></h5>
       <p class="card-text"><%= @item.description %></p>
