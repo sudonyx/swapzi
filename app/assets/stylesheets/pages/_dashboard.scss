@@ -1,0 +1,61 @@
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  background-color:$yellow;
+  padding: 20px
+}
+
+.dashboard-card {
+  display: flex;
+  width: 28%;
+  padding: 20px;
+  background-color: $peach;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 150px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.fav-carosel{
+    display: flex;
+    justify-content: space-between;
+    background-color: $yellow;
+    padding: 20px;
+}
+
+.fav-card{
+    width: 18%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    background-color: $peach;
+    padding: 20px;
+}
+.suggestions{
+    display: flex;
+    justify-content: space-between;
+    background-color: $yellow;
+    padding: 20px;
+}
+.swap-suggestions{
+    width:20%;
+    height: 250px;
+    background-color: $peach;
+    padding: 20px;
+    border-radius: 5px;
+}
+.dashboard-card h6{
+    font-weight: bold;
+}
+.dashboard-card p{
+    color: $yellow;
+    padding: 8px 24px;
+    border-radius: 4px;
+    background: #670BFF;
+    transition: background 0.3s ease;
+    max-width: max-content;
+    justify-content: center;
+    margin-left: 35%;
+}

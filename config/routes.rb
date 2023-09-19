@@ -5,11 +5,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/user/dashboard' => "users#dashboard", :as => :user_root
 
   resources :items, only: %i[index show new create destroy] do
     resources :swaps, only: %i[new]
   end
   resources :swaps, only: %i[show create]
 
-  resources :users, only: %i[dashboard]
+  resources :users, only: %i[] do
+    get 'dashboard'
+  end
 end
