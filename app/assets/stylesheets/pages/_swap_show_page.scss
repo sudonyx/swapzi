@@ -6,17 +6,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-
-  .container {
-    z-index: -1;
-  }
 
   .swap-logo {
     height: 140px;
     width: auto;
-    margin-left: -70px;
-    margin-right: -70px;
-    z-index: 1;
+  }
+
+  .swap-show-card {
+    height: 100%;
+    width: 500px;
+
+    .card-img-top {
+      object-fit: cover;
+    }
   }
 }

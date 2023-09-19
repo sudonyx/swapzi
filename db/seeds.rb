@@ -16,8 +16,8 @@ user4 = User.create!({ username: "Ben", email: 'ben@test.com', password: 'passwo
 user5 = User.create!({ username: "James", email: 'james@test.com', password: 'password', location: 'Kent', swapzi_score: 1000 })
 
 100.times do
-  name = "#{Faker::Adjective.negative.capitalize} #{Faker::Appliance.equipment}"
-  description = Faker::Movies::HarryPotter.quote
+  name = Faker::Commerce.product_name
+  description = Faker::Hipster.paragraph(sentence_count: (1..3).to_a.sample)
   category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations"].sample
   swapzi_points = (100..500).to_a.sample
 

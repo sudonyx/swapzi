@@ -22,12 +22,12 @@
         <% @item = @user_item %>
         <% @header = "Your item" %>
         <%# render the card for current_user %>
-        <%= render "shared/swap_card" %>
+        <%= render "shared/swap_pending_card" %>
 
         <% @item = @other_item %>
         <% @header = "#{@item.user.username}'s item" %>
         <%# render the card for other user%>    
-        <%= render "shared/swap_card" %>
+        <%= render "shared/swap_pending_card" %>
       </div>
 
     </div>
