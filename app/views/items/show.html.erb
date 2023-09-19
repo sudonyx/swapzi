@@ -12,7 +12,17 @@
       </div>
       <div>
         <p> This Item is worth: <%= @item.swapzi_points %> Swapzi Points!</p>
+          <div class = "fav-btn">
+            <% if current_user.favourites.exists?(item: @item) %>
+              <% @favourite_id = current_user.favourites.find_by(item: @item) %>
+                <%= button_to "Unfavourite", item_favourite_path(@item, fav_id: @favourite_id), method: :delete, data: {turbo_method: :delete} %>
+            <% else %>
+                <%= button_to "Favorite", item_favourite_path(@item), method: :post %>
+            <% end %>
+          </div>
+        </div>
       </div>
+
     </div>
     <div class="suggestions-box">
       <h5>Suggested for you:</h5>
@@ -34,4 +44,12 @@
   <% end %>
   </div>
 
+</div>
+<div>
+  <% if current_user.favourites.exists?(item: @item) %>
+    <% @favourite_id = current_user.favourites.find_by(item: @item) %>
+      <%= button_to "Unfavourite", item_favourite_path(@item, fav_id: @favourite_id), method: :delete, data: {turbo_method: :delete} %>
+  <% else %>
+      <%= button_to "Favorite", item_favourite_path(@item), method: :post %>
+  <% end %>
 </div>
