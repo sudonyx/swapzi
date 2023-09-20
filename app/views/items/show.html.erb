@@ -17,7 +17,7 @@
             <% @favourite_id = current_user.favourites.find_by(item: @item) %>
               <%= button_to "Unfavourite", item_favourite_path(@item, fav_id: @favourite_id), method: :delete, data: {turbo_method: :delete} %>
           <% else %>
-              <%= button_to "Favourite", item_favourite_path(@item), method: :post %>
+              <%= button_to "Favourite", item_favourites_path(@item), method: :post, data: {turbo_method: :post} %>
           <% end %>
         </div>
       </div>

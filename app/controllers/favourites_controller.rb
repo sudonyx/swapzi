@@ -26,6 +26,7 @@ class FavouritesController < ApplicationController
             flash[:notice] = "Error"
         end
         
+        redirect_to item_path(@item)
         authorize @item
         authorize @favourite
     end
