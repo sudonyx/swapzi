@@ -13,16 +13,17 @@
       <%# set @item for other user %>
       <% @other_item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
 
-      <br>
-      <h4><small>Your</small> <strong><%= @user_item.name %></strong> <small>for <%= @other_item.user.username %>'s</small> <strong><%= @other_item.name %></strong></h4>
-      <%= link_to "See more", swap_path(@swap), class: "btn btn-outline-secondary rounded-pill my-2" %>
-
       <div class="swap-card-container">
 
         <% @item = @user_item %>
         <% @header = "Your item" %>
         <%# render the card for current_user %>
         <%= render "shared/swap_pending_card" %>
+
+        <div class="d-flex flex-column align-items-center mb-3">
+          <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
+          <div><%= link_to "See more details", swap_path(@swap), class: "btn btn-outline-dark rounded-pill my-2" %></div>
+        </div>
 
         <% @item = @other_item %>
         <% @header = "#{@item.user.username}'s item" %>
@@ -31,7 +32,6 @@
       </div>
 
     </div>
-    <hr>
   <% end %>
 
 </div>

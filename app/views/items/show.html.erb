@@ -1,48 +1,60 @@
 <div class="container">
 
-  <div class="container item-show-container d-flex justify-content-between">
-    <div class = "item-show-card">
+  <div class="item-show-container">
+    
+    <div class="show-page-img">
       <% if @item.photo.attached? %>
         <%= image_tag(@item.photo, class: "card-img-top") %>
       <% end %>
-      <h1><%= @item.name %></h1>
-      <div>
-        <h5>Description:</h5>
-        <%= @item.description%>
-      </div>
-      <div>
-        <p> This Item is worth: <%= @item.swapzi_points %> Swapzi Points!</p>
-        <div class = "fav-btn">
-          <% if current_user.favourites.exists?(item: @item) %>
-            <% @favourite_id = current_user.favourites.find_by(item: @item) %>
-              <%= button_to "Unfavourite", item_favourite_path(@item, fav_id: @favourite_id), method: :delete, data: {turbo_method: :delete} %>
-          <% else %>
-              <%= button_to "Favourite", item_favourites_path(@item), method: :post, data: {turbo_method: :post} %>
-          <% end %>
-        </div>
-      </div>
+
+      <span class="mb-0 px-3 show-swapzi-points"><%= @item.swapzi_points %> Swapzi Points</span>
     </div>
-    <div class="suggestions-box">
-      <h5>Suggested for you:</h5>
-      <% @random_items.each do|random_item| %>
-        <div class = "suggestions-card">
-          <h5><%= random_item.name %></h5>
-          <p> Swapzi Points: <%= random_item.swapzi_points%></p>
-        </div>
+
+    <div class="item-show-details mx-4">
+      <div class="mb-4 d-flex justify-content-between align-items-center">
+        <h1 class="mb-0"><%= @item.name %></h1>
+        
+      </div>
+      
+      <% unless @item.user == @user %>
+        <h4 class="mb-3"><%= @item.user.username %> in <%= @item.user.location %></h4>
       <% end %>
+      <p class="mb-5"><%= @item.description%></p>
+      
+      <div class="container item-show-actions p-0">
+
+        <% unless @item.user == @user %>
+          <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), id: "show-button", class: "btn btn-outline-primary rounded-pill" %>
+
+          <div class="mt-4">
+            <% if current_user.favourites.exists?(item: @item) %>
+              <% @favourite_id = current_user.favourites.find_by(item: @item) %>
+                <%= button_to "Unfavourite item", item_favourite_path(@item, fav_id: @favourite_id), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :delete, data: {turbo_method: :delete} %>
+            <% else %>
+                <%= button_to "Add to favourites", item_favourites_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :post, data: {turbo_method: :post} %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%# <div class="container item-show-container">
+          <div class="comments-section">
+            <h2>Item Comments</h2>
+          </div>
+        </div> %>
+
+      </div>
     </div>
   </div>
     
-  
-  
-  <div class="container item-show-container">
-    <div class="comments-section">
-      <h2>Item Comments</h2>
+    
+    
+  <div class="suggestions-box">
+    <h2 class="mt-5 mb-4">Here's some of <%= @item.user.username %>'s other items</h2>
+    <div class="card-group">
+      <% @items = @random_items %>
+      <%= render "shared/item_card_grid" %>
     </div>
-
-    <% unless @item.user == @user %>
-      <%= link_to "swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn btn-primary" %>
-    <% end %>
+    
   </div>
 
 </div>

@@ -9,17 +9,20 @@
       <div class="card-header"><%= @header %></div>
       <div class="card-body">
         <h5 class="card-title"><%= @item.name %></h5>
-        <p class="card-text"><%= @item.description %></p>
       </div>
       <ul class="list-group list-group-flush no-border-top">
-        <li class="list-group-item text-muted"><%= @item.category %></li>
+        <li class="list-group-item text-muted"><%= @item.user.location %></li>
       </ul>
-      <div class="card-footer d-flex justify-content-between">
+      <div class="card-footer text-end">
         
+        <%# COMMENT START %>
+        <% if false %>
         <%# render relevant buttons for each card %>
         <% @origin = "swap_pending" %>
         <%= render "shared/swap_pending_buttons" %>
-
+        <% end %>
+        <%# COMMENT END %>
+      
         <p class="my-auto"><strong><%= @item.swapzi_points %></strong> Swapzi Points</p>
       </div>
     </div>

@@ -13,3 +13,16 @@
   background: linear-gradient($purple, $purple);
   color: $yellow;
 }
+
+#show-button {
+  width: 260px;
+}
+
+.btn-outline-dark {
+  color: $eggplant;
+  border: 1px solid $eggplant;
+
+  &:hover {
+    background-color: $eggplant;
+  }
+}
