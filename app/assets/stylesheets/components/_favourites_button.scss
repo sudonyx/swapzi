@@ -1,6 +1,6 @@
-.fav-btn button {
-    color: #4A4A4A;
-    border: 1px solid #4A4A4A;
+.fav-btn {
+    color: $eggplant;
+    border: 1px solid $eggplant;
     padding: 8px 24px;
     border-radius: 50px;
     font-weight: lighter;
@@ -8,6 +8,6 @@
     transition: opacity 0.3s ease;
   }
   
-  .fav-btn button:hover {
+  .fav-btn :hover {
     opacity: 1;
   }

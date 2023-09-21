@@ -1,52 +1,52 @@
-
-h1 {
-color: #333;
-font-size: 24px;
-margin-bottom: 20px;
+.favourite-container {
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 }
 
-.row {
-display: flex;
-flex-wrap: wrap;
-margin: -15px;
-}
+.favourite-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px;
 
 .col-md-4 {
-width: 33.33%;
-padding: 15px;
-display: flex;
+  width: 33.33%;
+  padding: 15px;
+  display: flex;
+  }
 }
 
-.card {
-border: 1px solid #ddd;
-border-radius: 4px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-padding: 10px;
-display: flex;
-flex-direction: column;
+.favourite-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .card-body {
+    padding: 10px;
+    flex-grow: 1;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .card-text {
+    font-size: 14px;
+    color: #666;
+  }
 }
 
 .no-underline {
 text-decoration: none;
-}
-
-.card-img-top {
-width: 100%;
-height: auto;
-border-radius: 4px;
-}
-
-.card-body {
-padding: 10px;
-flex-grow: 1;
-}
-
-.card-title {
-font-size: 18px;
-margin-bottom: 5px;
-}
-
-.card-text {
-font-size: 14px;
-color: #666;
 }

@@ -17,7 +17,11 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
 
 100.times do
   name = Faker::Commerce.product_name
-  description = Faker::Hipster.paragraph(sentence_count: (1..3).to_a.sample)
+  description = []
+  (3..8).to_a.sample.times do 
+    description << Faker::Company.catch_phrase 
+  end
+  description = description.join(". ")
   category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations"].sample
   swapzi_points = (100..500).to_a.sample
 

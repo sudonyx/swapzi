@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     @user = current_user
     authorize @item
     authorize @user
-    @random_items = Item.order("RANDOM()").limit(3)
+    @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
   end 
   
   private

@@ -2,10 +2,10 @@
   <% unless @swap.accepted_user_1 %>
     <%= button_to "accept?", swap_path(@swap, is_user_1: @swap.item_1.user == @user, accepted: true, origin: @origin), class: "btn btn-outline-primary rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Accept this swap?"} %>
   <% end %>
-  <%= button_to "cancel", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel this swap?" } %>
+  <%= button_to "cancel swap", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel this swap?" } %>
 <% elsif  @swap.item_1.user == @user && @item == @swap.item_2 %>
   <% if @swap.accepted_user_2 %>
-    <span class="btn btn-outline-primary disabled rounded-pill">accepted!</span>
+    <span class="btn btn-outline-primary disabled rounded-pill"><%= @swap.item_2.user.username %> accepted!</span>
   <% else %>
     <span class="btn btn-outline-primary disabled rounded-pill">pending accept</span>
   <% end %>
@@ -13,10 +13,10 @@
   <% unless @swap.accepted_user_2 %>
     <%= button_to "accept?", swap_path(@swap, is_user_1: @swap.item_1.user == @user, accepted: true, origin: @origin), class: "btn btn-outline-primary rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Accept this swap?"} %>
   <% end %>
-  <%= button_to "cancel", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel this swap?" } %>
+  <%= button_to "cancel swap", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel this swap?" } %>
 <% else %>
   <% if @swap.accepted_user_1 %>
-    <span class="btn btn-outline-primary disabled rounded-pill">accepted!</span>
+    <span class="btn btn-outline-primary disabled rounded-pill"><%= @swap.item_1.user.username %> accepted!</span>
   <% else %>
     <span class="btn btn-outline-primary disabled rounded-pill">pending accept</span>
   <% end %>

@@ -1,12 +1,12 @@
-<div class= "container">
+<div class= "container favourite-container">
     <h1>My Favorites</h1>
     <% if current_user.favourites.empty? %>
     <p>You Dont have Any favourites yet!</p>
         <% else %>
-        <div class="row">
+        <div class="row favourite-row">
         <% @favourites.each do |favourite| %>
             <div class="col-md-4">
-            <div class="card">
+            <div class="card favourite-card">
             <%= link_to item_path(favourite.item), class: "no-underline" do %>
                 <% if favourite.item.photo.attached? %>
                     <%= image_tag(favourite.item.photo, class: "card-img-top") %>
