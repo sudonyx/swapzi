@@ -4,6 +4,7 @@
     <%= form.input :name %>
     <%= form.input :description %>
     <%= form.input :category, collection: ["books", "electronics", "musical instruments", "furniture", "clothes", "household appliances", "sports gear", "decorations"] %>
+    <%= form.input :photo, as: :file %>
     <%= form.submit %>
   <% end %>
 </div>
