@@ -1,15 +1,16 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 
   <% @items.each do |item| %>
     <% @item = item %>
 
     <% if params[:page] == 'new_swap' %>
       <%= simple_form_for @swap do |f| %>
-        <%= f.input :item_1_id, :as => :hidden, :input_html => { :value => @show_item.id } %>
-        <%= f.input :user_1_id, :as => :hidden, :input_html => { :value => @show_item.user_id } %>
-        <%= f.input :item_2_id, :as => :hidden, :input_html => { :value => item.id } %>
-        <%= f.input :user_2_id, :as => :hidden, :input_html => { :value => item.user_id } %>
-        <%= f.button :button do %>
+        <%= f.input :item_1_id, :as => :hidden, :input_html => { :value => item.id } %>
+        <%= f.input :user_1_id, :as => :hidden, :input_html => { :value => item.user_id } %>
+        <%= f.input :accepted_user_1, :as => :hidden, :input_html => { :value => true } %>
+        <%= f.input :item_2_id, :as => :hidden, :input_html => { :value => @show_item.id } %>
+        <%= f.input :user_2_id, :as => :hidden, :input_html => { :value => @show_item.user_id } %>
+        <%= f.button :button, class: "h-100" do %>
           <%= render 'shared/item_card' %>
         <% end %>
       <% end %>
@@ -18,7 +19,7 @@
         <%= render 'shared/item_card' %>
       <% end %>
     <% end %>
-      
+
   <% end %>
 
 </div>

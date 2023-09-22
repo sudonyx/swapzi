@@ -1,0 +1,33 @@
+.swap-show-container {
+  margin-top: 50px;
+}
+
+.swap-container {
+  min-height: 730px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .swap-logo {
+    height: 140px;
+    width: auto;
+  }
+}
+
+.swap-show-card {
+  margin: auto;
+  border-radius: 16px;
+  width: 500px;
+
+  .card-img-top {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    object-fit: cover;
+  }
+
+  .card-footer {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+}

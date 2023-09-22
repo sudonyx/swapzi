@@ -1,11 +1,14 @@
-<div class="col">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
+<div class="col h-100 d-flex justify-content-between">
+  <div class="card item-card">
+    <% if @item.photo.attached? %>
+      <%= image_tag(@item.photo, class: "card-img-top") %>
+    <% end %>
+    <div class="card-body pb-2">
       <h5 class="card-title"><%= @item.name %></h5>
-      <p class="card-text"><%= @item.description %></p>
-      <p class="card-text"><%= @item.category %></p>
-      <p class="card-text"><strong><%= @item.swapzi_points %></strong> Swapzi points</p>
+      <p class="card-text text-muted"><%= @item.user.location %></p>
+    </div>
+    <div class="card-footer">
+      <p class="my-auto text-end"><strong><%= @item.swapzi_points %></strong> Swapzi Points</p>
     </div>
   </div>
 </div>

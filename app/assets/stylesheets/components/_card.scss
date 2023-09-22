@@ -1,0 +1,49 @@
+.item-card {
+  margin: 0;
+  height: 417px;
+  width: 320px;
+  border-radius: 16px;
+  text-align: left;
+  text-decoration: none;
+
+  .card-img-top {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    height: 294px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.swap-card-container {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  flex-wrap: wrap;
+
+  .swap-logo {
+    height: 100px;
+    width: auto;
+    // margin: auto;
+  }
+
+  .swap-pending-card {
+    border-radius: 16px;
+    height: 243;
+    width: 540;
+
+    .card-img-top {
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.no-underline{
+  text-decoration: none;
+  color: black;
+}

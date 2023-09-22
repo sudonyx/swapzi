@@ -6,8 +6,18 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  font-weight: bold;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 60px;
-}
+.navbar-lewagon .navbar-brand {
+  img {
+    object-fit: contain;
+    height: 45px;
+  }
+
+  h1 {
+    margin: auto;
+    padding: 5px;
+    line-height: 2;
+  }
+} 

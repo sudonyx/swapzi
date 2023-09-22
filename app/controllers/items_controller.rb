@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-
+  
   def index
-    @items = Item.all
+    @items = Item.all.order(created_at: :desc)
 
     @items = policy_scope(Item)
   end
@@ -26,13 +26,15 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @user = current_user
     authorize @item
-    @random_items = Item.order("RANDOM()").limit(3)
+    authorize @user
+    @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
   end 
   
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category)
+    params.require(:item).permit(:name, :description, :category, :photo)
   end
 end
