@@ -9,7 +9,7 @@
 Item.destroy_all
 User.destroy_all
 
-user1 = User.create!({ username: "test", email: 'test@test.com', password: 'password', location: 'testville', swapzi_score: 500000 })
+user1 = User.create!({ username: "Test", email: 'test@test.com', password: 'password', location: 'Testville', swapzi_score: 500000 })
 user2 = User.create!({ username: "Josh", email: 'josh@test.com', password: 'password', location: 'London', swapzi_score: 100 })
 user3 = User.create!({ username: "Bay", email: 'bay@test.com', password: 'password', location: 'Berlin', swapzi_score: 500 })
 user4 = User.create!({ username: "Ben", email: 'ben@test.com', password: 'password', location: 'Taunton', swapzi_score: 200 })
