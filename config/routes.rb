@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get "/swaps", to: "swaps#pending"
 
   resources :favourites, only: %i[index]
+  get "/dashboard", to: "users#dashboard"
+  
 end
