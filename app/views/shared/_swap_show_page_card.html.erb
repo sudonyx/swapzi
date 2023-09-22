@@ -1,16 +1,20 @@
-<div class="card swap-show-card">
-  <% if @item.photo.attached? %>
-    <%= image_tag(@item.photo, class: "card-img-top") %>
-  <% end %>
-  <div class="card-body">
-    <h2 class="card-title"><%= @item.user == @user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h2>
-  </div>
-  <div class="card-footer d-flex justify-content-between">
-        
-    <%# render relevant buttons for each card %>
-    <% @origin = "swap_show" %>
-    <%= render "shared/swap_pending_buttons" %>
 
-    <p class="my-auto"><strong><%= @item.swapzi_points %></strong> Swapzi Points</p>
-  </div>
+<div class="swap-show-card">
+    
+    <% if @item.photo.attached? %>
+      <%= image_tag(@item.photo, class: "card-img") %>
+    <% end %>
+    
+    <div class= "info">
+      <div class="swap-show-card-body">
+        <h4 class="swap-card-title"><%= @item.user == @user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h4>
+      </div>
+      
+      <div class="swap-card-footer">
+        <%# render relevant buttons for each card %>
+        <p class="swapzi-points">Swapzi Points: <%= @item.swapzi_points %></p>
+        <p class = "pending-buttons"><%= render "shared/swap_pending_buttons" %></p>
+      </div>
+    </div>
 </div>
+    <% @origin = "swap_show" %>
