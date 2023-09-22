@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "/swaps", to: "swaps#pending"
 
   resources :users, only: %i[dashboard]
+  resources :favourites, only: %i[index]
 end
