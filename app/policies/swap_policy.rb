@@ -27,6 +27,10 @@ class SwapPolicy < ApplicationPolicy
     true
   end
 
+  def completed?
+    true
+  end
+
   def update?
     true
   end

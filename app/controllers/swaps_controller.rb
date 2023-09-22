@@ -11,8 +11,23 @@ class SwapsController < ApplicationController
     @user = current_user
     @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
 
-    authorize @user
     authorize @swaps
+
+    @swaps = @swaps.select { |swap| swap.completed != true }
+
+    authorize @user
+    
+  end
+
+  def completed
+    @user = current_user
+    @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
+
+    authorize @swaps
+    
+    @swaps = @swaps.select { |swap| swap.completed == true }
+
+    authorize @user
   end
 
   def new
