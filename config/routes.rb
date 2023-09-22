@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resources :swaps, only: %i[new]
   end
 
-  resources :swaps, only: %i[show create update destroy]
   get "/swaps", to: "swaps#pending"
+  get "/swaps/completed", to: "swaps#completed"
+
+  resources :swaps, only: %i[show create update destroy]
 
   resources :favourites, only: %i[index]
   get "/dashboard", to: "users#dashboard"
