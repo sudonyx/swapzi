@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :swaps, only: %i[show create update destroy]
 
   resources :favourites, only: %i[index]
-  get "/dashboard", to: "users#dashboard"
   
+  get "/dashboard", to: "users#dashboard"
 end

@@ -21,4 +21,8 @@ class FavouritePolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def dashboard?
+    true
+  end
 end
