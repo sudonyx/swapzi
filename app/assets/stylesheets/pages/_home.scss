@@ -1,1 +1,39 @@
 // Specific CSS for your home-page
+
+.home-card-group {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-between;
+
+  i.fa-solid {
+    color: $light-purple;
+    transition: color 0.3s;
+    font-size: 72px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+}
+
+.home-card {
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 2% 0;
+  width: 23%;
+  .card-title {
+    height: 70px;
+  }
+
+  h4 {
+    color: $light-purple;
+    font-size: 36px;
+    font-family: $body-font;
+    font-weight: bold;
+  }
+
+  p {
+    color: #666;
+    font-size: 24px;
+    font-family: $body-font;
+  }
+}
