@@ -9,4 +9,5 @@ class Swap < ApplicationRecord
   validates :user_2, presence: true
   validates :item_1, presence: true
   validates :item_2, presence: true
+  validates :item_1, uniqueness: { scope: :item_2 }
 end

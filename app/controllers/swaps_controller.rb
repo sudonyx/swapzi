@@ -47,7 +47,8 @@ class SwapsController < ApplicationController
       flash[:notice] = "Swap offered"
       redirect_to swaps_path
     else
-      render :new, status: :unprocessable_entity
+      flash[:notice] = "Error: This swap already exists!"
+      redirect_to item_path(Item.find(params[:swap][:user_1_id] == current_user.id ? params[:swap][:item_1_id] : params[:swap][:item_2_id]))
     end
 
     authorize @swap

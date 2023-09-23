@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="completed-button"
 
-// THIS CODE IS FAULTY - works but requires refresh to work :/
 export default class extends Controller {
   static targets = ["button"]
   static values = {
