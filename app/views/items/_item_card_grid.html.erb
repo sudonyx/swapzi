@@ -11,12 +11,12 @@
         <%= f.input :item_2_id, :as => :hidden, :input_html => { :value => @show_item.id } %>
         <%= f.input :user_2_id, :as => :hidden, :input_html => { :value => @show_item.user_id } %>
         <%= f.button :button, class: "h-100" do %>
-          <%= render 'shared/item_card' %>
+          <%= render 'items/item_card' %>
         <% end %>
       <% end %>
     <% else %>
       <%= link_to item_path(item), style: 'text-decoration: none;' do %>
-        <%= render 'shared/item_card' %>
+        <%= render 'items/item_card' %>
       <% end %>
     <% end %>
 
