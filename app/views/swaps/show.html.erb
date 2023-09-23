@@ -13,9 +13,9 @@
     <div class="container">
       <%= render "swaps/swap_show_page_card" %>
       <% @origin = "swap_show" %>
-      <br>
-      <%= render "swaps/swap_pending_buttons" %>
-
+      <div class="swap-pending-buttons">
+        <%= render "swaps/swap_pending_buttons" %>
+      </div>
       <div class="d-flex justify-content-around my-4" %>
         <% if @swap.item_1.user == @user && @swap.completed_user_1 || @swap.item_2.user == @user && @swap.completed_user_2 %>
           <%= button_to "You marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
@@ -31,9 +31,9 @@
     <div class="container">
       <%= render "swaps/swap_show_page_card" %>
       <% @origin = "swap_show" %>
-      <br>
-      <%= render "swaps/swap_pending_buttons" %>
-
+      <div class="swap-pending-buttons">
+        <%= render "swaps/swap_pending_buttons" %>
+      </div>
       <div class="d-flex justify-content-around my-4" %>
         <% if @swap.item_1.user == @user && @swap.completed_user_2 || @swap.item_2.user == @user && @swap.completed_user_1 %>
           <%= button_to "#{@other_item.user.username} marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
