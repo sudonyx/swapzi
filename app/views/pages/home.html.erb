@@ -7,3 +7,76 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <% @swap = @swaps[0] %>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <h2 class="home-h1 h1 py-5 pb-5">Here are the latest swaps</h2>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
+      </div>
+      <% @swap = @swaps[1] %>
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
+      </div>
+      <% @swap = @swaps[2] %>
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
+      </div>
+      <% @swap = @swaps[3] %>
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <h2 class="home-h1 h1 py-5 pb-3">Here's how Swapzi works</h2>
+
+  <div class="card-group home-card-group display-6">
+    <div class="card home-card text-center">
+      <div class="card-body">
+        <h4 class="card-title display-3">1. Find an item you like</h4>
+        <br>
+        <i class="fa-solid fa-magnifying-glass text-center display-1 pb-5"></i>
+        <br>
+        <p class="card-text">Browse our listings to find items you're interested in swapping. </p>
+      </div>
+    </div>
+    <div class="card home-card text-center">
+      <div class="card-body">
+        <h4 class="card-title display-3">2. Select your item for swap </h4>
+        <br>
+        <i class="fa-solid fa-guitar text-center display-1 pb-5"></i>
+        <br>
+        <p class="card-text">Pick one of your own items that you're willing to swap with. </p>
+      </div>
+    </div>
+    <div class="card home-card text-center">
+      <div class="card-body">
+        <h4 class="card-title display-3">3. Swap in 1-click!</h4>
+        <br>
+        <i class="fa-solid fa-repeat text-center display-1 pb-5"></i>
+        <br>
+        <p class="card-text">Click to swap, or message the owner for more information. </p>
+      </div>
+    </div>
+      <div class="card home-card text-center">
+      <div class="card-body">
+        <h4 class="card-title display-3">4. Finalize and earn rewards </h4>
+        <br>
+        <i class="fa-solid fa-gift text-center display-1 pb-5"></i>
+        <br>
+        <p class="card-text">Get your item, and earn valuable Swapzi points! </p>
+      </div>
+    </div>
+  </div>
+</div>
