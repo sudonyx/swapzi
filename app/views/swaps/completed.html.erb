@@ -2,6 +2,12 @@
 
   <h1 class="my-4">Completed swapz</h1>
 
-  <%= render "swaps/swap_index_card_grid" %>
+  <% @swaps.each do |swap| %>
+    <% @swap = swap %>
+    <%= render "swaps/swap_index_card_row" %>
+    <% unless swap == @swaps.last %>
+      <hr>
+    <% end %>
+  <% end %>
 
 </div>

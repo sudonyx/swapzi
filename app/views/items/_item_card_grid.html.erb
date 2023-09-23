@@ -10,7 +10,7 @@
         <%= f.input :accepted_user_1, :as => :hidden, :input_html => { :value => true } %>
         <%= f.input :item_2_id, :as => :hidden, :input_html => { :value => @show_item.id } %>
         <%= f.input :user_2_id, :as => :hidden, :input_html => { :value => @show_item.user_id } %>
-        <%= f.button :button, class: "h-100" do %>
+        <%= f.button :button, class: "h-100 p-0" do %>
           <%= render 'items/item_card' %>
         <% end %>
       <% end %>

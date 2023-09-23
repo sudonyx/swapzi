@@ -9,25 +9,39 @@
 </div>
 
 <div class="container">
-  <% @swap = @swaps[0] %>
+  <h2 class="home-h1 h1 py-5 pb-5">Latest swapz on Swapzi</h2>
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <h2 class="home-h1 h1 py-5 pb-5">Here are the latest swaps</h2>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="3000">
-        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
-      </div>
-      <% @swap = @swaps[1] %>
-      <div class="carousel-item" data-bs-interval="3000">
-        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
-      </div>
-      <% @swap = @swaps[2] %>
-      <div class="carousel-item" data-bs-interval="3000">
-        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
-      </div>
-      <% @swap = @swaps[3] %>
-      <div class="carousel-item" data-bs-interval="3000">
-        <div class="d-block w-100"><%= render "swaps/swap_index_card_row" %></div>
-      </div>
+      <% if @swaps.count > 0 %>
+        <% @swap = @swaps[0] %>
+        <div class="carousel-item active" data-bs-interval="3000">
+          <div class="d-block w-100 px-2"><%= render "swaps/swap_index_card_row" %></div>
+        </div>
+      <% end %>
+      <% if @swaps.count > 1 %>
+        <% @swap = @swaps[1] %>
+        <div class="carousel-item" data-bs-interval="3000">
+          <div class="d-block w-100 px-2"><%= render "swaps/swap_index_card_row" %></div>
+        </div>
+      <% end %>
+      <% if @swaps.count > 2 %>
+        <% @swap = @swaps[2] %>
+        <div class="carousel-item" data-bs-interval="3000">
+          <div class="d-block w-100 px-2"><%= render "swaps/swap_index_card_row" %></div>
+        </div>
+      <% end %>
+      <% if @swaps.count > 3 %>
+        <% @swap = @swaps[3] %>
+        <div class="carousel-item" data-bs-interval="3000">
+          <div class="d-block w-100 px-2"><%= render "swaps/swap_index_card_row" %></div>
+        </div>
+      <% end %>
+      <% if @swaps.count > 4 %>
+        <% @swap = @swaps[4] %>
+        <div class="carousel-item" data-bs-interval="3000">
+          <div class="d-block w-100 px-2"><%= render "swaps/swap_index_card_row" %></div>
+        </div>
+      <% end %>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -8,6 +8,7 @@ class SwapsController < ApplicationController
   end
 
   def pending
+    @show_content = true
     @user = current_user
     @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
 
@@ -20,6 +21,7 @@ class SwapsController < ApplicationController
   end
 
   def completed
+    # @show_content = true
     @user = current_user
     @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
 

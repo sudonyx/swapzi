@@ -1,7 +1,7 @@
 <div class= "container favourite-container">
     <h1>My Favorites</h1>
     <% if current_user.favourites.empty? %>
-    <p>You Dont have Any favourites yet!</p>
+    <p>You don't have any favourites yet!</p>
         <% else %>
         <div class="row favourite-row">
         <% @favourites.each do |favourite| %>
