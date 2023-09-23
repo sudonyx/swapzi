@@ -12,7 +12,7 @@
         <h4>Most recent favourites</h4>
         <% @items = [] %>
         <% @recent_favourites.each { |fav| @items << fav.item } %>
-        <%= render "shared/item_card_grid" %>
+        <%= render "items/item_card_grid" %>
     </div>
 
     <div class="mt-4">

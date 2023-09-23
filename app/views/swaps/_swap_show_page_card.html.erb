@@ -9,12 +9,11 @@
       <div class="swap-show-card-body">
         <h4 class="swap-card-title"><%= @item.user == @user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h4>
       </div>
-      
+
       <div class="swap-card-footer">
         <%# render relevant buttons for each card %>
         <p class="swapzi-points">Swapzi Points: <%= @item.swapzi_points %></p>
-        <p class = "pending-buttons"><%= render "shared/swap_pending_buttons" %></p>
       </div>
     </div>
+    
 </div>
-    <% @origin = "swap_show" %>

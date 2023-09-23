@@ -11,7 +11,10 @@
 
     <% @item = @user_item %>
     <div class="container">
-      <%= render "shared/swap_show_page_card" %>
+      <%= render "swaps/swap_show_page_card" %>
+      <% @origin = "swap_show" %>
+      <br>
+      <%= render "swaps/swap_pending_buttons" %>
 
       <div class="d-flex justify-content-around my-4" %>
         <% if @swap.item_1.user == @user && @swap.completed_user_1 || @swap.item_2.user == @user && @swap.completed_user_2 %>
@@ -26,7 +29,10 @@
 
     <% @item = @other_item %>
     <div class="container">
-      <%= render "shared/swap_show_page_card" %>
+      <%= render "swaps/swap_show_page_card" %>
+      <% @origin = "swap_show" %>
+      <br>
+      <%= render "swaps/swap_pending_buttons" %>
 
       <div class="d-flex justify-content-around my-4" %>
         <% if @swap.item_1.user == @user && @swap.completed_user_2 || @swap.item_2.user == @user && @swap.completed_user_1 %>

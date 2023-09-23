@@ -49,10 +49,10 @@
     
     
   <div class="suggestions-box">
-    <h2 class="mt-5 mb-4">Here's some of <%= @item.user.username %>'s other items</h2>
+    <h2 class="mt-5 mb-4">Check out <%= @item.user.username %>'s other items</h2>
     <div class="card-group">
       <% @items = @random_items %>
-      <%= render "shared/item_card_grid" %>
+      <%= render "items/item_card_grid" %>
     </div>
     
   </div>

@@ -14,7 +14,7 @@
       <% @item = @user_item %>
       <% @header = "Your item" %>
       <%# render the card for current_user %>
-      <%= render "shared/swap_index_card" %>
+      <%= render "swaps/swap_index_card" %>
 
       <div class="d-flex flex-column align-items-center mb-3" style= "margin-top: 60px;">
         <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
@@ -24,7 +24,7 @@
       <% @item = @other_item %>
       <% @header = "#{@item.user.username}'s item" %>
       <%# render the card for other user%>    
-      <%= render "shared/swap_index_card" %>
+      <%= render "swaps/swap_index_card" %>
     </div>
     <hr>
   </div>
