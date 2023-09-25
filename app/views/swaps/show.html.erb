@@ -41,6 +41,9 @@
           <%= button_to "Waiting for #{@other_item.user.username} to mark as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
         <% end %>
       </div>
+
+      <div><%= button_to "Chat with #{@other_item.user.username}", conversations_path(other_user: @other_item.user), class: "btn btn-outline-dark rounded-pill" %></div>
+
     </div>
 
   </div>

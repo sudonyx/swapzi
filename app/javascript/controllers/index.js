@@ -7,5 +7,8 @@ import { application } from "./application"
 import CompletedButtonController from "./completed_button_controller"
 application.register("completed-button", CompletedButtonController)
 
+import ConversationSubscriptionController from "./conversation_subscription_controller"
+application.register("conversation-subscription", ConversationSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

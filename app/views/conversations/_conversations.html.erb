@@ -1,0 +1,43 @@
+<div class="container d-flex">
+  <div class="other-chats">
+    <h1>Messages</h1>
+    <div class="user-list">
+      <% @conversations.each do |convo| %>  
+        <%= link_to conversation_path(convo) do %>
+          <div class="user-list-item">
+            <strong><%= convo.user_1 == current_user ? convo.user_2.username : convo.user_1.username %></strong>
+          </div>
+        <% end %>
+      <% end %>    
+    </div>
+  </div>
+
+  <% if @conversations.empty? %>
+    <div class="conversation">
+      <h1>No open conversations</h1>
+      <div class="messages"></div>
+    </div>
+  <% else %>
+    <div class="conversation"
+      data-controller="conversation-subscription"
+      data-conversation-subscription-conversation-id-value="<%= @conversation.id %>"
+    >
+      <h1>Your chat with <%= @conversation.user_1 == current_user ? @conversation.user_2.username : @conversation.user_1.username %></h1>
+
+      <div class="messages" data-conversation-subscription-target="messages">
+        <% @conversation.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+
+      <%= simple_form_for [@conversation, @message], html: { data: { action: "turbo:submit-end->conversation-subscription#resetForm" }, class: "d-flex" } do |f| %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Type your message here...",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
