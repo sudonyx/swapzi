@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :swaps, only: %i[show create update destroy]
 
   resources :favourites, only: %i[index]
+
+  resources :conversations, only: %i[index show create] do
+    resources :messages, only: :create
+  end
   
   get "/dashboard", to: "users#dashboard"
 end

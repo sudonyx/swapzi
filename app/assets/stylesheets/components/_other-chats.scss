@@ -1,0 +1,32 @@
+.other-chats {
+  width: 300px;
+  background: white;
+  margin-top: 9px;
+  height: calc(100vh - 200px);
+  border-right: solid 1px $light-gray;
+
+  a {
+    color: $gray;
+    text-decoration: none;
+  }
+
+  h1 {
+    border-bottom: 1px solid $gray-200;
+    margin-bottom: 0;
+    padding: 1rem;
+  }
+
+  .user-list {
+    // these two lines were causing the list below "Messages" to spill over the outer div
+    // height: 100%;
+    // overflow-y: scroll;
+
+    padding: 1rem;
+    
+    .user-list-item {
+      border-bottom: 1px solid $light-gray;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+  }
+}

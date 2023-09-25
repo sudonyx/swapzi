@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_12_224437) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_141229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_224437) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "user_1_id", null: false
+    t.bigint "user_2_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_conversations_on_user_1_id"
+    t.index ["user_2_id"], name: "index_conversations_on_user_2_id"
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -76,16 +85,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_224437) do
     t.text "content"
     t.datetime "timestamp", precision: nil
     t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.bigint "conversation_id", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "swaps", force: :cascade do |t|
-    t.date "date_initiated"
-    t.date "date_completed"
     t.boolean "accepted_user_1"
     t.boolean "accepted_user_2"
     t.boolean "completed_user_1"
@@ -133,12 +140,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_224437) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "conversations", "users", column: "user_1_id"
+  add_foreign_key "conversations", "users", column: "user_2_id"
   add_foreign_key "favourites", "items"
   add_foreign_key "favourites", "users"
   add_foreign_key "item_comments", "items"
   add_foreign_key "item_comments", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "swaps", "items", column: "item_1_id"
   add_foreign_key "swaps", "items", column: "item_2_id"
