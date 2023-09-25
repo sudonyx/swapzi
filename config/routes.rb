@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
   
   get "/dashboard", to: "users#dashboard"
+
+  # patch "/update_swapzi_score", to: "users#update_swapzi_score"
 end

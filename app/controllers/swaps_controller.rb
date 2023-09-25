@@ -77,6 +77,7 @@ class SwapsController < ApplicationController
 
     if both_users_completed?
       @swap.update(completed: true)
+      update_swapzi_score_both_users
     end
 
     authorize @swap
@@ -103,6 +104,19 @@ class SwapsController < ApplicationController
 
   def both_users_completed?
     @swap.completed_user_1 && @swap.completed_user_2
+  end
+
+  def update_swapzi_score_both_users
+    if @swap.item_1.user == current_user
+      points_earned = @swap.item_2.swapzi_points
+      current_user.update!(swapzi_score: current_user.swapzi_score + points_earned)
+      @swap.item_2.user.update!(swapzi_score: @swap.item_2.user.swapzi_score + @swap.item_1.swapzi_points)
+    else
+      points_earned = @swap.item_1.swapzi_points
+      current_user.update!(swapzi_score: current_user.swapzi_score + points_earned)
+      @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + @swap.item_2.swapzi_points)
+    end
+    flash[:notice] = "You earned #{points_earned} Swapzi points!"
   end
 
   def redirect

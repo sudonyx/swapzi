@@ -9,5 +9,14 @@ class Swap < ApplicationRecord
   validates :user_2, presence: true
   validates :item_1, presence: true
   validates :item_2, presence: true
-  validates :item_1, uniqueness: { scope: :item_2 }
+  
+  validate :validate_items_are_unique, on: :create
+
+  private
+
+  def validate_items_are_unique
+    if Swap.where(item_1: item_1, item_2: item_2).or(Swap.where(item_1: item_2, item_2: item_1)).exists?
+      errors.add(:combo, 'User 1 and User 2 combination already exists!')
+    end
+  end
 end
