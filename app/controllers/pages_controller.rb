@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @swaps = Swap.where(completed: true).order(created_at: :desc).limit(5)
   end
+
+  def about_points
+  end
 end

@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   resources :conversations, only: %i[index show create] do
     resources :messages, only: :create
   end
-  
+
   get "/dashboard", to: "users#dashboard"
+  get "/about_points",to: "pages#about_points"
 
   # patch "/update_swapzi_score", to: "users#update_swapzi_score"
 end
