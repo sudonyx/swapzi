@@ -27,13 +27,12 @@
           <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), id: "show-button", class: "btn btn-outline-primary rounded-pill" %>
 
           <div class="mt-4">
-            <% if current_user.favourites.exists?(item: @item) %>
-              <% @favourite_id = current_user.favourites.find_by(item: @item) %>
-                <%= button_to "Unfavourite item", item_favourite_path(@item, fav_id: @favourite_id), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :delete, data: {turbo_method: :delete} %>
-            <% else %>
-                <%= button_to "Add to favourites", item_favourites_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :post, data: {turbo_method: :post} %>
+            <%= turbo_frame_tag "fav-button" do %>
+              <%= render 'favourites/fav_button' %>
             <% end %>
           </div>
+
+
         <% end %>
 
         <%# <div class="container item-show-container">

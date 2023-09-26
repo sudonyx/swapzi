@@ -5,28 +5,36 @@ class FavouritesController < ApplicationController
         @favourite.user = current_user
         @favourite.item = @item
 
-        if @favourite.save
-            flash[:notice] = "Saved as favorite!"
-        else
-            flash[:alert] = "Favorite failed to save."
+        respond_to do |format|
+            if @favourite.save
+                format.turbo_stream { flash.now[:notice] = "Saved as favorite!" }
+                format.turbo_stream { render 'favourites/create', locals: { favourite: @favourite, item: @item }}
+            else
+                format.turbo_stream { flash.now[:alert] = "Favorite failed to save." }
+                format.turbo_stream { render 'favourites/create', locals: { favourite: @favourite, item: @item }}
+            end
         end
 
-        redirect_to item_path(@item)
+        # redirect_to item_path(@item)
         authorize @item
         authorize @favourite
     end
 
     def destroy
-        @item = Item.find(params[:item_id])
-        @favourite = Favourite.find(params[:fav_id])
+        @favourite = Favourite.find(params[:id])
+        @item = @favourite.item
 
-        if @favourite.destroy
-            flash[:notice] = "Item Unfavourited"
-        else 
-            flash[:notice] = "Error"
+        respond_to do |format|
+            if @favourite.destroy
+                format.turbo_stream { flash.now[:notice] = "Item Unfavourited" }
+                format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
+            else 
+                format.turbo_stream { flash.now[:notice] = "Error" }
+                format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
+            end
         end
         
-        redirect_to item_path(@item)
+        # redirect_to item_path(@item)
         authorize @item
         authorize @favourite
     end

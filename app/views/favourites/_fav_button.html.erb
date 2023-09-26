@@ -1,0 +1,6 @@
+<% if current_user.favourites.exists?(item: @item) %>
+  <% @favourite = current_user.favourites.find_by(item: @item) %>
+    <%= button_to "Unfavourite item", favourite_path(@favourite), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :delete, data: {turbo_method: :delete} %>
+<% else %>
+    <%= button_to "Add to favourites", item_favourites_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :post, data: {turbo_method: :post} %>
+<% end %>
