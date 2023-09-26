@@ -1,0 +1,5 @@
+<%= turbo_stream.update "fav-button" do %>
+  <%= render 'fav_button' %>
+<% end %>
+
+<%= turbo_stream.update "flash", partial: "shared/flashes" %>

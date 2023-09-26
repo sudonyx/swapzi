@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :items, only: %i[index show new create destroy] do
-    resources :favourites, only: %i[create destroy]
+    resources :favourites, only: %i[create]
     resources :swaps, only: %i[new]
   end
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :swaps, only: %i[show create update destroy]
 
-  resources :favourites, only: %i[index]
+  resources :favourites, only: %i[index destroy]
 
   resources :conversations, only: %i[index show create] do
     resources :messages, only: :create
