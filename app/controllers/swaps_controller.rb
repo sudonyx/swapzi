@@ -26,11 +26,11 @@ class SwapsController < ApplicationController
   def new
     @swap = Swap.new
     @show_item = Item.find(params[:item_id])
-    @items = Item.where(user: current_user, hidden: false)
+    @items = policy_scope(Item)
+    @items = @items.select { |item| item.user == current_user }
 
     authorize @swap
     authorize @show_item
-    authorize @items
   end
 
   def create
