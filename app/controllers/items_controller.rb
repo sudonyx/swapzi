@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
       @header = header_prefix
       @selected = "all categories"
     end
+
+    @items = @items.where(hidden: false)
   end
   
   def new
@@ -31,6 +33,7 @@ class ItemsController < ApplicationController
     authorize @item
     @item.user = current_user
     @item.swapzi_points = 100
+    @item.swap_counter = 0
     if @item.save
       redirect_to item_path(@item)
     else
