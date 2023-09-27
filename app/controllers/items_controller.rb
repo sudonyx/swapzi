@@ -19,8 +19,6 @@ class ItemsController < ApplicationController
       @header = header_prefix
       @selected = "all categories"
     end
-
-    @items = @items.where(hidden: false)
   end
   
   def new

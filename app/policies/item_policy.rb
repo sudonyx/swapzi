@@ -2,7 +2,7 @@ class ItemPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all.order(created_at: :desc)
+      scope.where(hidden: false).order(created_at: :desc)
     end
   end
 
