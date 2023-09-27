@@ -40,7 +40,7 @@ class SwapsController < ApplicationController
       flash[:notice] = "Swap offered"
       redirect_to swaps_path
     else
-      flash[:notice] = "Error: This swap already exists!"
+      flash[:alert] = "This swap already exists!"
       redirect_to item_path(Item.find(params[:swap][:user_1_id] == current_user.id ? params[:swap][:item_1_id] : params[:swap][:item_2_id]))
     end
 
@@ -58,7 +58,6 @@ class SwapsController < ApplicationController
       else
         @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
       end
-      redirect_to swap_path(@swap)
     end
     
     if params.has_key?(:completed) && both_users_accepted?
@@ -74,19 +73,35 @@ class SwapsController < ApplicationController
   
         redirect_to dashboard_path and return
       end
-      redirect_to swap_path(@swap)
+    elsif params.has_key?(:completed)
+      flash[:notice] = "Other user has not accepted"
     end
 
-    
+    redirect_to swap_path(@swap)
   end
 
   def destroy
     @swap = Swap.find(params[:id])
-
-    @swap.destroy if @swap.user_1 == current_user || @swap.user_2 == current_user
-    redirect_to swaps_path
-
     authorize @swap
+
+    unless @swap.item_1.user == current_user || @swap.item_2.user == current_user
+      flash[:alert] = "Error: Swap does not belong to you"
+      redirect_to dashboard_path and return
+    end
+
+    if @swap.completed
+      flash[:alert] = "Cannnot cancel a completed swap!"
+      redirect_to swap_path(@swap) and return
+    elsif both_users_accepted?
+      @swap.item_1.user == current_user ? @swap.item_1.user.update(swapzi_score: @swap.item_1.user.swapzi_score - 100) : @swap.item_2.user.update(swapzi_score: @swap.item_2.user.swapzi_score - 100)
+      @swap.destroy
+      flash[:alert] = "100 Swapzi points deducted! :("
+      redirect_to dashboard_path and return
+    else
+      @swap.destroy
+    end
+
+    redirect_to swaps_path
   end
 
   private
