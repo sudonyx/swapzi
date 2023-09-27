@@ -10,4 +10,11 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
   validates :swapzi_points, presence: true, numericality: { only_integer: true }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_description,
+    against: [:name, :description],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

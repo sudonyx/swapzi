@@ -3,6 +3,22 @@ class ItemsController < ApplicationController
   
   def index
     @items = policy_scope(Item)
+
+    if params[:query].present?
+      @items = Item.search_by_name_and_description(params[:query])
+      header_prefix = "Search results"
+    else
+      header_prefix = "All items"
+    end
+
+    if params[:category].present? && params[:category] != "all categories"
+      @items = @items.select { |item| item.category == params[:category] }
+      @header = "#{header_prefix} in #{params[:category].downcase}"
+      @selected = params[:category]
+    else
+      @header = header_prefix
+      @selected = "all categories"
+    end
   end
   
   def new

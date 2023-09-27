@@ -81,3 +81,4 @@ end
 gem "cloudinary"
 gem "pundit"
 gem "faker"
+gem "pg_search"

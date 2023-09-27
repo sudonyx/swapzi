@@ -22,7 +22,7 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
     description << Faker::Company.catch_phrase 
   end
   description = description.join(". ")
-  category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations"].sample
+  category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"].sample
   swapzi_points = (100..500).to_a.sample
 
   item = Item.new({ name: name, description: description, category: category, swapzi_points: swapzi_points })

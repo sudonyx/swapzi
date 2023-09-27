@@ -9,8 +9,10 @@
 }
 
 .navbar-lewagon .navbar-collapse {
+  width: 280px;
   flex-grow: 0;
   font-weight: bold;
+  justify-content: flex-end;
 
   .nav-link {
       font-family: $headers-font;
@@ -22,6 +24,8 @@
 }
 
 .navbar-lewagon .navbar-brand {
+  width: 280px;
+
   img {
     object-fit: contain;
     height: 42px;
@@ -36,3 +40,22 @@
     // font-size: ;
   }
 } 
+
+.search-bar {
+  border-radius: 16px;
+
+  .search-bar-input {
+    width: 200px;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
+  .search-bar-dropdown {
+    width: 192px;
+  }
+
+  .search-bar-btn {
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+}
