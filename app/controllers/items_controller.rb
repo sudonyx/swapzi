@@ -24,9 +24,7 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    @user = current_user
     authorize @item
-    authorize @user
     @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
   end 
   

@@ -1,7 +1,7 @@
 <% if @swap.item_1.user == current_user && @swap.accepted_user_1 || @swap.item_2.user == current_user && @swap.accepted_user_2 %>
   <span class="checkbox-action"><i class="fa-regular fa-square-check"></i></span>
 <% else %>
-  <%= button_to swap_path(@swap, is_user_1: @swap.item_1.user == current_user, accepted: true, origin: @origin),
+  <%= button_to swap_path(@swap, is_user_1: @swap.item_1.user == current_user, accepted: true),
     class: "checkbox-action",
     method: :patch,
     data: { turbo_method: :patch, turbo_confirm: "Accept this swap?"} do %>
