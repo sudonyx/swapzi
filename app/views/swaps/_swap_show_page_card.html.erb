@@ -7,7 +7,7 @@
     
     <div class= "info">
       <div class="swap-show-card-body">
-        <h4 class="swap-card-title"><%= @item.user == @user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h4>
+        <h4 class="swap-card-title"><%= @item.user == current_user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h4>
       </div>
 
       <div class="swap-card-footer">

@@ -74,7 +74,11 @@ class SwapsController < ApplicationController
         redirect_to dashboard_path and return
       end
     elsif params.has_key?(:completed)
-      flash[:notice] = "Other user has not accepted"
+      if @swap.item_1.user == current_user && @swap.accepted_user_2 != true || @swap.item_2.user == current_user && @swap.accepted_user_1 != true
+        flash[:notice] = "Other user has not accepted"
+      else
+        flash[:notice] = "You have not accepted the swap"
+      end
     end
 
     redirect_to swap_path(@swap)

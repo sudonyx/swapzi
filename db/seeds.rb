@@ -44,6 +44,8 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
     item.photo.attach(io: File.open("app/assets/images/seed_images/bicycle.jpg"), filename: "bicycle.jpg", content_type: "image/jpg")
   when "Decorations"
     item.photo.attach(io: File.open("app/assets/images/seed_images/plant.jpg"), filename: "plant.jpg", content_type: "image/jpg")
+  when "Other"
+    item.photo.attach(io: File.open("app/assets/images/seed_images/desk.jpg"), filename: "desk.jpg", content_type: "image/jpg")
   end
   item.save!
 end

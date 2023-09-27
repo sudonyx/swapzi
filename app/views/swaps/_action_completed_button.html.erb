@@ -10,7 +10,7 @@
 <% end %>
 
 <% if @swap.item_1.user == current_user && @swap.completed_user_2 || @swap.item_2.user == current_user && @swap.completed_user_1 %>
-  <span class="checkbox-action"><i class="fa-regular fa-square-check"></i></span>
+  <span class="checkbox-action other-user-action"><i class="fa-regular fa-square-check"></i></span>
 <% else %>
-  <span class="checkbox-action"><i class="fa-regular fa-square"></i></span>
+  <span class="checkbox-action other-user-action"><i class="fa-regular fa-square"></i></span>
 <% end %>
