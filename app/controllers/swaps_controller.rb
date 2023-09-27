@@ -26,7 +26,7 @@ class SwapsController < ApplicationController
   def new
     @swap = Swap.new
     @show_item = Item.find(params[:item_id])
-    @items = Item.where(user: current_user)
+    @items = Item.where(user: current_user, hidden: false)
 
     authorize @swap
     authorize @show_item
@@ -70,6 +70,15 @@ class SwapsController < ApplicationController
       if both_users_completed?
         @swap.update(completed: true)
         update_swapzi_score_both_users
+        update_swap_counter_for_both_items
+
+        @swap.item_1.update(hidden: true)
+        @swap.item_2.update(hidden: true)
+
+        @swaps = Swap.where(item_1: @swap.item_1).or(Swap.where(item_2: @swap.item_1)).or(Swap.where(item_1: @swap.item_2)).or(Swap.where(item_2: @swap.item_2))
+        @swaps.each { |swap| swap.destroy }
+
+        create_duplicate_items_and_swap_users
   
         redirect_to dashboard_path and return
       end
@@ -120,6 +129,45 @@ class SwapsController < ApplicationController
 
   def both_users_completed?
     @swap.completed_user_1 && @swap.completed_user_2
+  end
+
+  def update_swap_counter_for_both_items
+    unless @swap.item_1.swap_counter == nil
+      @swap.item_1.update(swap_counter: @swap.item_1.swap_counter + 1)
+    else
+      @swap.item_1.update(swap_counter: 1)
+    end
+    unless @swap.item_2.swap_counter == nil
+      @swap.item_2.update(swap_counter: @swap.item_2.swap_counter + 1)
+    else
+      @swap.item_2.update(swap_counter: 1)
+    end
+  end
+
+  def create_duplicate_items_and_swap_users
+    name = @swap.item_1.name
+    description = @swap.item_1.description
+    category = @swap.item_1.category
+    swapzi_points = @swap.item_1.swapzi_points
+    user = @swap.item_1.user
+    swap_counter = @swap.item_1.swap_counter
+    hidden = true
+    @item = Item.new(name:, description:, category:, swapzi_points:, swap_counter:, hidden:)
+    @item.user = @swap.item_2.user
+    @item.photo.attach(io: StringIO.new(@swap.item_1.photo.download), filename: @item.name, content_type: @swap.item_1.photo.content_type)
+    @item.save
+
+    name = @swap.item_2.name
+    description = @swap.item_2.description
+    category = @swap.item_2.category
+    swapzi_points = @swap.item_2.swapzi_points
+    user = @swap.item_2.user
+    swap_counter = @swap.item_2.swap_counter
+    hidden = true
+    @item = Item.new(name:, description:, category:, swapzi_points:, swap_counter:, hidden:)
+    @item.user = @swap.item_1.user
+    @item.photo.attach(io: StringIO.new(@swap.item_2.photo.download), filename: @item.name, content_type: @swap.item_2.photo.content_type)
+    @item.save
   end
 
   def update_swapzi_score_both_users
