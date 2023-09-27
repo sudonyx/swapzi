@@ -10,7 +10,7 @@
   align-items: center;
 
   .swap-logo {
-    height: 140px;
+    height: 100px;
     width: auto;
   }
 }
@@ -30,4 +30,21 @@
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
   }
+}
+
+.action-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 340px;
+}
+
+.checkbox-action {
+  color: $eggplant;
+  font-size: 30px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background-color: inherit;
 }

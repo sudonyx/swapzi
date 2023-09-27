@@ -1,6 +1,6 @@
-<div class="container d-flex">
+<div class="container convo-container d-flex">
   <div class="other-chats">
-    <h1>Messages</h1>
+    <h1>Conversations</h1>
     <div class="user-list">
       <% @conversations.each do |convo| %>  
         <%= link_to conversation_path(convo) do %>
