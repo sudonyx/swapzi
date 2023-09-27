@@ -1,35 +1,26 @@
 class SwapsController < ApplicationController
   def show
     @swap = Swap.find(params[:id])
-    @user = current_user
 
     authorize @swap
-    authorize @user
   end
 
   def pending
     @show_content = true
-    @user = current_user
-    @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
+    @swaps = Swap.where(user_1: current_user).or(Swap.where(user_2: current_user)).order(created_at: :desc)
 
     authorize @swaps
 
     @swaps = @swaps.select { |swap| swap.completed != true }
-
-    authorize @user
-    
   end
 
   def completed
     # @show_content = true
-    @user = current_user
-    @swaps = Swap.where(user_1: @user).or(Swap.where(user_2: @user)).order(created_at: :desc)
+    @swaps = Swap.where(user_1: current_user).or(Swap.where(user_2: current_user)).order(created_at: :desc)
 
     authorize @swaps
     
     @swaps = @swaps.select { |swap| swap.completed == true }
-
-    authorize @user
   end
 
   def new
@@ -59,28 +50,34 @@ class SwapsController < ApplicationController
   def update
     @swap = Swap.find(params[:id])
 
+    authorize @swap
+
     if params.has_key?(:accepted)
       if params[:is_user_1] == "true"
-        redirect if @swap.update(accepted_user_1: params[:accepted]) if params.has_key?(:accepted)
+        @swap.update(accepted_user_1: params[:accepted]) if params.has_key?(:accepted)
       else
-        redirect if @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
+        @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
       end
+      redirect_to swap_path(@swap)
     end
     
     if params.has_key?(:completed) && both_users_accepted?
       if params[:is_user_1] == "true"
-        redirect if @swap.update(completed_user_1: params[:completed])
+        @swap.update(completed_user_1: params[:completed])
       else
-        redirect if @swap.update(completed_user_2: params[:completed])
+        @swap.update(completed_user_2: params[:completed])
       end
+
+      if both_users_completed?
+        @swap.update(completed: true)
+        update_swapzi_score_both_users
+  
+        redirect_to dashboard_path and return
+      end
+      redirect_to swap_path(@swap)
     end
 
-    if both_users_completed?
-      @swap.update(completed: true)
-      update_swapzi_score_both_users
-    end
-
-    authorize @swap
+    
   end
 
   def destroy
@@ -117,10 +114,5 @@ class SwapsController < ApplicationController
       @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + @swap.item_2.swapzi_points)
     end
     flash[:notice] = "You earned #{points_earned} Swapzi points!"
-  end
-
-  def redirect
-    redirect_to swaps_path if params[:origin] == "swap_pending"
-    redirect_to swap_path(@swap) if params[:origin] == "swap_show"
   end
 end

@@ -1,14 +1,9 @@
   <div class="container p-0">
-
-    <%# set @item for current user %>
-    <% @user_item = @swap.item_1.user == @user ? @swap.item_1 : @swap.item_2 %>
-
-    <%# set @item for other user %>
-    <% @other_item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
-
+    
     <div class="swap-card-container">
 
-      <% @item = @user_item %>
+      <%# set @item for current user %>
+      <% @item = @swap.item_1.user == current_user ? @swap.item_1 : @swap.item_2 %>
       <% if @show_content %>
         <% @header = "Your item" %>
       <% end %>
@@ -24,7 +19,8 @@
         <% end %>
       </div>
 
-      <% @item = @other_item %>
+      <%# set @item for other user %>
+      <% @item = @swap.item_1.user == current_user ? @swap.item_2 : @swap.item_1 %>
       <% if @show_content %>
         <% @header = "#{@item.user.username}'s item" %>
       <% end %>

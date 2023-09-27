@@ -3,9 +3,6 @@
 
   <div class="swap-container">
 
-    <%# set param to inform controller which page the action is coming from %>
-    <% @origin = "swap_show" %>
-
     <%# render card for current user %>
     <% @item = @swap.item_1.user == current_user ? @swap.item_1 : @swap.item_2 %>
     <div class="container">
@@ -13,6 +10,7 @@
     </div>
 
 
+    <%# render action buttons for both users %>
     <div class="action-buttons-container">
       <div class="d-flex justify-content-center mb-5"><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
       <p class="text-center mb-0">Swap accepted?</p>
@@ -20,7 +18,6 @@
         <%# render accepted buttons %>
         <%= render 'action_accepted_button' %>
       </div>
-    
       <p class="text-center mb-0 mt-2">Item received?</p>
       <div class="user-action-buttons d-flex justify-content-between px-2">
         <%# render completed buttons %>
@@ -40,44 +37,5 @@
   <div class="d-flex justify-content-center">
     <%= button_to "cancel swap?", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel this swap? (You will lose Swapzi points)" } %>
   </div>
-  
-  <% if false %>
-  <%# render buttons for current user %>
-  <% @item = @swap.item_1.user == @user ? @swap.item_1 : @swap.item_2 %>
-  <div class="swap-pending-buttons">
-    <%= render "swaps/swap_pending_buttons" %>
-  </div>
-  <div class="d-flex justify-content-around my-4" %>
-    <% if @swap.item_1.user == @user && @swap.completed_user_1 || @swap.item_2.user == @user && @swap.completed_user_2 %>
-      <%= button_to "You marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
-    <% else %>
-      <%= button_to "Mark swap as completed", swap_path(@swap, is_user_1: @swap.item_1.user == @user, completed: true, origin: @origin), class: "btn btn-success rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Mark swap as completed?" } %>
-    <% end %>
-  </div>
-
-
-  <%# render buttons for other user %>
-  <% @item = @swap.item_1 == @user_item ? @swap.item_2 : @swap.item_1 %>
-  <div class="swap-pending-buttons">
-    <%= render "swaps/swap_pending_buttons" %>
-  </div>
-  <div class="d-flex justify-content-around my-4" %>
-    <% if @swap.item_1.user == @user && @swap.completed_user_2 || @swap.item_2.user == @user && @swap.completed_user_1 %>
-      <%= button_to "#{@item.user.username} marked as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
-    <% else %>
-      <%= button_to "Waiting for #{@item.user.username} to mark as complete", {}, class: "btn btn-success rounded-pill", disabled: true %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= button_to "Chat with #{@item.user.username}", conversations_path(other_user: @item.user), class: "btn btn-outline-dark rounded-pill" %>
-  </div>
-  <% end %>
-
-  <% if @swap.completed %>
-    <div class="d-flex justify-content-center">
-      <h2>Swap Complete!</h2>
-    </div>
-  <% end %>
 
 </div>
