@@ -3,15 +3,17 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bolder;
-  background: linear-gradient($eggplant, $eggplant);
-  transition: background 0.3s ease;
-  border: 1px solid $eggplant;
+  background-color: $eggplant;
   font-family: $body-font;
-}
 
-.btn-gradient:hover {
-  background: linear-gradient($eggplant, $eggplant);
-  color: $yellow;
+  transition: color 0.3s ease;
+
+  &:hover {
+    background-color: $eggplant;
+    color: $yellow;
+  
+    transition: color 0.3s ease;
+  }
 }
 
 #show-button {
