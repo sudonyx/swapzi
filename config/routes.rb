@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: "accounts"
   root to: "pages#home"
 
   # Defines the root path route ("/")
@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show new create destroy] do
     resources :favourites, only: %i[create]
     resources :swaps, only: %i[new]
+  end
+
+  resources :users, only: [] do
+    get 'profile', on: :collection
   end
 
   get "/swaps", to: "swaps#pending"

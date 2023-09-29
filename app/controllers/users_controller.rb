@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_after_action :verify_authorized, only: :profile
+
   def dashboard
     @user = current_user
     @swapzi_score = @user.swapzi_score
@@ -7,5 +9,9 @@ class UsersController < ApplicationController
     @item_suggestions = Item.where.not(user: @user).order(created_at: :desc).limit(4)
 
     authorize @recent_favourites
+  end
+
+  def profile
+    @all_items = Item.where(user: current_user)
   end
 end
