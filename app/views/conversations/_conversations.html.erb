@@ -26,7 +26,10 @@
 
       <div class="messages" data-conversation-subscription-target="messages">
         <% @conversation.messages.each do |message| %>
+
+
           <%= render "messages/message", message: message %>
+
         <% end %>
       </div>
 
