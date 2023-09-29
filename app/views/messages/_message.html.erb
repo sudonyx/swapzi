@@ -1,7 +1,29 @@
+<%# regex pattern to look for swap id appended to message.content %>
+<% pattern = /\(swap_id=(\d+)\)\z/ %>
+
+<%# check for regex pattern match and create match data object %>
+<% match_data = pattern.match(message.content) %>
+
+<% if match_data.nil? %>
+  <% content = message.content %>
+<% else %>
+  <% content = message.content.chomp(match_data[0]) %>
+<% end %>
+
+<%# render message %>
 <div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.sender.username %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+  <div>
+    <small>
+      <strong><%= message.sender.username %></strong>
+      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    </small>
+    <p><%= content %></p>
+  </div>
+
+<%# add link to swap if swap id in message content %>
+  <div class="mb-3">
+    <% unless match_data.nil? %>
+      <%= link_to "See swap details", swap_path(Swap.find(match_data[1])), class: "btn btn-outline-dark rounded-pill" %>
+    <% end %>
+  </div>
 </div>
