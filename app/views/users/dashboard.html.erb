@@ -1,26 +1,46 @@
-<div class=container>
+<div class="container">
+
+    <div class="text-center mt-4 mb-4">
+        <% if current_user.photo.attached? %>
+            <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-pic" %>
+        <% else %>
+            <p>No profile picture uploaded.</p>
+        <% end %>
+    </div>
+
     <div class="card-row">
         <div class="dashboard-card">
             <h6>Swapzi Score</h6>
-            <p><%= current_user.swapzi_score %></p>
+            <p><%= @swapzi_score %></p>
         </div>
-        <div class="dashboard-card"></div> 
-        <div class="dashboard-card"></div> 
+
+        <div class="dashboard-card">
+            <h6>Messages</h6>
+            <%= link_to "Messages", conversations_path, class: "nav-link me-2" %>
+        </div>
+
+        <div class="dashboard-card"></div>
     </div>
 
     <% unless @recent_favourites.empty? %>
         <div class="mt-4">
             <h4>Most recent favourites</h4>
-            <% @items = [] %>
-            <% @recent_favourites.each { |fav| @items << fav.item } %>
+            <% @items = @recent_favourites.map(&:item) %>
+            <%= render "items/item_card_grid" %>
+        </div>
+    <% end %>
+
+    <% unless @recent_items_browsed.empty? %>
+        <div class="mt-4">
+            <h4>Recently Browsed Items</h4>
+            <% @items = @recent_items_browsed %>
             <%= render "items/item_card_grid" %>
         </div>
     <% end %>
 
     <div class="mt-4">
         <h4>Check out these available items</h4>
-        <% @items = [] %>
-        <% @item_suggestions.each { |item| @items << item } %>
+        <% @items = @item_suggestions %>
         <%= render "items/item_card_grid" %>
     </div>
 </div>

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  
+
   def index
     @items = policy_scope(Item)
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       @selected = "all categories"
     end
   end
-  
+
   def new
     @item = Item.new
     authorize @item
@@ -38,13 +38,14 @@ class ItemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
     @item = Item.find(params[:id])
     authorize @item
     @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
-  end 
-  
+    BrowsingHistory.create(user: current_user, item: @item) if user_signed_in?
+  end
+
   private
 
   def item_params
