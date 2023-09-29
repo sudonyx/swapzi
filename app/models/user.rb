@@ -10,8 +10,10 @@ class User < ApplicationRecord
   has_many :user_2s, class_name: 'Conversation', foreign_key: :user_2_id, dependent: :destroy
   has_many :reviewers, class_name: 'UserReview', foreign_key: :reviewer_id, dependent: :destroy
   has_many :revieweds, class_name: 'UserReview', foreign_key: :reviewed_id, dependent: :destroy
+  has_many :browsing_histories, dependent: :destroy
+  has_many :items_browsed, through: :browsing_histories, source: :item
   has_one_attached :photo, dependent: :destroy
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
