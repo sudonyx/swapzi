@@ -63,6 +63,9 @@ class SwapsController < ApplicationController
         @swaps = Swap.where(item_1: @swap.item_1).or(Swap.where(item_2: @swap.item_1)).or(Swap.where(item_1: @swap.item_2)).or(Swap.where(item_2: @swap.item_2))
         @swaps = @swaps.select { |swap| swap.id != @swap.id }
         @swaps.each { |swap| swap.destroy }
+
+        @swap.item_1.update(hidden: true)
+        @swap.item_2.update(hidden: true)
       end
     end
     
@@ -111,6 +114,9 @@ class SwapsController < ApplicationController
     elsif both_users_accepted?
       @swap.item_1.user == current_user ? @swap.item_1.user.update(swapzi_score: @swap.item_1.user.swapzi_score - 100) : @swap.item_2.user.update(swapzi_score: @swap.item_2.user.swapzi_score - 100)
       @swap.destroy
+
+      @swap.item_1.update(hidden: false)
+      @swap.item_2.update(hidden: false)
       flash[:alert] = "100 Swapzi points deducted! :("
       redirect_to dashboard_path and return
     else
@@ -158,6 +164,7 @@ class SwapsController < ApplicationController
     @item = Item.new(name:, description:, category:, swapzi_points:, swap_counter:, hidden:)
     @item.user = @swap.item_2.user
     @item.photo.attach(io: StringIO.new(@swap.item_1.photo.download), filename: @item.name, content_type: @swap.item_1.photo.content_type)
+    @item.relist = true
     @item.save
 
     name = @swap.item_2.name
@@ -170,6 +177,7 @@ class SwapsController < ApplicationController
     @item = Item.new(name:, description:, category:, swapzi_points:, swap_counter:, hidden:)
     @item.user = @swap.item_1.user
     @item.photo.attach(io: StringIO.new(@swap.item_2.photo.download), filename: @item.name, content_type: @swap.item_2.photo.content_type)
+    @item.relist = true
     @item.save
   end
 

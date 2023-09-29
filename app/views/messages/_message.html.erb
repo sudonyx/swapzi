@@ -23,7 +23,9 @@
 <%# add link to swap if swap id in message content %>
   <div class="mb-3">
     <% unless match_data.nil? %>
-      <%= link_to "See swap details", swap_path(Swap.find(match_data[1])), class: "btn btn-outline-dark rounded-pill" %>
+      <% if Swap.exists?(id: match_data[1]) %>
+        <%= link_to "See swap details", swap_path(Swap.find(match_data[1])), class: "btn btn-outline-dark rounded-pill" %>
+      <% end %>
     <% end %>
   </div>
 </div>

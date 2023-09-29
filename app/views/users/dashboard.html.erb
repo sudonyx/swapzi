@@ -3,25 +3,29 @@
     <div class="text-center mt-4 mb-4">
         <% if current_user.photo.attached? %>
             <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-pic" %>
-        <% else %>
-            <p>No profile picture uploaded.</p>
         <% end %>
     </div>
 
     <div class="card-row">
         <div class="dashboard-card">
             <h6>Swapzi Score</h6>
-            <p><%= @swapzi_score %></p>
+            <p><%= current_user.swapzi_score %></p>
         </div>
 
         <div class="dashboard-card">
-            <h6>Messages</h6>
-            <%= link_to "Messages", conversations_path, class: "nav-link me-2" %>
         </div>
 
         <div class="dashboard-card"></div>
     </div>
 
+    <% unless @relist_items.empty? %>
+        <div class="mt-4">
+            <h4>Items received in swaps. Would you like to relist these items for extra points? </h4>
+            <% @items = @relist_items %>
+            <%= render "items/item_card_grid" %>
+        </div>
+    <% end %>
+    
     <% unless @recent_favourites.empty? %>
         <div class="mt-4">
             <h4>Most recent favourites</h4>
@@ -32,7 +36,7 @@
 
     <% unless @recent_items_browsed.empty? %>
         <div class="mt-4">
-            <h4>Recently Browsed Items</h4>
+            <h4>Recently browsed items</h4>
             <% @items = @recent_items_browsed %>
             <%= render "items/item_card_grid" %>
         </div>
