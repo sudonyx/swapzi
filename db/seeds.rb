@@ -9,7 +9,7 @@
 Item.destroy_all
 User.destroy_all
 
-user1 = User.create!({ username: "Test", email: 'test@test.com', password: 'password', location: 'Testville', swapzi_score: 500000 })
+user1 = User.create!({ username: "Test", email: 'test@test.com', password: 'password', location: 'Paris', swapzi_score: 500000 })
 user2 = User.create!({ username: "Josh", email: 'josh@test.com', password: 'password', location: 'London', swapzi_score: 100 })
 user3 = User.create!({ username: "Bay", email: 'bay@test.com', password: 'password', location: 'Berlin', swapzi_score: 500 })
 user4 = User.create!({ username: "Ben", email: 'ben@test.com', password: 'password', location: 'Taunton', swapzi_score: 200 })
@@ -45,7 +45,7 @@ user5 = User.create!({ username: "James", email: 'james@test.com', password: 'pa
   when "Decorations"
     item.photo.attach(io: File.open("app/assets/images/seed_images/plant.jpg"), filename: "plant.jpg", content_type: "image/jpg")
   when "Other"
-    item.photo.attach(io: File.open("app/assets/images/seed_images/desk.jpg"), filename: "desk.jpg", content_type: "image/jpg")
+    item.photo.attach(io: File.open("app/assets/images/seed_images/#{%w[book gameboy guitar desk jacket toaster bicycle plant].sample}.jpg"), filename: "other.jpg", content_type: "image/jpg")
   end
   item.save!
 end
