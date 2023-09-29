@@ -58,6 +58,12 @@ class SwapsController < ApplicationController
       else
         @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
       end
+
+      if both_users_accepted?
+        @swaps = Swap.where(item_1: @swap.item_1).or(Swap.where(item_2: @swap.item_1)).or(Swap.where(item_1: @swap.item_2)).or(Swap.where(item_2: @swap.item_2))
+        @swaps = @swaps.select { |swap| swap.id != @swap.id }
+        @swaps.each { |swap| swap.destroy }
+      end
     end
     
     if params.has_key?(:completed) && both_users_accepted?
@@ -74,9 +80,6 @@ class SwapsController < ApplicationController
 
         @swap.item_1.update(hidden: true)
         @swap.item_2.update(hidden: true)
-
-        @swaps = Swap.where(item_1: @swap.item_1).or(Swap.where(item_2: @swap.item_1)).or(Swap.where(item_1: @swap.item_2)).or(Swap.where(item_2: @swap.item_2))
-        @swaps.each { |swap| swap.destroy }
 
         create_duplicate_items_and_swap_users
   
@@ -180,6 +183,6 @@ class SwapsController < ApplicationController
       current_user.update!(swapzi_score: current_user.swapzi_score + points_earned)
       @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + @swap.item_2.swapzi_points)
     end
-    flash[:notice] = "You earned #{points_earned} Swapzi points!"
+    flash[:notice] = "Swap complete! You earned #{points_earned} Swapzi points"
   end
 end
