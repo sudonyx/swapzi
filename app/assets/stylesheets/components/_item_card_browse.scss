@@ -1,0 +1,48 @@
+    .show-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  
+  .card-img-top {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    .show-body {
+      padding: 10px;
+      flex-grow: 1;
+      text-decoration: none;
+    }
+    
+    .show-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+      text-decoration: none;
+      color: black;
+    }
+    
+    .show-text {
+      font-size: 18px;
+      color: #666;
+      text-decoration: none;
+      color: black;
+    }
+
+    .show-footer{
+
+    }
+    .show-swapzi{
+      text-decoration: none;
+      color: black;
+      margin-left: 10px;
+
+    }
+  }
+  
+  .no-underline {
+  text-decoration: none;
+  }
