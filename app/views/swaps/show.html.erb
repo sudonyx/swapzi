@@ -34,6 +34,11 @@
 
   </div>
 
+  <div class="d-flex justify-content-center start-chat-button">
+    <% other_user = @swap.item_1.user == current_user ? @swap.item_2.user : @swap.item_1.user %>
+    <%= button_to "chat with #{other_user.username}", conversations_path(other_user: other_user), class: "btn btn-outline-dark rounded-pill" %>
+  </div>
+
   <div class="d-flex justify-content-center">
     <%= button_to "cancel swap?", swap_path(@swap), class: "btn btn-outline-danger rounded-pill", method: :delete, data: { turbo_method: :delete, turbo_confirm: "You will lose Swapzi points if the other user has accepted!\nDo you wish to proceed?" } %>
   </div>

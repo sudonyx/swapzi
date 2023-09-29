@@ -3,8 +3,8 @@
 }
 
 .swap-container {
-  min-height: 530px;
-  margin: 0;
+  // min-height: 530px;
+  margin-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,4 +52,9 @@
 .other-user-action {
   color: $eggplant;
   opacity: 0.4;
+}
+
+.start-chat-button {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
