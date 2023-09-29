@@ -1,14 +1,14 @@
 <div class="col h-100 d-flex justify-content-between">
-  <div class="card item-card">
+  <div class="show-card">
     <% if @item.photo.attached? %>
       <%= image_tag(@item.photo, class: "card-img-top") %>
     <% end %>
-    <div class="card-body pb-2">
-      <h5 class="card-title"><%= @item.name %></h5>
-      <p class="card-text text-muted"><%= @item.user.location %></p>
+    <div class="show-body">
+      <h5 class="show-title"><%= @item.name %></h5>
+      <p class="show-text"><%= @item.user.location.capitalize %></p>
     </div>
-    <div class="card-footer">
-      <p class="my-auto text-end"><strong><%= @item.swapzi_points %></strong> Swapzi Points</p>
+    <div class="show-footer">
+      <p class="show-swapzi">Swapzi Points: <%= @item.swapzi_points %></p>
     </div>
   </div>
 </div>
