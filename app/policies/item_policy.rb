@@ -25,4 +25,8 @@ class ItemPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def dashboard?
+    true
+  end
 end
