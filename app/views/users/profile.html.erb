@@ -5,21 +5,22 @@
     <%= image_tag current_user.photo, class: "profile-pic" %>
   <% end %>
 
+  <% unless @relist_items.empty? %>
+    <div class="mt-4">
+        <h4>New items received in swaps!</h4>
+        <p>Hint: You can swap items again for even more points! Click on the item for more details</p>
+        <% @items = @relist_items %>
+        <%= render "items/item_card_grid" %>
+    </div>
+  <% end %>
+
   <!-- User's Items on the Platform -->
   <div class="mt-4">
-    <h4>Your Items on the Platform</h4>
+    <h4>Your items on the platform</h4>
 
     <% if @all_items.any? %>
-      <div class="row">
-        <% @all_items.each do |item| %>
-          <div class="col-md-3">
-            <%= link_to item_path(item) do %>
-              <%= image_tag item.photo, class: "item-image img-fluid" %>
-              <p class="text-center mt-2"><%= item.name %></p>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <% @items = @all_items %>
+      <%= render 'items/item_card_grid' %>
     <% else %>
       <p>You don't have any items yet.</p>
       <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
