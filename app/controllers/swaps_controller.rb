@@ -141,16 +141,8 @@ class SwapsController < ApplicationController
   end
 
   def update_swap_counter_for_both_items
-    unless @swap.item_1.swap_counter == nil
-      @swap.item_1.update(swap_counter: @swap.item_1.swap_counter + 1)
-    else
-      @swap.item_1.update(swap_counter: 1)
-    end
-    unless @swap.item_2.swap_counter == nil
-      @swap.item_2.update(swap_counter: @swap.item_2.swap_counter + 1)
-    else
-      @swap.item_2.update(swap_counter: 1)
-    end
+    @swap.item_1.update(swap_counter: @swap.item_1.swap_counter + 1)
+    @swap.item_2.update(swap_counter: @swap.item_2.swap_counter + 1)
   end
 
   def create_duplicate_items_and_swap_users

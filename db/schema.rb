@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_29_200501) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_30_130940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -87,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_200501) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "swap_counter"
+    t.integer "swap_counter", default: 0
     t.boolean "hidden", default: false
     t.boolean "relist", default: false
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -120,6 +127,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_200501) do
     t.index ["item_2_id"], name: "index_swaps_on_item_2_id"
     t.index ["user_1_id"], name: "index_swaps_on_user_1_id"
     t.index ["user_2_id"], name: "index_swaps_on_user_2_id"
+  end
+
+  create_table "user_achievements", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "achievement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_user_achievements_on_achievement_id"
+    t.index ["user_id"], name: "index_user_achievements_on_user_id"
   end
 
   create_table "user_reviews", force: :cascade do |t|
@@ -167,6 +183,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_200501) do
   add_foreign_key "swaps", "items", column: "item_2_id"
   add_foreign_key "swaps", "users", column: "user_1_id"
   add_foreign_key "swaps", "users", column: "user_2_id"
+  add_foreign_key "user_achievements", "achievements"
+  add_foreign_key "user_achievements", "users"
   add_foreign_key "user_reviews", "swaps"
   add_foreign_key "user_reviews", "users", column: "reviewed_id"
   add_foreign_key "user_reviews", "users", column: "reviewer_id"
