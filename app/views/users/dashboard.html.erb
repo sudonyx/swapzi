@@ -2,7 +2,7 @@
 
     <div class="text-center mt-4 mb-4">
         <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-pic" %>
+            <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-image" %>
         <% end %>
     </div>
 
@@ -25,6 +25,7 @@
                 <% end %>
             </div>
         </div>
+
     </div>
   
     <% unless @recent_favourites.empty? %>

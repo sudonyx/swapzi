@@ -1,35 +1,35 @@
 <div class="container">
 
-  <!-- Display user profile picture if exists -->
+  <div class="mt-4">
+    <h4>Edit Your Profile</h4>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+  </div>
+
+<!-- <div class="user-profile">
   <% if current_user.photo.attached? %>
-    <%= image_tag current_user.photo, class: "profile-pic" %>
+    <%= image_tag current_user.photo, class: "profile-image" %>
   <% end %>
+</div> --> 
 
-  <% unless @relist_items.empty? %>
-    <div class="mt-4">
-        <h4>New items received in swaps!</h4>
-        <p>Hint: You can swap items again for even more points! Click on the item for more details</p>
-        <% @items = @relist_items %>
-        <%= render "items/item_card_grid" %>
-    </div>
-  <% end %>
-
-  <!-- User's Items on the Platform -->
   <div class="mt-4">
     <h4>Your items on the platform</h4>
 
     <% if @all_items.any? %>
-      <% @items = @all_items %>
-      <%= render 'items/item_card_grid' %>
+      <div class="row">
+        <% @all_items.each do |item| %>
+          <div class="col-md-3">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.photo, class: "item-image img-fluid" %>
+              <p class="item-name btn-gradient text-center mt-2"><%= item.name %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     <% else %>
       <p>You don't have any items yet.</p>
       <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 
-  <!-- Button to Edit User Profile -->
-  <div class="mt-4">
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
-  </div>
-
 </div>
+

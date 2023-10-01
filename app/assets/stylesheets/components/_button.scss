@@ -5,14 +5,31 @@
   font-weight: bolder;
   background-color: $eggplant;
   font-family: $body-font;
+  text-decoration: none
 
   transition: color 0.3s ease;
 
   &:hover {
     background-color: $eggplant;
     color: $yellow;
-  
+
     transition: color 0.3s ease;
+  }
+}
+
+.btn-orange {
+  color: $white;
+  padding: 6px 20px;
+  border-radius: 4px;
+  font-weight: bolder;
+  background-color: #F78F1E;
+  font-family: $body-font;
+
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken(#F78F1E, 10%);
+    color: $white;
   }
 }
 
