@@ -19,7 +19,7 @@ class SwapsController < ApplicationController
     @swaps = Swap.where(user_1: current_user).or(Swap.where(user_2: current_user)).order(created_at: :desc)
 
     authorize @swaps
-    
+
     @swaps = @swaps.select { |swap| swap.completed == true }
   end
 
@@ -68,7 +68,7 @@ class SwapsController < ApplicationController
         @swap.item_2.update(hidden: true)
       end
     end
-    
+
     if params.has_key?(:completed) && both_users_accepted?
       if params[:is_user_1] == "true"
         @swap.update(completed_user_1: params[:completed])
@@ -79,13 +79,15 @@ class SwapsController < ApplicationController
       if both_users_completed?
         @swap.update(completed: true)
         update_swapzi_score_both_users
-        update_swap_counter_for_both_items
+        give_achievements
+        update_swap_counter_for_both_items_and_users
+        give_achievements
 
         @swap.item_1.update(hidden: true)
         @swap.item_2.update(hidden: true)
 
         create_duplicate_items_and_swap_users
-  
+
         redirect_to dashboard_path and return
       end
     elsif params.has_key?(:completed)
@@ -140,9 +142,11 @@ class SwapsController < ApplicationController
     @swap.completed_user_1 && @swap.completed_user_2
   end
 
-  def update_swap_counter_for_both_items
+  def update_swap_counter_for_both_items_and_users
     @swap.item_1.update(swap_counter: @swap.item_1.swap_counter + 1)
     @swap.item_2.update(swap_counter: @swap.item_2.swap_counter + 1)
+    @swap.item_1.user.update(swapz_count: @swap.item_1.user.swapz_count + 1)
+    @swap.item_2.user.update(swapz_count: @swap.item_2.user.swapz_count + 1)
   end
 
   def create_duplicate_items_and_swap_users
@@ -184,5 +188,52 @@ class SwapsController < ApplicationController
       @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + @swap.item_2.swapzi_points)
     end
     flash[:notice] = "Swap complete! You earned #{points_earned} Swapzi points"
+  end
+
+  def give_achievements
+    if @swap.item_1.user.swapz_count == 1
+      ach = Achievement.find_by(name: "Swap Rookie")
+      user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_2.user.swapz_count == 1
+      ach = Achievement.find_by(name: "Swap Rookie")
+      user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_1.user.swapz_count == 5
+      ach = Achievement.find_by(name: "Seasoned Swapper")
+      user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_2.user.swapz_count == 5
+      ach = Achievement.find_by(name: "Seasoned Swapper")
+      user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_1.user.swapz_count == 20
+      ach = Achievement.find_by(name: "Swap Master")
+      user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_2.user.swapz_count == 20
+      ach = Achievement.find_by(name: "Swap Master")
+      user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.item_1.swap_counter >= 10 || @swap.item_2.swap_counter >= 10
+      ach = Achievement.find_by(name: "Swap Til' You Drop")
+      user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
+      user_ach.save
+      user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
+      user_ach.save
+    end
+    if @swap.updated_at.hour >= 22 || @swap.updated_at.hour <= 4
+      ach = Achievement.find_by(name: "Night Owl")
+      user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
+      user_ach.save
+      user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
+      user_ach.save
+    end
   end
 end

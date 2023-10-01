@@ -17,7 +17,7 @@ class ItemPolicy < ApplicationPolicy
   def create?
     true
   end
-  
+
   def show?
     true
   end
@@ -27,6 +27,10 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def dashboard?
+    true
+  end
+
+  def update?
     true
   end
 end

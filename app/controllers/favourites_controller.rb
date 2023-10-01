@@ -15,6 +15,24 @@ class FavouritesController < ApplicationController
             end
         end
 
+        if current_user.favourites.count == 5
+          ach = Achievement.find_by(name: "Swap Lover")
+          user_ach = UserAchievement.new(user: current_user, achievement: ach)
+          user_ach.save
+        end
+
+        if current_user.favourites.count == 20
+          ach = Achievement.find_by(name: "Swap Obsessed")
+          user_ach = UserAchievement.new(user: current_user, achievement: ach)
+          user_ach.save
+        end
+
+        if current_user.favourites.count == 50
+          ach = Achievement.find_by(name: "Fav Spammer")
+          user_ach = UserAchievement.new(user: current_user, achievement: ach)
+          user_ach.save
+        end
+
         # redirect_to item_path(@item)
         authorize @item
         authorize @favourite
@@ -28,12 +46,12 @@ class FavouritesController < ApplicationController
             if @favourite.destroy
                 format.turbo_stream { flash.now[:notice] = "Item Unfavourited" }
                 format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
-            else 
+            else
                 format.turbo_stream { flash.now[:notice] = "Error" }
                 format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
             end
         end
-        
+
         # redirect_to item_path(@item)
         authorize @item
         authorize @favourite

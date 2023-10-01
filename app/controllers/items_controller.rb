@@ -37,6 +37,20 @@ class ItemsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+    UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    authorize @item
+
+    if @item.update(relist: false, hidden: false)
+      flash[:notice] = "Item relisted!"
+    end
+
+    UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
+    redirect_to dashboard_path
   end
 
   def show
