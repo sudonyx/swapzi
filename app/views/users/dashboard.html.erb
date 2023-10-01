@@ -8,25 +8,27 @@
     </div>
 -->
     <div class="card-row">
-        <div class="dashboard-card">
+        <div class="dashboard-card card-1">
             <h6>Swapzi Score</h6>
-            <p><%= current_user.swapzi_score %></p>
+            <p class="text-center"><%= current_user.swapzi_score %></p>
         </div>
 
         <div class="dashboard-card">
         </div>
 
-        <div class="dashboard-card"></div>
-    </div>
-
-    <% unless @relist_items.empty? %>
-        <div class="mt-4">
-            <h4>Items received in swaps. Would you like to relist these items for extra points? </h4>
-            <% @items = @relist_items %>
-            <%= render "items/item_card_grid" %>
+        <div class="dashboard-card">
+            <h6 class="text-center">Achievements</h6>
+            <div class="row row-cols-5 g-2">
+                <% @achievements.each do |a| %>
+                    <div class="col d-flex justify-content-around align-items-center">
+                        <%= image_tag a.photo, class: "ach-icon" %>
+                    </div>
+                <% end %>
+            </div>
         </div>
-    <% end %>
 
+    </div>
+  
     <% unless @recent_favourites.empty? %>
         <div class="mt-4">
             <h4>Most recent favourites</h4>
@@ -38,7 +40,7 @@
     <% unless @recent_items_browsed.empty? %>
         <div class="mt-4">
             <h4>Recently browsed items</h4>
-            <% @items = @recent_items_browsed %>
+            <% @items = @recent_items_browsed.select { |item| item.hidden == false } %>
             <%= render "items/item_card_grid" %>
         </div>
     <% end %>
