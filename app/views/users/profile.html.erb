@@ -1,11 +1,16 @@
 <div class="container">
 
-  <!-- Display user profile picture if exists -->
-  <% if current_user.photo.attached? %>
-    <%= image_tag current_user.photo, class: "profile-pic" %>
-  <% end %>
+  <div class="mt-4">
+    <h4>Edit Your Profile</h4>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+  </div>
 
-  <!-- User's Items on the Platform -->
+<!-- <div class="user-profile">
+  <% if current_user.photo.attached? %>
+    <%= image_tag current_user.photo, class: "profile-image" %>
+  <% end %>
+</div> --> 
+
   <div class="mt-4">
     <h4>Your Items on the Platform</h4>
 
@@ -15,7 +20,7 @@
           <div class="col-md-3">
             <%= link_to item_path(item) do %>
               <%= image_tag item.photo, class: "item-image img-fluid" %>
-              <p class="text-center mt-2"><%= item.name %></p>
+              <p class="item-name btn-gradient text-center mt-2"><%= item.name %></p>
             <% end %>
           </div>
         <% end %>
@@ -24,11 +29,6 @@
       <p>You don't have any items yet.</p>
       <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
     <% end %>
-  </div>
-
-  <!-- Button to Edit User Profile -->
-  <div class="mt-4">
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
   </div>
 
 </div>
