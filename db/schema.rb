@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_30_130940) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_01_132347) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -162,6 +162,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_130940) do
     t.string "username"
     t.string "location"
     t.integer "swapzi_score"
+    t.integer "swapz_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

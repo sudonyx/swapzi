@@ -48,7 +48,7 @@ achievement8 = Achievement.new(name: "Non-Stop Swap", description: "Relist an it
 achievement8.photo.attach(io: File.open("app/assets/images/achievement_icons/resh(8).png"), filename: "achievement8.png", content_type: "image/png")
 achievement8.save
 
-achievement9 = Achievement.new(name: "Welcome to the club", description: "Post an item!")
+achievement9 = Achievement.new(name: "Welcome To The Club", description: "Post an item!")
 achievement9.photo.attach(io: File.open("app/assets/images/achievement_icons/resh(9).png"), filename: "achievement9.png", content_type: "image/png")
 achievement9.save
 
@@ -59,8 +59,8 @@ achievement10.save
 100.times do
   name = Faker::Commerce.product_name
   description = []
-  (3..8).to_a.sample.times do 
-    description << Faker::Company.catch_phrase 
+  (3..8).to_a.sample.times do
+    description << Faker::Company.catch_phrase
   end
   description = description.join(". ")
   category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"].sample
