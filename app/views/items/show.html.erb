@@ -13,11 +13,14 @@
     <div class="item-show-details mx-4">
       <div class="mb-4 d-flex justify-content-between align-items-center">
         <h1 class="mb-0"><%= @item.name %></h1>
-
       </div>
 
       <% unless @item.user == current_user %>
-        <h4 class="mb-3"><%= @item.user.username %> in <%= @item.user.location %></h4>
+          <%= link_to user_profile_path(@item.user), class: "user-profile-link" do %>
+            <div>
+              <h4 class="mb-3"><%= @item.user.username %> in <%= @item.user.location %></h4>
+            </div>
+          <% end %>
       <% end %>
 
       <p class="mb-5"><%= @item.description%></p>
