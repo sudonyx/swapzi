@@ -19,18 +19,21 @@ class FavouritesController < ApplicationController
           ach = Achievement.find_by(name: "Swap Lover")
           user_ach = UserAchievement.new(user: current_user, achievement: ach)
           user_ach.save
+          flash[:notice] = "Achievement earned: Swap Lover"
         end
 
         if current_user.favourites.count == 20
           ach = Achievement.find_by(name: "Swap Obsessed")
           user_ach = UserAchievement.new(user: current_user, achievement: ach)
           user_ach.save
+          flash[:notice] = "Achievement earned: Swap Obsessed"
         end
 
         if current_user.favourites.count == 50
           ach = Achievement.find_by(name: "Fav Spammer")
           user_ach = UserAchievement.new(user: current_user, achievement: ach)
           user_ach.save
+          flash[:notice] = "Achievement earned: Fav Spammer"
         end
 
         # redirect_to item_path(@item)

@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
     end
 
     UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
+    flash[:notice] = "Achievement earned: Welcome To The Club"
   end
 
   def edit
@@ -64,6 +65,7 @@ class ItemsController < ApplicationController
 
     UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
     redirect_to dashboard_path
+    flash[:notice] = "Achievement earned: Non-Stop Swap"
   end
 
   def show

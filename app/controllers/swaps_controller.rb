@@ -191,35 +191,43 @@ class SwapsController < ApplicationController
   end
 
   def give_achievements
+    # for user 1
     if @swap.item_1.user.swapz_count == 1
       ach = Achievement.find_by(name: "Swap Rookie")
       user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Swap Rookie"
     end
+    # for user 2
     if @swap.item_2.user.swapz_count == 1
       ach = Achievement.find_by(name: "Swap Rookie")
       user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Swap Rookie"
     end
     if @swap.item_1.user.swapz_count == 5
       ach = Achievement.find_by(name: "Seasoned Swapper")
       user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Seasoned Swapper"
     end
     if @swap.item_2.user.swapz_count == 5
       ach = Achievement.find_by(name: "Seasoned Swapper")
       user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Seasoned Swapper"
     end
     if @swap.item_1.user.swapz_count == 20
       ach = Achievement.find_by(name: "Swap Master")
       user_ach = UserAchievement.new(user: @swap.item_1.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Swap Master"
     end
     if @swap.item_2.user.swapz_count == 20
       ach = Achievement.find_by(name: "Swap Master")
       user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Swap Master"
     end
     if @swap.item_1.swap_counter >= 10 || @swap.item_2.swap_counter >= 10
       ach = Achievement.find_by(name: "Swap Til' You Drop")
@@ -227,6 +235,7 @@ class SwapsController < ApplicationController
       user_ach.save
       user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Swap Til' You Drop"
     end
     if @swap.updated_at.hour >= 22 || @swap.updated_at.hour <= 4
       ach = Achievement.find_by(name: "Night Owl")
@@ -234,6 +243,7 @@ class SwapsController < ApplicationController
       user_ach.save
       user_ach = UserAchievement.new(user: @swap.item_2.user, achievement: ach)
       user_ach.save
+      flash[:notice] = "Achievement earned: Night Owl"
     end
   end
 end
