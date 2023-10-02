@@ -10,6 +10,7 @@ Item.destroy_all
 User.destroy_all
 Achievement.destroy_all
 
+user0 = User.create!({ username: "Admin", email: 'admin@swapzi.site', password: 'swapziadmin', location: 'Swapzi HQ', swapzi_score: 999999 })
 user1 = User.create!({ username: "Test", email: 'test@test.com', password: 'password', location: 'Paris', swapzi_score: 500000 })
 user2 = User.create!({ username: "Josh", email: 'josh@test.com', password: 'password', location: 'London', swapzi_score: 100 })
 user3 = User.create!({ username: "Bay", email: 'bay@test.com', password: 'password', location: 'Berlin', swapzi_score: 500 })
