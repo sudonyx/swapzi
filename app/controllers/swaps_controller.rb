@@ -54,9 +54,9 @@ class SwapsController < ApplicationController
 
     if params.has_key?(:accepted)
       if params[:is_user_1] == "true"
-        @swap.update(accepted_user_1: params[:accepted]) if params.has_key?(:accepted)
+        @swap.update(accepted_user_1: params[:accepted])
       else
-        @swap.update(accepted_user_2: params[:accepted]) if params.has_key?(:accepted)
+        @swap.update(accepted_user_2: params[:accepted])
       end
 
       if both_users_accepted?
@@ -182,27 +182,27 @@ class SwapsController < ApplicationController
     users.each do |user|
       if user.swapz_count == 1
         user_ach = UserAchievement.new(user: user, achievement: Achievement.find_by(name: "Swap Rookie"))
-        flash[:notice] = "Achievement earned: Swap Rookie" if user_ach.save && user == current_user
+        flash[:notice] = "Swap complete! Achievement earned: Swap Rookie" if user_ach.save && user == current_user
       end
 
       if user.swapz_count == 5
         user_ach = UserAchievement.new(user: user, achievement: Achievement.find_by(name: "Seasoned Swapper"))
-        flash[:notice] = "Achievement earned: Seasoned Swapper" if user_ach.save && user == current_user
+        flash[:notice] = "Swap complete! Achievement earned: Seasoned Swapper" if user_ach.save && user == current_user
       end
 
       if user.swapz_count == 20
         user_ach = UserAchievement.new(user: user, achievement: Achievement.find_by(name: "Swap Master"))
-        flash[:notice] = "Achievement earned: Swap Master" if user_ach.save && user == current_user
+        flash[:notice] = "Swap complete! Achievement earned: Swap Master" if user_ach.save && user == current_user
       end
 
       if @swap.item_1.swap_counter >= 10 || @swap.item_2.swap_counter >= 10
         user_ach = UserAchievement.new(user: user, achievement: Achievement.find_by(name: "Swap Til' You Drop"))
-        flash[:notice] = "Achievement earned: Swap Til' You Drop" if user_ach.save && user == current_user
+        flash[:notice] = "Swap complete! Achievement earned: Swap Til' You Drop" if user_ach.save && user == current_user
       end
 
       if @swap.updated_at.hour >= 22 || @swap.updated_at.hour <= 4
         user_ach = UserAchievement.new(user: user, achievement: Achievement.find_by(name: "Night Owl"))
-        flash[:notice] = "Achievement earned: Night Owl" if user_ach.save && user == current_user
+        flash[:notice] = "Swap complete! Achievement earned: Night Owl" if user_ach.save && user == current_user
       end
     end
   end

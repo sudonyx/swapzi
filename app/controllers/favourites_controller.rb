@@ -1,7 +1,11 @@
 class FavouritesController < ApplicationController
     def create
         @item = Item.find(params[:item_id])
+        authorize @item
+
         @favourite = Favourite.new
+        authorize @favourite
+
         @favourite.user = current_user
         @favourite.item = @item
 
@@ -17,22 +21,18 @@ class FavouritesController < ApplicationController
 
         if current_user.favourites.count == 5
           user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Swap Lover"))
-          flash[:notice] = "Achievement earned: Swap Lover" if user_ach.save
+          flash[:notice] = "Saved as favorite! Achievement earned: Swap Lover" if user_ach.save
         end
 
         if current_user.favourites.count == 20
           user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Swap Obsessed"))
-          flash[:notice] = "Achievement earned: Swap Obsessed" if user_ach.save
+          flash[:notice] = "Saved as favorite! Achievement earned: Swap Obsessed" if user_ach.save
         end
 
         if current_user.favourites.count == 50
           user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Fav Spammer"))
-          flash[:notice] = "Achievement earned: Fav Spammer" if user_ach.save
+          flash[:notice] = "Saved as favorite! Achievement earned: Fav Spammer" if user_ach.save
         end
-
-        # redirect_to item_path(@item)
-        authorize @item
-        authorize @favourite
     end
 
     def destroy
