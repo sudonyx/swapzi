@@ -40,7 +40,7 @@
     <% unless @recent_items_browsed.empty? %>
         <div class="mt-4">
             <h4>Recently browsed items</h4>
-            <% @items = @recent_items_browsed.select { |item| item.hidden == false } %>
+            <% @items = @recent_items_browsed %>
             <%= render "items/item_card_grid" %>
         </div>
     <% end %>
