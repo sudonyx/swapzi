@@ -1,7 +1,13 @@
 <div class="container">
 
   <div>
-    <h1 class="my-4">Choose your item to swap with <%= @show_item.user.username %>'s <%= @show_item.name %></h1>
+    <% unless @items.empty? %>
+      <h1 class="my-4">Choose your item to swap with <%= @show_item.user.username %>'s <%= @show_item.name %></h1>
+    <% else %>
+      <h1>You haven't posted any items yet... </h1>
+      <%= link_to "Post an item", new_item_path, class: "btn btn-outline-dark rounded-pill" %>
+
+    <% end %>
 
     <%= render 'items/item_card_grid' %>
   </div>
