@@ -41,7 +41,20 @@ class ItemsController < ApplicationController
     UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    authorize @item
+  end
+
   def update
+    @item = Item.find(params[:id])
+    authorize @item
+
+    @item.update(item_params)
+    redirect_to item_path(@item)
+  end
+
+  def relist
     @item = Item.find(params[:id])
     authorize @item
 

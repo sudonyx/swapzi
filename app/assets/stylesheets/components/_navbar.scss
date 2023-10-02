@@ -9,7 +9,7 @@
 }
 
 .navbar-lewagon .navbar-collapse {
-  width: 280px;
+  min-width: 280px;
   flex-grow: 0;
   font-weight: bold;
   justify-content: flex-end;
@@ -39,7 +39,7 @@
     // font-weight: 300;
     // font-size: ;
   }
-} 
+}
 
 .search-bar {
   border-radius: 16px;

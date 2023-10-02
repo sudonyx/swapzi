@@ -1,11 +1,11 @@
 .btn-gradient {
-  color: $white;
+  color: white;
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bolder;
   background-color: $eggplant;
   font-family: $body-font;
-  text-decoration: none
+  text-decoration: none;
 
   transition: color 0.3s ease;
 
@@ -18,7 +18,7 @@
 }
 
 .btn-orange {
-  color: $white;
+  color: white;
   padding: 6px 20px;
   border-radius: 4px;
   font-weight: bolder;
@@ -29,7 +29,7 @@
 
   &:hover {
     background-color: darken(#F78F1E, 10%);
-    color: $white;
+    color: white;
   }
 }
 
