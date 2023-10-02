@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
     end
 
     user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
-    flash[:notice] = "Achievement earned: Non-Stop Swap" if user_ach.save
+    flash[:notice] = "Item relisted! Achievement earned: Non-Stop Swap" if user_ach.save
 
     redirect_to user_profile_path(current_user)
   end

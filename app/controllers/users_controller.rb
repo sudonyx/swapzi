@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
     @recent_items_browsed = @recent_items_browsed.select { |item| item.hidden == false && item.user != current_user }
 
-    @item_suggestions = Item.where.not(user: current_user).order(created_at: :desc).limit(4)
+    @item_suggestions = Item.where.not(user: current_user).order("RANDOM()")
+    @item_suggestions = @item_suggestions.select { |item| item.hidden == false }.first(4)
 
     authorize @recent_favourites
   end
