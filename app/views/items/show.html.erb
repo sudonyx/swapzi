@@ -24,10 +24,15 @@
 
       <% if @item.relist && @item.user == current_user %>
         <div class="mt-4">
-          <%= button_to "Relist Item", item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :patch, data: {turbo_method: :patch} %>
+          <%= button_to "Relist item", relist_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :patch, data: {turbo_method: :patch} %>
         </div>
       <% end %>
 
+      <% if @item.user == current_user %>
+        <div class="mt-4">
+          <%= link_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
+        </div>
+      <% end %>
 
       <div class="container item-show-actions p-0">
 

@@ -30,7 +30,15 @@ class ItemPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    true
+  end
+
   def update?
+    true
+  end
+
+  def relist?
     true
   end
 end

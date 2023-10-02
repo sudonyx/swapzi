@@ -1,35 +1,51 @@
 <div class="container">
 
-  <div class="mt-4">
-    <h4>Edit Your Profile</h4>
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+  <div class="user-info">
+    <h2><%= @user.username %></h2>
+    <p>Location: <%= @user.location %></p>
+    <p>Swapzi score: <%= @user.swapzi_score %></p>
+    <P>Completed swapz: <%= @user.swapz_count %></P>
   </div>
 
-<!-- <div class="user-profile">
-  <% if current_user.photo.attached? %>
-    <%= image_tag current_user.photo, class: "profile-image" %>
+  <!-- <div class="user-profile">
+    <% if current_user.photo.attached? %>
+      <%= image_tag current_user.photo, class: "profile-image" %>
+    <% end %>
+  </div> -->
+
+  <% if @user == current_user %>
+    <div class="mt-4">
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+    </div>
   <% end %>
-</div> --> 
+
+  <% if @user == current_user && !@relist_items.empty? %>
+    <div class="mt-4">
+        <h4>New items received in swaps!</h4>
+        <p>Hint: You can swap items again for even more points! Click on the item for more details</p>
+        <% @items = @relist_items %>
+        <%= render "items/item_card_grid" %>
+    </div>
+  <% end %>
 
   <div class="mt-4">
-    <h4>Your items on the platform</h4>
+    <% if @user == current_user %>
+      <h4>Your items on the platform</h4>
+    <% else %>
+      <h4><%= @user.username %>'s available items</h4>
+    <% end %>
 
     <% if @all_items.any? %>
-      <div class="row">
-        <% @all_items.each do |item| %>
-          <div class="col-md-3">
-            <%= link_to item_path(item) do %>
-              <%= image_tag item.photo, class: "item-image img-fluid" %>
-              <p class="item-name btn-gradient text-center mt-2"><%= item.name %></p>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <% @items = @all_items %>
+      <%= render 'items/item_card_grid' %>
     <% else %>
-      <p>You don't have any items yet.</p>
-      <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
+      <% if @user == current_user %>
+        <p>You don't have any items yet.</p>
+        <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
+      <% else %>
+        <p><%= @user.username %> doesn't have any items</p>
+      <% end %>
     <% end %>
   </div>
 
 </div>
-

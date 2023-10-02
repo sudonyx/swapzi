@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :items, only: %i[index show new update create destroy] do
+  patch "items/:id/relist", to: "items#relist", as: "relist_item"
+
+  resources :items do
     resources :favourites, only: %i[create]
     resources :swaps, only: %i[new]
   end
 
   resources :users, only: [] do
-    get 'profile', on: :collection
+    get '/profile', to: "users#profile"
   end
 
   get "/swaps", to: "swaps#pending"

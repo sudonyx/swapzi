@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @all_items = Item.where(user: current_user, hidden: false)
+    @user = User.find(params[:user_id])
+    authorize @user
+
+    @all_items = Item.where(user: @user, hidden: false)
 
     @relist_items = Item.where(user: current_user, hidden: true, relist: true)
   end
