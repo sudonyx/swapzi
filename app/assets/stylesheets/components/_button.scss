@@ -35,3 +35,49 @@
   align-items: center;
   margin-top: 20px;
 }
+
+.btn-purple {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 0.5rem;
+  background: $eggplant;
+  transition: all 0.3s ease;
+  border-color: $eggplant;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+button{
+  border: 0;
+}
+
+.btn-purple:hover {
+  background: $eggplant;
+  color: rgb(255, 255, 255);
+  transform: scale(1.1);
+}
+
+.btn-clear{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.btn-orange{
+  color: white;
+  padding: 8px 24px;
+  border-radius: 0.5rem;
+  background: $yellow;
+  transition: all 0.3s ease;
+  border-color: $eggplant;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 260px;
+}
+
+.btn-orange:hover {
+  background: $yellow;
+  color: rgb(255, 255, 255);
+  transform: scale(1.1);
+}
