@@ -1,7 +1,7 @@
-<%= simple_form_for @item do |form| %>
-  <%= form.input :name %>
-  <%= form.input :description %>
-  <%= form.input :category, collection: ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"] %>
-  <%= form.input :photo, as: :file %>
-  <%= form.submit %>
+<%= simple_form_for @item, html: { class: 'my-form' } do |form| %>
+  <%= form.input :name, input_html: { class: 'my-input' }, required: false %>
+  <%= form.input :description, input_html: { class: 'my-input' }, required: false %>
+  <%= form.input :category, collection: ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"], input_html: { class: 'my-input' }, required: false %>
+  <%= form.input :photo, as: :file, input_html: { class: 'my-input' }, required: false %>
+  <%= form.submit class: 'btn-purple', style: 'display: block; margin: 0 auto; border: 0;'  %>
 <% end %>
