@@ -63,6 +63,16 @@
   text-decoration: none;
   text-transform: capitalize;
 }
+.btn-purple-show {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 0.5rem;
+  background: $eggplant;
+  transition: all 0.3s ease;
+  border-color: $eggplant;
+  text-decoration: none;
+  text-transform: capitalize;
+}
 
 button{
   border: 0;

@@ -6,7 +6,11 @@
         <%= image_tag(@item.photo, class: "card-img-top", style: "height:100%;") %>
       <% end %>
 
-      <span class="mb-0 px-3 show-swapzi-points"><%= @item.swapzi_points %> Swapzi Points</span>
+      <div class="fav-positon" style="position: absolute; top: 10px; left: 10px;">
+        <%= turbo_frame_tag "fav-button" do %>
+          <%= render 'favourites/fav_button' %>
+        <% end %>
+      </div>
     </div>
 
     <div class="item-show-details mx-4">
@@ -41,19 +45,13 @@
           <%= link_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
         </div>
       <% end %>
-
-      <div class="container item-show-actions p-0">
-
+      
+      <div class="container item-show-actions p-0" style="position: relative;">
         <% unless @item.user == current_user %>
-          <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn-orange" %>
-
-          <div class="mt-4">
-            <%= turbo_frame_tag "fav-button" do %>
-              <%= render 'favourites/fav_button' %>
-            <% end %>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; bottom: 0;">
+            <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn-orange" %>
+            <span class="btn-purple-show" style="display: block; margin-left: 10px; width: 260px; text-align: center;">Swapzi Points: <%= @item.swapzi_points %></span>
           </div>
-
-
         <% end %>
 
         <%# <div class="container item-show-container">
