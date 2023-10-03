@@ -1,12 +1,5 @@
 <div class="container">
 
-<!--
-    <div class="text-center mt-4 mb-4">
-        <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-image" %>
-        <% end %>
-    </div>
--->
     <div class="card-row">
         <div class="dashboard-card">
             <div class="dashboard-card-header">
@@ -34,7 +27,18 @@
         </div>
 
     </div>
-  
+
+    <% unless @open_swapz.empty? %>
+        <hr>
+        <div class="my-4 d-flex justify-content-around align-items-center">
+            <div class="d-flex">
+                <h4 class="my-auto me-3">People want to swap with you!</h4>
+                <%= link_to "Open swapz", swaps_path(page: 'pending'), class: "btn btn-outline-dark rounded-pill" %>
+            </div>
+        </div>
+        <hr>
+    <% end %>
+
     <% unless @recent_favourites.empty? %>
         <div class="mt-4">
             <h4>Most recent favourites</h4>
