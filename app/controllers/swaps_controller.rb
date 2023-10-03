@@ -163,8 +163,7 @@ class SwapsController < ApplicationController
   def create_duplicate_items_and_swap_users
     items = [@swap.item_1, @swap.item_2]
     items.each do |item|
-      new_points = item.swapzi_points + (item.swapzi_points / 2)
-      new_item = Item.new(name: item.name, description: item.description, category: item.category, swapzi_points: new_points, swap_counter: item.swap_counter, hidden: true, relist: true)
+      new_item = Item.new(name: item.name, description: item.description, category: item.category, swapzi_points: item.swapzi_points, swap_counter: item.swap_counter, hidden: true, relist: true)
       new_item.user = item == @swap.item_1 ? @swap.item_2.user : @swap.item_1.user
       new_item.photo.attach(io: StringIO.new(item.photo.download), filename: item.name, content_type: item.photo.content_type)
       new_item.save
@@ -172,8 +171,9 @@ class SwapsController < ApplicationController
   end
 
   def update_swapzi_score_both_users
-    @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + @swap.item_2.swapzi_points)
-    @swap.item_2.user.update!(swapzi_score: @swap.item_2.user.swapzi_score + @swap.item_1.swapzi_points)
+    multiplier = @swap.item_1.swap_counter > @swap.item_2.swap_counter ? @swap.item_1.swap_counter + 1 : @swap.item_2.swap_counter + 1
+    @swap.item_1.user.update!(swapzi_score: @swap.item_1.user.swapzi_score + (@swap.item_2.swapzi_points * multiplier))
+    @swap.item_2.user.update!(swapzi_score: @swap.item_2.user.swapzi_score + (@swap.item_1.swapzi_points * multiplier))
 
     flash[:notice] = "Swap complete! You earned #{@swap.item_1.user == current_user ? @swap.item_2.swapzi_points : @swap.item_1.swapzi_points} Swapzi points"
   end

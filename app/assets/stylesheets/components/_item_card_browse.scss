@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 
   &:hover {
       transform: translateY(-5px);
@@ -51,7 +52,18 @@
 }
 
 .card-featured {
-  background-color: #f78e1e2e;
+  color: $gray;
+  padding: 8px 16px;
+  background-color: $yellow;
+  border-radius: 5px;
+  border: solid 1px $gray;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  p {
+    margin: 0;
+  }
 }
 
 .no-underline {
