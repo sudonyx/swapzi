@@ -4,7 +4,7 @@
 
         <div class="dashboard-card">
             <div class="dashboard-card-header">
-                <h6>Swapzi Score</h6>
+                <h4>Swapzi Score</h4>
             </div>
             <div class="dashboard-card-content">
                 <p class="text-center"><%= current_user.swapzi_score %></p>
@@ -18,10 +18,10 @@
         <div class="dashboard-card">
 
             <div class="dashboard-card-header">
-                <h6 class="text-center">Achievements</h6>
+                <h4 class="text-center">Achievements</h4>
             </div>
 
-            <div class="row row-cols-5 g-2">
+            <div class="row row-cols-5 g-2 mt-1">
                 <% @achievements.each do |a| %>
                     <div class="col">
                         <div class="d-flex justify-content-around align-items-center">

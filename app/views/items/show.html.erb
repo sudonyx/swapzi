@@ -6,6 +6,12 @@
         <%= image_tag(@item.photo, class: "card-img-top", style: "height:100%;") %>
       <% end %>
 
+      <% if @item.featured && @item.user == current_user %>
+        <div class="card-featured">
+          <p><strong>Featured!</strong></p>
+        </div>  
+      <% end %>
+
       <% unless @item.user == current_user %>
         <div class="fav-positon" style="position: absolute; top: 10px; left: 10px;">
           <%= turbo_frame_tag "fav-button" do %>
@@ -18,9 +24,13 @@
     <div class="item-show-details mx-4">
       <div class="mb-4">
         <h1><%= @item.name %></h1>
-        <% if @item.swap_counter > 0 %>
-          <p>Extra points! This item has been swapped <%= @item.swap_counter %> time<%= @item.swap_counter > 1 ? "s" : "" %>!</p>
-        <% end %>
+        <div class="d-flex align-items-center mb-1">
+          <%= image_tag "logo-draft.png", style: "height: 26px; object-fit: contain;" %>
+          <p class="my-0 mx-2" style="font-size: 24px"><strong><%= @item.swapzi_points %></strong> points</p>
+        </div>
+          <% if @item.swap_counter > 0 %>
+            <p style="margin: 0;"><strong>x<%= @item.swap_counter + 1 %> swapzi points multiplier!</strong></p>
+          <% end %>
       </div>
 
       <div class="d-flex align-items-center mb-4">
@@ -36,33 +46,31 @@
 
       <p class="mb-5"><%= @item.description%></p>
 
-      <% if @item.relist && @item.user == current_user %>
-        <div class="mt-4">
-          <%= button_to "Relist item", relist_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :patch, data: {turbo_method: :patch} %>
-        </div>
-      <% end %>
-
-      <% if @item.user == current_user %>
-        <div class="mt-4">
-          <%= link_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
-        </div>
-
-        <% if @item.featured %>
-          <div class="mt-4">
-            <%= button_to "Item featured!", {}, disabled: true, id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
+      <div class="d-flex">
+        <% if @item.user == current_user %>
+          <div>
+            <%= button_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn-orange me-4" %>
           </div>
-        <% else %>
-          <div class="mt-4">
-            <%= button_to "Feature this item", feature_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Spend 100 swapzi points to feature this item?" } %>
+      
+        <% if @item.relist && @item.user == current_user %>
+          <div>
+            <%= button_to "Relist item", relist_item_path(@item), id: "show-button", class: "btn-purple", method: :patch, data: {turbo_method: :patch} %>
           </div>
         <% end %>
-      <% end %>
+
+          <% unless @item.featured || @item.relist %>
+              <div>
+                <%= button_to "Feature this item", feature_item_path(@item), id: "show-button", class: "btn-purple", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Spend 100 swapzi points to feature this item?" } %>
+              </div>
+          <% end %>
+        <% end %>
+      </div>
+
       
       <div class="container item-show-actions p-0" style="position: relative;">
         <% unless @item.user == current_user %>
           <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; bottom: 0;">
             <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn-orange" %>
-            <span class="btn-purple-show" style="display: block; margin-left: 10px; width: 260px; text-align: center;">Swapzi Points: <%= @item.swapzi_points %></span>
           </div>
         <% end %>
 
