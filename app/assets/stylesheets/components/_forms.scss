@@ -1,0 +1,21 @@
+.my-form{
+    text-decoration: none;
+    width: 100%;
+}
+
+.my-input{
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.my-form-btn{
+    color: white;
+    padding: 8px 24px;
+    border-radius: 0.5rem;
+    background: $eggplant;
+    transition: all 0.3s ease;
+    border-color: $eggplant;
+    text-decoration: none;
+    text-transform: capitalize;
+}
