@@ -1,6 +1,11 @@
 <% if current_user.favourites.exists?(item: @item) %>
   <% @favourite = current_user.favourites.find_by(item: @item) %>
-    <%= button_to "Unfavourite item", favourite_path(@favourite), id: "show-button", class: "btn-purple", method: :delete, data: {turbo_method: :delete} %>
+  <%= button_to favourite_path(@favourite), method: :delete, data: { turbo_method: :delete }, class: 'btn-clear' do %>
+    <i class="fa-solid fa-star fa-3x" style="color: #ffdd00;"></i>
+  <% end %>
+
 <% else %>
-    <%= button_to "Add to favourites", item_favourites_path(@item), id: "show-button", class: "btn-purple", method: :post, data: {turbo_method: :post} %>
+    <%= button_to item_favourites_path(@item), class: "btn-clear", method: :post, data: {turbo_method: :post} do %>
+    <i class="fa-regular fa-star fa-3x" style="color: #ffdd00;"></i>
+    <% end %>
 <% end %>
