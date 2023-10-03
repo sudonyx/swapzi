@@ -99,7 +99,7 @@ class SwapsController < ApplicationController
 
         create_duplicate_items_and_swap_users
 
-        redirect_to dashboard_path and return
+        redirect_to user_profile_path(current_user) and return
       end
     elsif params.has_key?(:completed)
       if @swap.item_1.user == current_user && @swap.accepted_user_2 != true || @swap.item_2.user == current_user && @swap.accepted_user_1 != true
@@ -163,7 +163,8 @@ class SwapsController < ApplicationController
   def create_duplicate_items_and_swap_users
     items = [@swap.item_1, @swap.item_2]
     items.each do |item|
-      new_item = Item.new(name: item.name, description: item.description, category: item.category, swapzi_points: item.swapzi_points, swap_counter: item.swap_counter, hidden: true, relist: true)
+      new_points = item.swapzi_points + (item.swapzi_points / 2)
+      new_item = Item.new(name: item.name, description: item.description, category: item.category, swapzi_points: new_points, swap_counter: item.swap_counter, hidden: true, relist: true)
       new_item.user = item == @swap.item_1 ? @swap.item_2.user : @swap.item_1.user
       new_item.photo.attach(io: StringIO.new(item.photo.download), filename: item.name, content_type: item.photo.content_type)
       new_item.save
