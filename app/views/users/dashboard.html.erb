@@ -8,16 +8,22 @@
     </div>
 -->
     <div class="card-row">
-        <div class="dashboard-card card-1">
-            <h6>Swapzi Score</h6>
-            <p class="text-center"><%= current_user.swapzi_score %></p>
+        <div class="dashboard-card">
+            <div class="dashboard-card-header">
+                <h6>Swapzi Score</h6>
+            </div>
+            <div class="dashboard-card-content">
+                <p class="text-center"><%= current_user.swapzi_score %></p>
+            </div>
         </div>
 
         <div class="dashboard-card">
         </div>
 
         <div class="dashboard-card">
-            <h6 class="text-center">Achievements</h6>
+            <div class="dashboard-card-header">
+                <h6 class="text-center">Achievements</h6>
+            </div>
             <div class="row row-cols-5 g-2">
                 <% @achievements.each do |a| %>
                     <div class="col d-flex justify-content-around align-items-center">

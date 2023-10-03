@@ -1,10 +1,30 @@
 <div class="container">
 
-  <div class="user-info">
-    <h2><%= @user.username %></h2>
-    <p>Location: <%= @user.location %></p>
-    <p>Swapzi score: <%= @user.swapzi_score %></p>
-    <P>Completed swapz: <%= @user.swapz_count %></P>
+  <div class="user-info-container d-flex justify-content-start">
+  
+    <div class="user-img">
+      <% if @user.photo.attached? %>
+        <%= image_tag @user.photo, class: "avatar-xl" %>
+      <% else %>
+        <%= image_tag "avatar-default-icon.png", class: "avatar-xl" %>
+      <% end %>
+    </div>
+
+    <div class="user-info w-100 ms-5">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h2 class="my-auto"><%= @user.username %></h2>
+          <div class="my-auto">
+            <% if @user == current_user %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+            <% end %>
+          </div>
+      </div>
+
+      <p>Location: <%= @user.location %></p>
+      <p>Swapzi score: <%= @user.swapzi_score %></p>
+      <P>Completed swapz: <%= @user.swapz_count %></P>
+    </div>
+
   </div>
 
   <!-- <div class="user-profile">
@@ -13,11 +33,9 @@
     <% end %>
   </div> -->
 
-  <% if @user == current_user %>
-    <div class="mt-4">
-      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
-    </div>
-  <% end %>
+
+
+  <hr>
 
   <% if @user == current_user && !@relist_items.empty? %>
     <div class="mt-4">

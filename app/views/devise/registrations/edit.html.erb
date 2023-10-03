@@ -12,15 +12,16 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-<!--
-      <div class="mb-3">
-        <%= f.label :photo, "Profile Image" %>
-        <%= f.input :photo, as: :file %>
-        <% if resource.photo.attached? %>
-          <%= image_tag resource.photo, class: "profile-image mt-2" %>
-        <% end %>
-      </div>
-  -->
+      <!--
+        <div class="mb-3">
+          <%= f.label :photo, "Profile Image" %>
+          <%= f.input :photo, as: :file %>
+          <% if resource.photo.attached? %>
+            <%= image_tag resource.photo, class: "profile-image mt-2" %>
+          <% end %>
+        </div>
+      -->
+      <%= f.input :photo, as: :file %>
   
       <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
