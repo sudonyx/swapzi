@@ -1,10 +1,9 @@
 <div class="container">
 
-  <div class="item-show-container">
-
+  <div class="item-show-container" style="margin-bottom: 10px; height: 400px;">
     <div class="show-page-img">
       <% if @item.photo.attached? %>
-        <%= image_tag(@item.photo, class: "card-img-top") %>
+        <%= image_tag(@item.photo, class: "card-img-top", style: "height:100%;") %>
       <% end %>
 
       <span class="mb-0 px-3 show-swapzi-points"><%= @item.swapzi_points %> Swapzi Points</span>
@@ -46,7 +45,7 @@
       <div class="container item-show-actions p-0">
 
         <% unless @item.user == current_user %>
-          <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), id: "show-button", class: "btn btn-outline-primary rounded-pill" %>
+          <%= link_to "Choose an item to swap", new_item_swap_path(@item, page: 'new_swap'), class: "btn-orange" %>
 
           <div class="mt-4">
             <%= turbo_frame_tag "fav-button" do %>
