@@ -6,26 +6,32 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.8);
+  }
+
   .card-img-top {
       width: 100%;
       height: auto;
       border-radius: 4px;
     }
-    
+
     .show-body {
       padding: 10px;
       flex-grow: 1;
       text-decoration: none;
     }
-    
+
     .show-title {
       font-size: 20px;
       margin-bottom: 5px;
       text-decoration: none;
       color: black;
     }
-    
+
     .show-text {
       font-size: 18px;
       color: #666;
