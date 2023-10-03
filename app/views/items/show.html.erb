@@ -15,13 +15,16 @@
         <h1 class="mb-0"><%= @item.name %></h1>
       </div>
 
-      <% unless @item.user == current_user %>
-          <%= link_to user_profile_path(@item.user), class: "user-profile-link" do %>
-            <div>
-              <h4 class="mb-3"><%= @item.user.username %> in <%= @item.user.location %></h4>
-            </div>
+      <div class="d-flex align-items-center mb-4">
+        <%= link_to user_profile_path(@item.user), class: "user-profile-link" do %>
+          <% if @item.user.photo.attached? %>
+            <%= image_tag @item.user.photo, class: "avatar-large" %>
+          <% else %>
+            <%= image_tag "avatar-default-icon.png", class: "avatar-large" %>
           <% end %>
-      <% end %>
+        <% end %>
+        <h3 class="my-auto mx-4"><%= @item.user.username %> in <%= @item.user.location %></h3>
+      </div>
 
       <p class="mb-5"><%= @item.description%></p>
 
