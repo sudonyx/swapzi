@@ -1,0 +1,69 @@
+<div class="container">
+
+  <div class="user-info-container d-flex justify-content-start">
+  
+    <div class="user-img">
+      <% if @user.photo.attached? %>
+        <%= image_tag @user.photo, class: "avatar-xl" %>
+      <% else %>
+        <%= image_tag "avatar-default-icon.png", class: "avatar-xl" %>
+      <% end %>
+    </div>
+
+    <div class="user-info w-100 ms-5">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h2 class="my-auto"><%= @user.username %></h2>
+          <div class="my-auto">
+            <% if @user == current_user %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-gradient" %>
+            <% end %>
+          </div>
+      </div>
+
+      <p>Location: <%= @user.location %></p>
+      <p>Swapzi score: <%= @user.swapzi_score %></p>
+      <P>Completed swapz: <%= @user.swapz_count %></P>
+    </div>
+
+  </div>
+
+  <!-- <div class="user-profile">
+    <% if current_user.photo.attached? %>
+      <%= image_tag current_user.photo, class: "profile-image" %>
+    <% end %>
+  </div> -->
+
+
+
+  <hr>
+
+  <% if @user == current_user && !@relist_items.empty? %>
+    <div class="mt-4">
+        <h4>New items received in swaps!</h4>
+        <p>Hint: You can swap items again for even more points! Click on the item for more details</p>
+        <% @items = @relist_items %>
+        <%= render "items/item_card_grid" %>
+    </div>
+  <% end %>
+
+  <div class="mt-4">
+    <% if @user == current_user %>
+      <h4>Your items on the platform</h4>
+    <% else %>
+      <h4><%= @user.username %>'s available items</h4>
+    <% end %>
+
+    <% if @all_items.any? %>
+      <% @items = @all_items %>
+      <%= render 'items/item_card_grid' %>
+    <% else %>
+      <% if @user == current_user %>
+        <p>You don't have any items yet.</p>
+        <%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
+      <% else %>
+        <p><%= @user.username %> doesn't have any items</p>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

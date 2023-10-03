@@ -1,7 +1,11 @@
 class FavouritesController < ApplicationController
     def create
         @item = Item.find(params[:item_id])
+        authorize @item
+
         @favourite = Favourite.new
+        authorize @favourite
+
         @favourite.user = current_user
         @favourite.item = @item
 
@@ -15,9 +19,20 @@ class FavouritesController < ApplicationController
             end
         end
 
-        # redirect_to item_path(@item)
-        authorize @item
-        authorize @favourite
+        if current_user.favourites.count == 5
+          user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Swap Lover"))
+          flash[:notice] = "Saved as favorite! Achievement earned: Swap Lover" if user_ach.save
+        end
+
+        if current_user.favourites.count == 20
+          user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Swap Obsessed"))
+          flash[:notice] = "Saved as favorite! Achievement earned: Swap Obsessed" if user_ach.save
+        end
+
+        if current_user.favourites.count == 50
+          user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Fav Spammer"))
+          flash[:notice] = "Saved as favorite! Achievement earned: Fav Spammer" if user_ach.save
+        end
     end
 
     def destroy
@@ -28,12 +43,12 @@ class FavouritesController < ApplicationController
             if @favourite.destroy
                 format.turbo_stream { flash.now[:notice] = "Item Unfavourited" }
                 format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
-            else 
+            else
                 format.turbo_stream { flash.now[:notice] = "Error" }
                 format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
             end
         end
-        
+
         # redirect_to item_path(@item)
         authorize @item
         authorize @favourite

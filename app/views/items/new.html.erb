@@ -1,10 +1,4 @@
 <div class="container form-container">
   <h1>Post an item</h1>
-  <%= simple_form_for @item do |form| %>
-    <%= form.input :name %>
-    <%= form.input :description %>
-    <%= form.input :category, collection: ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"] %>
-    <%= form.input :photo, as: :file %>
-    <%= form.submit %>
-  <% end %>
+  <%= render "form" %>
 </div>

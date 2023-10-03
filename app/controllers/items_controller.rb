@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  
+
   def index
     @items = policy_scope(Item)
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       @selected = "all categories"
     end
   end
-  
+
   def new
     @item = Item.new
     authorize @item
@@ -37,14 +37,45 @@ class ItemsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+    user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
+    flash[:notice] = "Achievement earned: Welcome To The Club" if user_ach.save
   end
-  
+
+  def edit
+    @item = Item.find(params[:id])
+    authorize @item
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    authorize @item
+
+    @item.update(item_params)
+    redirect_to item_path(@item)
+  end
+
+  def relist
+    @item = Item.find(params[:id])
+    authorize @item
+
+    if @item.update(relist: false, hidden: false)
+      flash[:notice] = "Item relisted!"
+    end
+
+    user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
+    flash[:notice] = "Item relisted! Achievement earned: Non-Stop Swap" if user_ach.save
+
+    redirect_to user_profile_path(current_user)
+  end
+
   def show
     @item = Item.find(params[:id])
     authorize @item
     @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
-  end 
-  
+    BrowsingHistory.create(user: current_user, item: @item) if user_signed_in?
+  end
+
   private
 
   def item_params

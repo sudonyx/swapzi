@@ -21,4 +21,8 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     true
   end
+
+  def profile?
+    true
+  end
 end
