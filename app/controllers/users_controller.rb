@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def dashboard
     @achievements = Achievement.all
 
+    @open_swapz = Swap.where(user_1: current_user).or(Swap.where(user_2: current_user))
+    @open_swapz = @open_swapz.select do |swap|
+      swap.user_1 == current_user && swap.accepted_user_1 != true || swap.user_2 == current_user && swap.accepted_user_2 != true
+    end
+
     @recent_favourites = Favourite.where(user: current_user).order(created_at: :desc).limit(4)
     @recent_items_browsed = BrowsingHistory.where(user: current_user).order(created_at: :desc).limit(4).map(&:item)
 
