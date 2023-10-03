@@ -41,7 +41,7 @@
 
 
   <div class="d-flex justify-content-center">
-    <%= button_to swap_path(@swap), method: :delete, data: { turbo_method: :delete, turbo_confirm: "You will lose Swapzi points if the other user has accepted!\nDo you wish to proceed?" }, class: "btn-clear" do %>
+    <%= button_to swap_path(@swap), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Cancel swap? You will lose Swapzi points if the other user has accepted!\nDo you wish to proceed?" }, class: "btn-clear" do %>
       <i class='fa fa-thin fa-circle-xmark fa-2xl' style='color: #ff3838;'></i>
     <% end %>
   </div>

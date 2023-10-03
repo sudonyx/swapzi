@@ -41,4 +41,8 @@ class ItemPolicy < ApplicationPolicy
   def relist?
     true
   end
+
+  def feature?
+    true
+  end
 end
