@@ -1,5 +1,43 @@
+.achievement-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .ach-icon {
   height: 40px;
+  filter: grayscale(100%);
   background-color: #f1f1f1;
   border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.ach-icon.accomplished {
+  filter: grayscale(0%);
+}
+
+.ach-description {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background-color: rgba(70, 27, 147, 0.95);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  visibility: hidden;
+  z-index: 1;
+  margin-top: 15px;
+}
+
+.achievement-wrapper:hover .ach-icon {
+  transform: scale(1.8);
+}
+
+.achievement-wrapper:hover .ach-description {
+  opacity: 1;
+  visibility: visible;
 }

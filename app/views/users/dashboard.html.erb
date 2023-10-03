@@ -1,15 +1,8 @@
 <div class="container">
 
-<!--
-    <div class="text-center mt-4 mb-4">
-        <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, alt: "#{current_user.username}'s Profile Picture", class: "profile-image" %>
-        <% end %>
-    </div>
--->
     <div class="card-row">
         <div class="dashboard-card card-1">
-            <h6>Swapzi Score</h6>
+            <h4>Swapzi Score</h4>
             <p class="text-center"><%= current_user.swapzi_score %></p>
         </div>
 
@@ -17,37 +10,45 @@
         </div>
 
         <div class="dashboard-card">
-            <h6 class="text-center">Achievements</h6>
+            <h4 class="text-center">Achievements</h4>
             <div class="row row-cols-5 g-2">
                 <% @achievements.each do |a| %>
-                    <div class="col d-flex justify-content-around align-items-center">
-                        <%= image_tag a.photo, class: "ach-icon" %>
+                    <div class="col">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <div class="achievement-wrapper">
+                                <%= image_tag a.photo, class: "ach-icon #{'accomplished' if a.completed_by?(current_user)}", alt: "Achievement Icon" %>
+                                <div class="ach-description hidden"><%= a.description %></div>
+                            </div>
+                        </div>
                     </div>
                 <% end %>
+
             </div>
         </div>
-
     </div>
-  
-    <% unless @recent_favourites.empty? %>
+
+    <div class="card-row">
+        <% unless @recent_favourites.empty? %>
+            <div class="mt-4">
+                <h4>Most recent favourites</h4>
+                <% @items = @recent_favourites.map(&:item) %>
+                <%= render "items/item_card_grid" %>
+            </div>
+        <% end %>
+
+        <% unless @recent_items_browsed.empty? %>
+            <div class="mt-4">
+                <h4>Recently browsed items</h4>
+                <% @items = @recent_items_browsed.select { |item| item.hidden == false } %>
+                <%= render "items/item_card_grid" %>
+            </div>
+        <% end %>
+
         <div class="mt-4">
-            <h4>Most recent favourites</h4>
-            <% @items = @recent_favourites.map(&:item) %>
+            <h4>Check out these available items</h4>
+            <% @items = @item_suggestions %>
             <%= render "items/item_card_grid" %>
         </div>
-    <% end %>
-
-    <% unless @recent_items_browsed.empty? %>
-        <div class="mt-4">
-            <h4>Recently browsed items</h4>
-            <% @items = @recent_items_browsed.select { |item| item.hidden == false } %>
-            <%= render "items/item_card_grid" %>
-        </div>
-    <% end %>
-
-    <div class="mt-4">
-        <h4>Check out these available items</h4>
-        <% @items = @item_suggestions %>
-        <%= render "items/item_card_grid" %>
     </div>
+
 </div>
