@@ -25,6 +25,7 @@
 .dashboard-card p{
     color: white;
     padding: 8px 24px;
+    margin-top: 20px;
     border-radius: 4px;
     background: $eggplant;
     // transition: background 0.3s ease;
@@ -33,11 +34,16 @@
     // margin-left: auto;
 }
 
-.card-1 {
+.dashboard-card-header {
+    text-align: center;
+}
+
+.dashboard-card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 .fav-carosel{

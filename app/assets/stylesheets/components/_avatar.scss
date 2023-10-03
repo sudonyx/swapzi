@@ -1,13 +1,19 @@
 .avatar {
-  height: 38px;
+  height: 42px;
   width: auto;
   border-radius: 50%;
   margin: auto;
 }
 .avatar-large {
-  width: 56px;
+  width: 50px;
   border-radius: 50%;
 }
+
+.avatar-xl {
+  width: 180px;
+  border-radius: 50%;
+}
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;

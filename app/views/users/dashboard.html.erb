@@ -1,16 +1,26 @@
 <div class="container">
 
     <div class="card-row">
-        <div class="dashboard-card card-1">
-            <h4>Swapzi Score</h4>
-            <p class="text-center"><%= current_user.swapzi_score %></p>
+
+        <div class="dashboard-card">
+            <div class="dashboard-card-header">
+                <h6>Swapzi Score</h6>
+            </div>
+            <div class="dashboard-card-content">
+                <p class="text-center"><%= current_user.swapzi_score %></p>
+            </div>
+
         </div>
 
         <div class="dashboard-card">
         </div>
 
         <div class="dashboard-card">
-            <h4 class="text-center">Achievements</h4>
+
+            <div class="dashboard-card-header">
+                <h6 class="text-center">Achievements</h6>
+            </div>
+
             <div class="row row-cols-5 g-2">
                 <% @achievements.each do |a| %>
                     <div class="col">
@@ -27,14 +37,24 @@
         </div>
     </div>
 
-    <div class="card-row">
-        <% unless @recent_favourites.empty? %>
-            <div class="mt-4">
-                <h4>Most recent favourites</h4>
-                <% @items = @recent_favourites.map(&:item) %>
-                <%= render "items/item_card_grid" %>
+    <% unless @open_swapz.empty? %>
+        <hr>
+        <div class="my-4 d-flex justify-content-around align-items-center">
+            <div class="d-flex">
+                <h4 class="my-auto me-3">People want to swap with you!</h4>
+                <%= link_to "Open swapz", swaps_path(page: 'pending'), class: "btn btn-outline-dark rounded-pill" %>
             </div>
-        <% end %>
+        </div>
+        <hr>
+    <% end %>
+
+    <% unless @recent_favourites.empty? %>
+        <div class="mt-4">
+            <h4>Most recent favourites</h4>
+            <% @items = @recent_favourites.map(&:item) %>
+            <%= render "items/item_card_grid" %>
+        </div>
+    <% end %>
 
         <% unless @recent_items_browsed.empty? %>
             <div class="mt-4">
@@ -45,10 +65,11 @@
         <% end %>
 
         <div class="mt-4">
+
             <h4>Check out these available items</h4>
             <% @items = @item_suggestions %>
+
             <%= render "items/item_card_grid" %>
         </div>
-    </div>
 
 </div>

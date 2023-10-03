@@ -38,8 +38,8 @@ class ItemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
 
-    UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
-    flash[:notice] = "Achievement earned: Welcome To The Club"
+    user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Welcome To The Club"))
+    flash[:notice] = "Achievement earned: Welcome To The Club" if user_ach.save
   end
 
   def edit
@@ -63,9 +63,10 @@ class ItemsController < ApplicationController
       flash[:notice] = "Item relisted!"
     end
 
-    UserAchievement.create(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
-    redirect_to dashboard_path
-    flash[:notice] = "Achievement earned: Non-Stop Swap"
+    user_ach = UserAchievement.new(user: current_user, achievement: Achievement.find_by(name: "Non-Stop Swap"))
+    flash[:notice] = "Item relisted! Achievement earned: Non-Stop Swap" if user_ach.save
+
+    redirect_to user_profile_path(current_user)
   end
 
   def show
