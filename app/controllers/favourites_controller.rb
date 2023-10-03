@@ -41,7 +41,7 @@ class FavouritesController < ApplicationController
 
         respond_to do |format|
             if @favourite.destroy
-                format.turbo_stream { flash.now[:notice] = "Item Unfavourited" }
+                format.turbo_stream { flash.now[:notice] = "Item unfavourited" }
                 format.turbo_stream { render 'favourites/destroy', locals: { favourite: @favourite, item: @item }}
             else
                 format.turbo_stream { flash.now[:notice] = "Error" }

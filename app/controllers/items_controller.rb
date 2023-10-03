@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
       @header = header_prefix
       @selected = "all categories"
     end
+
+    @items = @items.select { |item| item.featured } | @items
   end
 
   def new
@@ -67,6 +69,22 @@ class ItemsController < ApplicationController
     flash[:notice] = "Item relisted! Achievement earned: Non-Stop Swap" if user_ach.save
 
     redirect_to user_profile_path(current_user)
+  end
+
+  def feature
+    @item = Item.find(params[:id])
+    authorize @item
+
+    if current_user.swapzi_score >= 100 && !@item.featured
+      if @item.update(featured: true)
+        flash[:notice] = "Item featured!"
+        current_user.update(swapzi_score: current_user.swapzi_score - 100)
+      end
+    else
+      flash[:notice] = "You don't have enough swapzi points!"
+    end
+
+    redirect_to item_path(@item)
   end
 
   def show

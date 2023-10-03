@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   patch "items/:id/relist", to: "items#relist", as: "relist_item"
+  patch "items/:id/feature", to: "items#feature", as: "feature_item"
 
   resources :items do
     resources :favourites, only: %i[create]

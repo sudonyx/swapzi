@@ -6,11 +6,13 @@
         <%= image_tag(@item.photo, class: "card-img-top", style: "height:100%;") %>
       <% end %>
 
-      <div class="fav-positon" style="position: absolute; top: 10px; left: 10px;">
-        <%= turbo_frame_tag "fav-button" do %>
-          <%= render 'favourites/fav_button' %>
-        <% end %>
-      </div>
+      <% unless @item.user == current_user %>
+        <div class="fav-positon" style="position: absolute; top: 10px; left: 10px;">
+          <%= turbo_frame_tag "fav-button" do %>
+            <%= render 'favourites/fav_button' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div class="item-show-details mx-4">
@@ -44,6 +46,16 @@
         <div class="mt-4">
           <%= link_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
         </div>
+
+        <% if @item.featured %>
+          <div class="mt-4">
+            <%= button_to "Item featured!", {}, disabled: true, id: "show-button", class: "btn btn-outline-dark rounded-pill" %>
+          </div>
+        <% else %>
+          <div class="mt-4">
+            <%= button_to "Feature this item", feature_item_path(@item), id: "show-button", class: "btn btn-outline-dark rounded-pill", method: :patch, data: { turbo_method: :patch, turbo_confirm: "Spend 100 swapzi points to feature this item?" } %>
+          </div>
+        <% end %>
       <% end %>
       
       <div class="container item-show-actions p-0" style="position: relative;">

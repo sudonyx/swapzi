@@ -1,5 +1,5 @@
 <div class="col h-100 d-flex justify-content-between">
-  <div class="show-card">
+  <div class="show-card <%= @item.featured ? "card-featured" : "" %>">
     <% if @item.photo.attached? %>
       <%= image_tag(@item.photo, class: "card-img-top") %>
     <% end %>
