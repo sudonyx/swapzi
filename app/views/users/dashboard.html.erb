@@ -2,14 +2,16 @@
 
     <div class="card-row">
 
-        <div class="dashboard-card">
+        <div class="dashboard-card dashboard-card-1">
             <div class="dashboard-card-header">
                 <h4>Swapzi Score</h4>
             </div>
-            <div class="dashboard-card-content">
+            <div class="dashboard-card-content swapzi-display-score">
                 <p class="text-center"><%= current_user.swapzi_score %></p>
             </div>
-
+            <div class="dashboard-card-content">
+                <%= link_to "Find out more about Swapzi points", about_points_path, class: "btn-orange" %>
+            </div>
         </div>
 
         <div class="dashboard-card">
@@ -21,7 +23,7 @@
                 <h4 class="text-center">Achievements</h4>
             </div>
 
-            <div class="row row-cols-5 g-2 mt-1">
+            <div class="row row-cols-5 g-3 mt-1">
                 <% @achievements.each do |a| %>
                     <div class="col">
                         <div class="d-flex justify-content-around align-items-center">
