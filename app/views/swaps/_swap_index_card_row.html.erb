@@ -13,7 +13,7 @@
       <div class="d-flex flex-column align-items-center mb-3" style= "margin-top: 60px;">
         <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
         <% if @show_content %>
-          <div><%= link_to "See more details", swap_path(@swap), class: "btn-purple" %></div>
+          <%= link_to "See more details", swap_path(@swap), class: "btn-purple", id: "btn-width-auto" %>
         <% else %>
           <div class="my-2"></div>
         <% end %>

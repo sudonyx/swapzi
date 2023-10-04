@@ -2,6 +2,8 @@
   <div class="show-card">
     <% if @item.photo.attached? %>
       <%= image_tag(@item.photo, class: "card-img-top") %>
+    <% else %>
+      <%= image_tag("default-item-img.png", class: "card-img-top") %>
     <% end %>
     <% if @item.featured %>
       <div class="card-featured">
