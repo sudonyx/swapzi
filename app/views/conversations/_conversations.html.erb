@@ -4,7 +4,7 @@
     <div class="user-list">
       <% @conversations.each do |convo| %>  
         <%= link_to conversation_path(convo) do %>
-          <div class="user-list-item">
+          <div class="user-list-item <%= convo == @conversation ? "active" : "" %>">
             <strong><%= convo.user_1 == current_user ? convo.user_2.username : convo.user_1.username %></strong>
           </div>
         <% end %>
@@ -39,7 +39,7 @@
           placeholder: "Type your message here...",
           wrapper_html: {class: "flex-grow-1"}
         %>
-        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <%= f.submit "Send", class: "btn-purple mb-3", id: "message-send" %>
       <% end %>
     </div>
   <% end %>
