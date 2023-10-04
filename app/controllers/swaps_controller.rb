@@ -165,7 +165,9 @@ class SwapsController < ApplicationController
     items.each do |item|
       new_item = Item.new(name: item.name, description: item.description, category: item.category, swapzi_points: item.swapzi_points, swap_counter: item.swap_counter, hidden: true, relist: true)
       new_item.user = item == @swap.item_1 ? @swap.item_2.user : @swap.item_1.user
-      new_item.photo.attach(io: StringIO.new(item.photo.download), filename: item.name, content_type: item.photo.content_type)
+      if item.photo.attached?
+        new_item.photo.attach(io: StringIO.new(item.photo.download), filename: item.name, content_type: item.photo.content_type)
+      end
       new_item.save
     end
   end

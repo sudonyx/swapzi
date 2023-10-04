@@ -36,7 +36,7 @@
 
   <div class="d-flex justify-content-center start-chat-button">
     <% other_user = @swap.item_1.user == current_user ? @swap.item_2.user : @swap.item_1.user %>
-    <%= button_to "chat with #{other_user.username}", conversations_path(other_user: other_user, swap: @swap), class: "btn-purple" %>
+    <%= button_to "Chat with #{other_user.username}", conversations_path(other_user: other_user, swap: @swap), class: "btn-purple", id: "btn-width-auto" %>
   </div>
 
 

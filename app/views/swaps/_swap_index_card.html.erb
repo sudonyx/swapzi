@@ -5,6 +5,8 @@
             <div class="col-md-4">
                 <% if @item.photo.attached? %>
                     <%= image_tag(@item.photo, class: "open-pic") %>
+                <% else %>
+                    <%= image_tag("default-item-img.png", class: "open-pic") %>
                 <% end %>
             </div>
             <div class="col-md-8">

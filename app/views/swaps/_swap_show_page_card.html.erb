@@ -3,6 +3,8 @@
     
     <% if @item.photo.attached? %>
       <%= image_tag(@item.photo, class: "card-img") %>
+    <% else %>
+        <%= image_tag("default-item-img.png", class: "card-img") %>
     <% end %>
     
     <div class= "info">

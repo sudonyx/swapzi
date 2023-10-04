@@ -3,7 +3,9 @@
   <div class="item-show-container" style="margin-bottom: 10px; height: 400px;">
     <div class="show-page-img">
       <% if @item.photo.attached? %>
-        <%= image_tag(@item.photo, class: "card-img-top", style: "height:100%;") %>
+        <%= image_tag(@item.photo, class: "card-img-top") %>
+      <% else %>
+        <%= image_tag("default-item-img.png", class: "card-img-top") %>
       <% end %>
 
       <% if @item.featured && @item.user == current_user %>
