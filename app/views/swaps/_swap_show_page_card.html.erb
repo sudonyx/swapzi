@@ -1,12 +1,12 @@
 
 <div class="swap-show-card">
-    
+
     <% if @item.photo.attached? %>
-      <%= image_tag(@item.photo, class: "card-img") %>
+      <%= cl_image_tag(@item.photo.key, :fetch_format=>:auto, class: "card-img") %>
     <% else %>
-        <%= image_tag("default-item-img.png", class: "card-img") %>
+      <%= image_tag("default-item-img.png", class: "card-img") %>
     <% end %>
-    
+
     <div class= "info">
       <div class="swap-show-card-body">
         <h4 class="swap-card-title"><%= @item.user == current_user ? "Your" : "#{@item.user.username}'s" %> <%= @item.name %></h4>
@@ -17,5 +17,5 @@
         <p class="swapzi-points">Swapzi Points: <%= @item.swapzi_points %></p>
       </div>
     </div>
-    
+
 </div>
