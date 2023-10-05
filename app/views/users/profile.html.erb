@@ -1,10 +1,10 @@
 <div class="container">
 
   <div class="user-info-container d-flex justify-content-start">
-  
+
     <div class="user-img">
       <% if @user.photo.attached? %>
-        <%= image_tag @user.photo, class: "avatar-xl" %>
+        <%= cl_image_tag @user.photo.key, :fetch_format=>:auto, class: "avatar-xl" %>
       <% else %>
         <%= image_tag "avatar-default-icon.png", class: "avatar-xl" %>
       <% end %>
