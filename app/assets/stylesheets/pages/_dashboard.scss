@@ -39,6 +39,12 @@
     align-items: center;
 }
 
+.dashboard-card-2 {
+    p {
+        margin-top: 12px;
+    }
+}
+
 .swapzi-display-score p{
     color: white;
     padding: 8px 24px;
@@ -54,9 +60,9 @@
 .dashboard-card-header {
     text-align: center;
 
-    h4 {
-        margin: 0;
-    }
+    // h4 {
+    //     margin: 0;
+    // }
 }
 
 .dashboard-card-content {

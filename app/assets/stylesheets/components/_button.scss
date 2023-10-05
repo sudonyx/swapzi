@@ -119,3 +119,8 @@ button{
 .fav-button {
   color: $yellow;
 }
+
+#btn-width-auto {
+  min-width: 0;
+  width: auto;
+}

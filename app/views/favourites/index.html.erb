@@ -9,7 +9,9 @@
             <div class="card favourite-card">
             <%= link_to item_path(favourite.item), class: "no-underline" do %>
                 <% if favourite.item.photo.attached? %>
-                    <%= image_tag(favourite.item.photo, class: "card-img-top") %>
+                    <%= cl_image_tag(favourite.item.photo.key, :fetch_format=>:auto, class: "card-img-top") %>
+                  <% else %>
+                    <%= image_tag("default-item-img.png", class: "card-img-top") %>
                 <% end %>
                 <div class="card-body">
                 <h5 class="card-title"><%= favourite.item.name %></h5>
@@ -22,4 +24,3 @@
         </div>
     <% end %>
 </div>
-

@@ -1,12 +1,14 @@
 <div class="col h-100 d-flex justify-content-between">
   <div class="show-card">
     <% if @item.photo.attached? %>
-      <%= image_tag(@item.photo, class: "card-img-top") %>
+      <%= cl_image_tag(@item.photo.key, :fetch_format=>:auto, class: "card-img-top") %>
+    <% else %>
+      <%= image_tag("default-item-img.png", class: "card-img-top") %>
     <% end %>
     <% if @item.featured %>
       <div class="card-featured">
         <p><strong>Featured!</strong></p>
-      </div>  
+      </div>
     <% end %>
     <div class="show-body">
       <h5 class="show-title"><%= @item.name %></h5>

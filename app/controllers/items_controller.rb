@@ -90,7 +90,13 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     authorize @item
-    @random_items = Item.where(user: @item.user).order("RANDOM()").limit(4)
+
+    @random_items = Item.where(
+      'user_id = ? AND id != ?',
+      @item.user.id,
+      @item.id
+    ).order('RANDOM()').limit(4)
+
     BrowsingHistory.create(user: current_user, item: @item) if user_signed_in?
   end
 

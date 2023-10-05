@@ -56,39 +56,38 @@
 
   </div>
 
-    <% unless @open_swapz.empty? %>
+    <% unless @new_swaps.empty? %>
         <hr>
         <div class="my-4 d-flex justify-content-around align-items-center">
             <div class="d-flex">
                 <h4 class="my-auto me-3">People want to swap with you!</h4>
-                <%= link_to "Open swapz", swaps_path(page: 'pending'), class: "btn btn-outline-dark rounded-pill" %>
+                <%= link_to "Open swapz", swaps_path(page: 'pending'), class: "btn-orange", id: "btn-width-auto" %>
             </div>
         </div>
         <hr>
     <% end %>
 
+    <div class="mt-5">
+        <h4 class="mb-3">Check out these available items</h4>
+        <% @items = @item_suggestions %>
+
+        <%= render "items/item_card_grid" %>
+    </div>
+
     <% unless @recent_favourites.empty? %>
-        <div class="mt-4">
-            <h4>Most recent favourites</h4>
+        <div class="mt-5">
+            <h4 class="mb-3">Most recent favourites</h4>
             <% @items = @recent_favourites.map(&:item) %>
             <%= render "items/item_card_grid" %>
         </div>
     <% end %>
 
     <% unless @recent_items_browsed.empty? %>
-        <div class="mt-4">
-            <h4>Recently browsed items</h4>
+        <div class="mt-5">
+            <h4 class="mb-3">Recently browsed items</h4>
             <% @items = @recent_items_browsed.select { |item| item.hidden == false } %>
             <%= render "items/item_card_grid" %>
         </div>
     <% end %>
-
-    <div class="mt-4">
-
-        <h4>Check out these available items</h4>
-        <% @items = @item_suggestions %>
-
-        <%= render "items/item_card_grid" %>
-    </div>
 
 </div>
