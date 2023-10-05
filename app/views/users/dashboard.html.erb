@@ -19,7 +19,18 @@
 
       <!-- Card 2 - Empty -->
       <div class="dashboard-card">
-
+          <div class="dashboard-card-header">
+              <h4>Open swapz</h4>
+          </div>
+          <div class="dashboard-card-content">
+              <% if @open_swaps.empty? %>
+                <p>You don't have any open swaps</p>
+                <%= link_to "Start browsing", items_path, class: "btn-purple" %>
+              <% else %>
+                <p>You have <%= @open_swaps.count %> open swap<%= @open_swaps.count == 1 ? "" : "z" %></p>
+                <%= link_to "View them here!", swaps_path(page: 'pending'), class: "btn-purple" %>
+              <% end %>
+          </div>
       </div>
 
       <div class="vertical-separator"></div>
