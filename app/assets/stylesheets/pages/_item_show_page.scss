@@ -15,7 +15,12 @@
     width: 100%;
     margin-left: 20px;
   }
+
+  .item-show-title {
+    margin-bottom: 60px;
+  }
 }
+
 
 // .item-show-container {
 //   flex-direction: row;
@@ -26,7 +31,7 @@
   position: relative;
 
   .card-img-top {
-    height: 400px;
+    height: 500px;
     width: 600px;
     object-fit: cover;
     border-radius: inherit;

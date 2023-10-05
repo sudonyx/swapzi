@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="item-show-container" style="margin-bottom: 10px; height: 400px;">
+  <div class="item-show-container" style="margin-bottom: 10px; height: 500px;">
     <div class="show-page-img">
       <% if @item.photo.attached? %>
         <%= cl_image_tag(@item.photo.key, :fetch_format=>:auto, class: "card-img-top") %>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="item-show-details mx-4">
-      <div class="mb-4">
+      <div class="item-show-title">
         <h1><%= @item.name %></h1>
         <div class="d-flex align-items-center mb-1">
           <%= image_tag "logo-draft.png", style: "height: 26px; object-fit: contain;" %>
