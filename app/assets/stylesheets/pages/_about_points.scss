@@ -1,1 +1,73 @@
+.point-section {
+  padding: 20px;
+  background-color: #712bbd1f; /* Neutral shade background */
+  border-radius: 10px; /* Smooth rounded edges */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08); /* Light shadow for depth */
+  margin: 20px 0; /* Spacing before and after the section */
+}
 
+.point-header {
+  display: flex; /* Horizontal layout for icon and heading */
+  align-items: center; /* Vertical centering */
+}
+
+.point-icon {
+  color: #E67E22;; /* Tomato colored icon */
+  font-size: 24px; /* Bigger icon */
+  margin-right: 10px; /* Spacing between icon and text */
+}
+
+.point-header h2 {
+  color: #2C3E50; /* Dark shade for better visibility */
+  margin: 0; /* Reset default margin */
+  padding-bottom: 5px; /* Small padding at the bottom */
+  border-bottom: 2px solid #e5e5e5; /* Subtle line below the header */
+}
+
+.point-list {
+  margin-top: 20px; /* Spacing from the header */
+  list-style-type: none; /* Removing default bullet points */
+  padding-left: 0; /* Removing default padding */
+}
+
+.point-list li {
+  font-size: 16px;
+  line-height: 1.7; /* More readable line-height */
+  margin-bottom: 12px; /* Spacing between list items */
+  position: relative;
+}
+
+.sub-point-list {
+  margin-top: 10px;
+  margin-left: 30px; /* Indentation */
+  list-style-type: disc; /* Regular bullet points */
+}
+
+.sub-point-list li {
+  margin-bottom: 6px; /* A bit tighter spacing for sub-items */
+}
+
+.highlight-item:hover {
+  font-weight: bold;
+  color: #FF4500;
+  background-size: 20px;
+}
+
+.larger-text {
+  font-size: 1.5em;  /* Increase the font size */
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* Or 'flex-start' if you want the text and image closer */
+  align-items: center;
+}
+
+.point-text {
+  flex: 1; /* Allows the text to take up as much space as possible */
+  padding-right: 15px; /* Adds some spacing between text and image */
+}
+
+.achievement-image {
+  flex-shrink: 0; /* Prevents the image container from shrinking */
+}
