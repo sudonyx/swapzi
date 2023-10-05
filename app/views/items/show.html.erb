@@ -51,7 +51,7 @@
       <div class="d-flex">
         <% if @item.user == current_user %>
           <div>
-            <%= button_to "Edit this item", edit_item_path(@item), id: "show-button", class: "btn-orange me-4" %>
+            <%= button_to "Edit this item", edit_item_path(@item), method: :get, id: "show-button", class: "btn-orange me-4" %>
           </div>
 
         <% if @item.relist && @item.user == current_user %>
