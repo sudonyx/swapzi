@@ -13,6 +13,7 @@ class FavouritesController < ApplicationController
             if @favourite.save
                 format.turbo_stream { flash.now[:notice] = "Saved as favorite!" }
                 format.turbo_stream { render 'favourites/create', locals: { favourite: @favourite, item: @item }}
+                @item.user.update(swapzi_score: @item.user.swapzi_score + 10)
             else
                 format.turbo_stream { flash.now[:alert] = "Favorite failed to save." }
                 format.turbo_stream { render 'favourites/create', locals: { favourite: @favourite, item: @item }}
