@@ -21,7 +21,7 @@
 
   .messages {
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     padding: 1rem;
   }
 
@@ -61,7 +61,7 @@
     // overflow-y: scroll;
 
     padding: 1rem;
-    
+
     .user-list-item {
       border-bottom: 1px solid $light-gray;
       padding-bottom: 16px;
