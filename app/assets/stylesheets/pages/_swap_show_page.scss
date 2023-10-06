@@ -1,18 +1,31 @@
+@keyframes spinHalf {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .swap-show-container {
   margin-top: 10px;
 }
 
 .swap-container {
-  // min-height: 530px;
   margin-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  .swap-logo {
-    height: 100px;
-    width: auto;
-  }
+.swap-logo {
+  height: 100px;
+  width: auto;
+  display: inline-block;
+}
+
+.btn-purple:hover + .swap-logo {
+  animation: spinHalf 0.2s;
 }
 
 .swap-show-card {
