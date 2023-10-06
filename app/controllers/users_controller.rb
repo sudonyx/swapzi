@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @achievements = Achievement.all
 
     @open_swaps = Swap.where(user_1: current_user).or(Swap.where(user_2: current_user))
+    @open_swaps = @open_swaps.reject(&:completed)
     @new_swaps = @open_swaps.select do |swap|
       swap.user_1 == current_user && swap.accepted_user_1 != true || swap.user_2 == current_user && swap.accepted_user_2 != true
     end
