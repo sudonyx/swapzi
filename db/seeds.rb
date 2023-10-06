@@ -245,7 +245,7 @@ item.save!
 item = Item.new({ name: "Multi-tool", category: "Other", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/MultiTool.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
 item.save!
-item = Item.new({ name: "Golden paperclip", category: "Other", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item = Item.new({ name: "Golden paperclip", category: "Other", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample, swap_counter: 16 })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/GoldenPaperclip.webp"), filename: "other.webp", content_type: "image/webp")
 item.save!
 

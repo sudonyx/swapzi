@@ -105,19 +105,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_03_163438) do
     t.text "content"
     t.datetime "timestamp", precision: nil
     t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "conversation_id", null: false
     t.boolean "read", default: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "swaps", force: :cascade do |t|
-    t.date "date_initiated"
-    t.date "date_completed"
     t.boolean "accepted_user_1"
     t.boolean "accepted_user_2"
     t.boolean "completed_user_1"
@@ -185,7 +181,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_03_163438) do
   add_foreign_key "item_comments", "users"
   add_foreign_key "items", "users"
   add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "swaps", "items", column: "item_1_id"
   add_foreign_key "swaps", "items", column: "item_2_id"
