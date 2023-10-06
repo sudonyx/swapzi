@@ -9,12 +9,14 @@
       <%# render the card for current_user %>
       <%= render "swaps/swap_index_card" %>
 
-    <div class="d-flex flex-column align-items-center mb-3" style="margin-top: 60px;">
-      <% if @show_content %>
-        <%= image_tag("logo-draft.png", class: "swap-logo") %>
-        <%= link_to "See more details", swap_path(@swap), class: "btn-purple", id: "btn-width-auto" %>
-      <% end %>
-    </div>
+      <div class="d-flex flex-column align-items-center mb-3" style= "margin-top: 60px;">
+        <div><%= image_tag("logo-draft.png", class: "swap-logo") %></div>
+        <% if @show_content %>
+          <%= link_to "See more details", swap_path(@swap), class: "btn-purple", id: "btn-width-auto" %>
+        <% else %>
+          <div class="my-2"></div>
+        <% end %>
+      </div>
 
       <%# set @item for other user %>
       <% @item = @swap.item_1.user == current_user ? @swap.item_2 : @swap.item_1 %>

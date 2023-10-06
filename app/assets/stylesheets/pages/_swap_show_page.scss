@@ -32,7 +32,7 @@
   margin: auto;
   border-radius: 16px;
   width: 500px;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {
     transform: translateY(-5px);
