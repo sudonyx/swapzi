@@ -5,7 +5,7 @@
 
 .my-input{
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
 }
 
@@ -18,4 +18,23 @@
     border-color: $eggplant;
     text-decoration: none;
     text-transform: capitalize;
+    width: auto;
+}
+
+.my-form-btn:hover{
+    scale: 1.1;
+    background-color: $eggplant;
+    color: white;
+}
+.my-buttons{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.plain-btn{
+    text-decoration: none;
+    color: black;
 }
