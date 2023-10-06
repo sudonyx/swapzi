@@ -1,13 +1,17 @@
 <div class="container">
-
   <h1 class="my-4">Open swapz</h1>
 
-  <% @swaps.each do |swap| %>
-    <% @swap = swap %>
-    <%= render "swaps/swap_index_card_row" %>
-    <% unless swap == @swaps.last %>
-      <hr>
+  <% if @swaps.any? %>
+    <% @swaps.each do |swap| %>
+      <% @swap = swap %>
+      <%= render "swaps/swap_index_card_row" %>
+      <% unless swap == @swaps.last %>
+        <hr>
+      <% end %>
     <% end %>
+  <% else %>
+    <p> You don't have any open swapz yet.</p>
+    <%= link_to "Browse Items", items_path, class: "btn-orange" %>
   <% end %>
 
 </div>
