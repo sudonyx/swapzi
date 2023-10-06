@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
       @selected = "all categories"
     end
 
+    @items = @items.reject(&:hidden)
     @items = @items.select { |item| item.featured } | @items
   end
 
