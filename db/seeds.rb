@@ -84,203 +84,167 @@ def generate_description
 end
 
 item = Item.new({ name: "Mini Fridge", category: "Household Appliances", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/MiniFridge.webp"), filename: "appliances.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/MiniFridge.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Slow Cooker", category: "Household Appliances", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/SlowCooker.webp"), filename: "appliances.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/SlowCooker.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Coffee Maker", category: "Household Appliances", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/CoffeeMaker.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Rice Cooker", category: "Household Appliances", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/RiceCooker.jpeg"), filename: "appliances.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/RiceCooker.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Juicer", category: "Household Appliances", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/Juicer.jpeg"), filename: "appliances.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/Juicer.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Electric Kettle", category: "Household Appliances", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/ElectricKettle.jpeg"), filename: "appliances.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/ElectricKettle.jpg"), filename: "appliances.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "1984", category: "Books", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/1984.webp"), filename: "books.webp", content_type: "image/webp")
+item = Item.new({ name: "1984 book", category: "Books", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/1984.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "Brave New World", category: "Books", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item = Item.new({ name: "Brave New World book", category: "Books", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BraveNewWorld.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "The Lord of the Rings", category: "Books", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item = Item.new({ name: "The Lord of the Rings trilogy book", category: "Books", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/LOTR.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "Frankenstein", category: "Books", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FRANKENSTEIN.jpeg"), filename: "books.jpeg", content_type: "image/jpeg")
+item = Item.new({ name: "Frankenstein paperback", category: "Books", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FRANKENSTEIN.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "The Hitch-Hiker's Guide to the Galaxy", category: "Books", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/hhgttg.webp"), filename: "books.webp", content_type: "image/webp")
+item = Item.new({ name: "The Hitch-Hiker's Guide to the Galaxy paperback book", category: "Books", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/hhgttg.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
-item = Item.new({ name: "Catch-22", category: "Books", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
+item = Item.new({ name: "Catch-22 paperback", category: "Books", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/Catch22.jpg"), filename: "books.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "iPhone 7", category: "Electronics", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/iphone7.webp"), filename: "electronics.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/iphone7.jpg"), filename: "electronics.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Chromebook", category: "Electronics", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/chromebook.jpg"), filename: "electronics.jgp", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Samsung TV", category: "Electronics", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/samsungTV.jpeg"), filename: "electronics.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/samsungTV.jpg"), filename: "electronics.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Bluetooth Speaker", category: "Electronics", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BluetoothSpeaker.webp"), filename: "electronics.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BluetoothSpeaker.jpg"), filename: "electronics.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Old Hi-Fi", category: "Electronics", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OldHifi.jpeg"), filename: "electronics.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OldHifi.jpg"), filename: "electronics.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Vinyl Record Player", category: "Electronics", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/VinylRecordPlayer.jpg"), filename: "electronics.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Acoustic Guitar", category: "Musical Instruments", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/AcousticGuitar.jpeg"), filename: "instruments.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/AcousticGuitar.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Trumpet", category: "Musical Instruments", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/trumpet.jpeg"), filename: "instruments.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/trumpet.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Drum Kit", category: "Musical Instruments", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DrumKit.webp"), filename: "instruments.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DrumKit.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Banjo", category: "Musical Instruments", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/banjo.jpeg"), filename: "instruments.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/banjo.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Tin Whistle", category: "Musical Instruments", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/TinWhistle.webp"), filename: "instruments.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/TinWhistle.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Saxophone", category: "Musical Instruments", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/saxophone.jpeg"), filename: "instruments.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/saxophone.jpg"), filename: "instruments.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Dining Chair", category: "Furniture", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DiningChair.jpeg"), filename: "furniture.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DiningChair.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Small Table", category: "Furniture", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/SmallTable.jpeg"), filename: "furniture.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/SmallTable.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Leather sofa", category: "Furniture", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/LeatherSofa.jpeg"), filename: "furniture.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/LeatherSofa.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Bar stools x2", category: "Furniture", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BarStools.jpeg"), filename: "furniture.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BarStools.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Ottoman Bed", category: "Furniture", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OttomanBed.webp"), filename: "furniture.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OttomanBed.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Bean bag", category: "Furniture", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BeanBag.webp"), filename: "furniture.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BeanBag.jpg"), filename: "furniture.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Black Geometric Print Trousers", category: "Clothes", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackGeometricPrintTrousers.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackGeometricPrintTrousers.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Black Polka Dot Shirt", category: "Clothes", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackPolkaDotShirt.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackPolkaDotShirt.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Black Mini Skater Skirt", category: "Clothes", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackMiniSkaterSkirt.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlackMiniSkaterSkirt.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Beige Large Logo Front Jumper", category: "Clothes", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BeigeLargeLogoFrontJumper.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BeigeLargeLogoFrontJumper.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Red Peplum Petite Midi Dress", category: "Clothes", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/RedPeplumPetiteMidiDress.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/RedPeplumPetiteMidiDress.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Blue Tie Side Sweatshirt", category: "Clothes", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlueTieSideSweatshirt.webp"), filename: "clothes.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BlueTieSideSweatshirt.jpg"), filename: "clothes.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Bike Helmet", category: "Sports Gear", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BikeHelmet.jpeg"), filename: "sports.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BikeHelmet.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Football", category: "Sports Gear", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/football.jpeg"), filename: "sports.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/football.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Cricket Bat", category: "Sports Gear", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/CricketBat.jpeg"), filename: "sports.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/CricketBat.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Goalkeeper gloves Large", category: "Sports Gear", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/GoalkeeperGloves.jpeg"), filename: "sports.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/GoalkeeperGloves.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Balance bike", category: "Sports Gear", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BalanceBike.jpeg"), filename: "sports.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BalanceBike.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Bike Pump", category: "Sports Gear", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BikePump.webp"), filename: "sports.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BikePump.jpg"), filename: "sports.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Candle holder", category: "Decorations", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/CandleHolder.webp"), filename: "decorations.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/CandleHolder.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Vase", category: "Decorations", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/vase.jpeg"), filename: "decorations.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/vase.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Oil painting", category: "Decorations", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OilPainting.jpeg"), filename: "decorations.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/OilPainting.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Fairy lights", category: "Decorations", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FairyLights.jpeg"), filename: "decorations.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FairyLights.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Elephant lamp", category: "Decorations", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/ElephantLamp.jpeg"), filename: "decorations.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/ElephantLamp.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Banksy print", category: "Decorations", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BanksyPrint.jpeg"), filename: "decorations.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/BanksyPrint.jpg"), filename: "decorations.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "DVD collection", category: "Other", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DVDs.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/DVDs.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Rubber Duck", category: "Other", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample })
 item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/RubberDuck.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Stapler", category: "Other", user: user1, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/stapler.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/stapler.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Fridge Magnets", category: "Other", user: user2, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FridgeMagnets.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/FridgeMagnets.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Hamster ball", category: "Other", user: user3, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/HamsterBall.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/HamsterBall.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Multi-tool", category: "Other", user: user4, description: generate_description, swapzi_points: (100..250).to_a.sample })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/MultiTool.jpeg"), filename: "other.jpeg", content_type: "image/jpeg")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/MultiTool.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
 item = Item.new({ name: "Golden paperclip", category: "Other", user: user5, description: generate_description, swapzi_points: (100..250).to_a.sample, swap_counter: 16 })
-item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/GoldenPaperclip.webp"), filename: "other.webp", content_type: "image/webp")
+item.photo.attach(io: File.open("app/assets/images/seed_images/new_seeds/GoldenPaperclip.jpg"), filename: "other.jpg", content_type: "image/jpg")
 item.save!
-
-
-# 100.times do
-#   name = Faker::Commerce.product_name
-#   description = []
-#   (3..8).to_a.sample.times do
-#     description << Faker::Company.catch_phrase
-#   end
-#   description = description.join(". ")
-#   category = ["Books", "Electronics", "Musical Instruments", "Furniture", "Clothes", "Household Appliances", "Sports Gear", "Decorations", "Other"].sample
-#   swapzi_points = (100..500).to_a.sample
-
-#   item = Item.new({ name: name, description: description, category: category, swapzi_points: swapzi_points })
-#   item.user = [user1, user2, user3, user4, user5].sample
-#   case category
-#   when "Books"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/book.jpg"), filename: "book.jpg", content_type: "image/jpg")
-#   when "Electronics"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/gameboy.jpg"), filename: "gameboy.jpg", content_type: "image/jpg")
-#   when "Musical Instruments"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/guitar.jpg"), filename: "guitar.jpg", content_type: "image/jpg")
-#   when "Furniture"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/desk.jpg"), filename: "desk.jpg", content_type: "image/jpg")
-#   when "Clothes"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/jacket.jpg"), filename: "jacket.jpg", content_type: "image/jpg")
-#   when "Household Appliances"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/toaster.jpg"), filename: "toaster.jpg", content_type: "image/jpg")
-#   when "Sports Gear"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/bicycle.jpg"), filename: "bicycle.jpg", content_type: "image/jpg")
-#   when "Decorations"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/plant.jpg"), filename: "plant.jpg", content_type: "image/jpg")
-#   when "Other"
-#     item.photo.attach(io: File.open("app/assets/images/seed_images/old_seeds/#{%w[book gameboy guitar desk jacket toaster bicycle plant].sample}.jpg"), filename: "other.jpg", content_type: "image/jpg")
-#   end
-#   item.save!
-# end
